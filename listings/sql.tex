@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{ltgray}{rgb}{0.5,0.5,0.5}
+
+\usepackage{listings}
+\lstset{%
+  	backgroundcolor=\color{white},
+  	basicstyle=\footnotesize,
+  	breakatwhitespace=false,
+  	breaklines=true,
+  	captionpos=b,
+  	commentstyle=\color{dkgreen},
+  	deletekeywords={...},
+  	escapeinside={\%*}{*)},
+  	extendedchars=true,
+  	frame=single,
+  	keepspaces=true,
+  	keywordstyle=\color{blue},
+  	language=SQL,
+  	morekeywords={*,modify,MODIFY,...},
+  	numbers=left,
+  	numbersep=15pt,
+  	numberstyle=\tiny,
+  	rulecolor=\color{ltgray},
+  	showspaces=false,
+  	showstringspaces=false, 
+  	showtabs=false,
+  	stepnumber=1,
+  	tabsize=4,
+  	title=\lstname
+}
+
+\begin{document}
+
+\begin{lstlisting}[language=sql]
+ALTER TABLE country
+	MODIFY capital SET NOT NULL;
+-- There is no MODIFY CONSTRAINT, so first remove than create anew:
+ALTER TABLE country
+	DROP CONSTRAINT country_capital_fkey;
+ALTER TABLE country
+	ADD CONSTRAINT country_capital_fkey FOREIGN KEY (capital) REFERENCES city(id) ON DELETE CASCADE;
+\end{lstlisting}
+
+\end{document}
