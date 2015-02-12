@@ -1,0 +1,1717 @@
+% alternative * arrow
+\pgfarrowsdeclare{* new}{* new}
+{
+  \ifdim\pgfgetarrowoptions{* new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+    \pgfutil@tempdimb=5.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=1.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{* new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsleftextend{+-0.5\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \ifdim\pgfgetarrowoptions{* new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%  
+    \pgfpathcircle{\pgfqpoint{-3\pgfutil@tempdima}{0pt}}{+4.5\pgfutil@tempdima}
+    \pgfusepathqfillstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{* new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 2%
+    \pgfpathcircle{\pgfqpoint{\pgfutil@tempdima}{0pt}}{\pgfutil@tempdima}
+    \pgfusepathqfillstroke
+  \fi
+}
+
+% alternative round bracket arrow
+\pgfarrowsdeclare{( new}{) new}
+{
+  \ifdim\pgfgetarrowoptions{) new}<0pt%
+    \pgfutil@tempdima=2pt%
+    \advance\pgfutil@tempdima by1.5\pgflinewidth%
+    \pgfutil@tempdimb=0.0625\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+    \pgfutil@tempdimb=0.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{) new}%
+    \pgfutil@tempdima=0.28125\pgfutil@tempdima%
+    \advance\pgfutil@tempdima by 0.21875\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+0.5\pgflinewidth}  
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{) new}<0pt%
+    \pgfutil@tempdima=2pt%
+    \advance\pgfutil@tempdima by1.5\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{) new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 2%
+    \pgftransformxshift{-0.0625\pgfutil@tempdima}
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfpathmoveto{\pgfqpoint{-.5\pgfutil@tempdima}{-1\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{.25\pgfutil@tempdima}{-.5\pgfutil@tempdima}}
+    {\pgfqpoint{.25\pgfutil@tempdima}{.5\pgfutil@tempdima}}
+    {\pgfqpoint{-.5\pgfutil@tempdima}{\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative round bracket reversed arrow
+\pgfarrowsdeclarereversed{) new}{( new}{( new}{) new}
+
+% alternative square bracket arrow. Use with {[ new}-{] new}
+\pgfarrowsdeclare{[ new}{] new}
+{
+  \pgfutil@tempdima=1pt%
+  \advance\pgfutil@tempdima by1.25\pgflinewidth%
+  \pgfarrowsleftextend{+-\pgfutil@tempdima}
+  \pgfarrowsrightextend{+.5\pgflinewidth}
+}
+{
+  \pgfutil@tempdima=2pt%
+  \advance\pgfutil@tempdima by1.5\pgflinewidth%
+  \pgfutil@tempdimb=\pgfutil@tempdima%
+  \advance\pgfutil@tempdimb by\pgflinewidth%
+  \unless\ifdim\pgfgetarrowoptions{] new}<0pt%
+    \pgfutil@tempdima=\pgfgetarrowoptions{] new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 2%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \pgfsetbuttcap
+  \pgfpathmoveto{\pgfqpoint{-.5\pgfutil@tempdimb}{-1\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0pt}{-1\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0pt}{\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-.5\pgfutil@tempdimb}{\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative square bracket reversed arrow. Use with {] new}-{[ new}
+\pgfarrowsdeclarereversed{] new}{[ new}{[ new}{] new}
+
+% alternative | arrow
+\pgfarrowsdeclare{| new}{| new}
+{
+  \pgfarrowsleftextend{+-0.25\pgflinewidth}
+  \pgfarrowsrightextend{+.75\pgflinewidth}
+}
+{
+  \ifdim\pgfgetarrowoptions{| new}<0pt%
+    \pgfutil@tempdima=2pt%
+    \advance\pgfutil@tempdima by1.5\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{| new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth% due to rect line cap
+    \divide\pgfutil@tempdima by 2%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetrectcap
+  \pgfpathmoveto{\pgfqpoint{0.25\pgflinewidth}{-\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0.25\pgflinewidth}{\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative angle 45 arrow
+\pgfarrowsdeclare{angle 45 new}{angle 45 new}
+{
+  \ifdim\pgfgetarrowoptions{angle 45 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=8.705\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by1.28\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 45 new}%
+    \advance\pgfutil@tempdima by -1.30656\pgflinewidth% 0.5*cosec(\alpha/2)
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+1.30656\pgflinewidth}  
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{angle 45 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{157}{10\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-157}{10\pgfutil@tempdima}}}
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 45 new}%
+    \advance\pgfutil@tempdima by -1.80656\pgflinewidth% -(1.30656+0.5)
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(22.5)} 
+    \pgfpathmoveto{\pgfqpointpolar{157.5}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-157.5}{\pgfutil@tempdima}}
+    \pgfusepathqstroke
+  \fi
+}
+
+% alternative angle 45 reversed arrow
+\pgfarrowsdeclarereversed{angle 45 new reversed}{angle 45 new reversed}{angle 45 new}{angle 45 new}
+
+% alternative angle 60 arrow
+\pgfarrowsdeclare{angle 60 new}{angle 60 new}
+{
+  \ifdim\pgfgetarrowoptions{angle 60 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=7.29\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 60 new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgflinewidth}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{angle 60 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{150}{9\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-150}{9\pgfutil@tempdima}}}
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 60 new}%
+    \advance\pgfutil@tempdima by -1.5\pgflinewidth% -(1+0.5)
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(30)}    
+    \pgfpathmoveto{\pgfqpointpolar{150}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-150}{\pgfutil@tempdima}}
+    \pgfusepathqstroke
+  \fi
+}
+
+% alternative angle 60 reversed arrow
+\pgfarrowsdeclarereversed{angle 60 new reversed}{angle 60 new reversed}{angle 60 new}{angle 60 new}
+
+% alternative angle 90 arrow
+\pgfarrowsdeclare{angle 90 new}{angle 90 new}
+{
+  \ifdim\pgfgetarrowoptions{angle 90 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=5.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.707\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 90 new}%
+    \advance\pgfutil@tempdima by -0.70711\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+0.70711\pgflinewidth}  
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{angle 90 new}<0pt%
+    \pgfutil@tempdima=0.3pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfqpoint{-5.5\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{-5.5\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{angle 90 new}%
+    \advance\pgfutil@tempdima by -1.20711\pgflinewidth% -(0.70711+0.5)
+    \pgfpathmoveto{\pgfqpoint{-\pgfutil@tempdima}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpoint{-\pgfutil@tempdima}{-\pgfutil@tempdima}}
+    \pgfusepathqstroke
+  \fi    
+}
+
+% alternative angle 90 reversed arrow
+\pgfarrowsdeclarereversed{angle 90 new reversed}{angle 90 new reversed}{angle 90 new}{angle 90 new}
+
+% original butt cap arrow (just for completeness)
+\pgfarrowsdeclare{butt cap new}{butt cap new}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \pgfarrowsrightextend{+.5\pgflinewidth}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetbuttcap
+  \pgfpathmoveto{\pgfqpoint{-.1\pgflinewidth}{0pt}}
+  \pgfpathlineto{\pgfqpoint{0.5\pgflinewidth}{0pt}}
+  \pgfusepathqstroke
+}
+
+% alternative diamond arrow
+\pgfarrowsdeclare{diamond new}{diamond new}
+{
+  \ifdim\pgfgetarrowoptions{diamond new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+    \pgfutil@tempdimb=13\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=1\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{diamond new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsleftextend{+-0.5\pgflinewidth}% due to the round cap
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{diamond new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{diamond new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 14%
+    \pgftransformxshift{13\pgfutil@tempdima}
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{1\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-6\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-13\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-6\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathclose
+  \pgfusepathqfillstroke
+}
+
+% original fast cap arrow (just for completeness)
+\pgfarrowsdeclare{fast cap new}{fast cap new}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \pgfarrowsrightextend{+2\pgflinewidth}
+}
+{
+  \pgfpathmoveto{\pgfqpoint{-.1\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{.5\pgflinewidth}{.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{.5\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{-.1\pgflinewidth}{-0.5\pgflinewidth}}
+  \pgfpathclose
+  \pgfpathmoveto{\pgfqpoint{1\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1.5\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{2\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1.5\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{-0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1.5\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathclose
+  \pgfusepathqfill
+}
+
+% original fast cap reversed arrow (just for completeness)
+\pgfarrowsdeclare{fast cap new reversed}{fast cap new reversed}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \pgfarrowsrightextend{+2\pgflinewidth}
+}
+{
+  \pgfpathmoveto{\pgfqpoint{-.1\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{.5\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{-.1\pgflinewidth}{-0.5\pgflinewidth}}
+  \pgfpathclose
+  \pgfpathmoveto{\pgfqpoint{1.5\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{2\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1.5\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{2\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1.5\pgflinewidth}{-0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{0\pgflinewidth}}
+  \pgfpathclose
+  \pgfusepathqfill
+}
+
+% alternative hooks arrow
+\pgfarrowsdeclare{hooks new}{hooks new}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{hooks new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+    \pgfutil@tempdimb=3.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{hooks new}%
+    \pgfutil@tempdima=0.3125\pgfutil@tempdima%
+    \advance\pgfutil@tempdima by 0.1875\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}%
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{hooks new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{hooks new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 12%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0.75\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{2.415\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{1.665\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{3\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.75\pgfutil@tempdima}{4.665\pgfutil@tempdima}}
+    {\pgfqpoint{2.415\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{6\pgfutil@tempdima}}
+  \pgfpathmoveto{\pgfqpoint{0.75\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{2.415\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-1.665\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-3\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-4.665\pgfutil@tempdima}}
+    {\pgfqpoint{2.415\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+  \pgfusepathqstroke%
+}
+
+% alternative hooks reversed arrow
+\pgfarrowsdeclarereversed{hooks new reversed}{hooks new reversed}{hooks new}{hooks new}
+
+% original implies arrow (just for completeness)
+\pgfarrowsdeclare{implies new}{implies new}
+{
+  \pgfmathsetlength{\pgfutil@tempdima}{.25\pgflinewidth+.25*\pgfinnerlinewidth}%
+  \pgfmathsetlength{\pgfutil@tempdimb}{.5\pgflinewidth-.5*\pgfinnerlinewidth}%
+  \pgfarrowsrightextend{2\pgfutil@tempdima+.5\pgfutil@tempdimb}
+  \pgfarrowsleftextend{1.3\pgfutil@tempdima+.5\pgfutil@tempdimb}
+}
+{
+  \pgfmathsetlength{\pgfutil@tempdima}{.25\pgflinewidth+.25*\pgfinnerlinewidth}%
+  \pgfmathsetlength{\pgfutil@tempdimb}{.5\pgflinewidth-.5*\pgfinnerlinewidth}%
+  \pgfsetlinewidth{\pgfutil@tempdimb}
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfpoint{-1.4\pgfutil@tempdima}{2.65\pgfutil@tempdima}}
+  \pgfpathcurveto
+  {\pgfpoint{-0.75\pgfutil@tempdima}{1.25\pgfutil@tempdima}}
+  {\pgfpoint{1\pgfutil@tempdima}{0.05\pgfutil@tempdima}}
+  {\pgfpoint{2\pgfutil@tempdima}{0pt}}
+  \pgfpathcurveto
+  {\pgfpoint{1\pgfutil@tempdima}{-0.05\pgfutil@tempdima}}
+  {\pgfpoint{-.75\pgfutil@tempdima}{-1.25\pgfutil@tempdima}}
+  {\pgfpoint{-1.4\pgfutil@tempdima}{-2.65\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative latex arrow
+\pgfarrowsdeclare{latex new}{latex new}
+{
+  \ifdim\pgfgetarrowoptions{latex new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \pgfutil@tempdimb=\pgflinewidth%
+    \ifdim\pgfinnerlinewidth>0pt%
+      \pgfmathsetlength\pgfutil@tempdimb{.6\pgflinewidth-.4*\pgfinnerlinewidth}%
+    \fi
+    \advance\pgfutil@tempdima by.3\pgfutil@tempdimb%
+    \pgfarrowsleftextend{+-1\pgfutil@tempdima}
+    \pgfarrowsrightextend{+9\pgfutil@tempdima}
+  \else
+     \pgfutil@tempdima=\pgfgetarrowoptions{latex new}%
+     \advance\pgfutil@tempdima by -0.5pt% to minimize the arrow shaft
+     \pgfarrowsleftextend{+-0.5pt}
+     \pgfarrowsrightextend{\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{latex new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \pgfutil@tempdimb=\pgflinewidth%
+    \ifdim\pgfinnerlinewidth>0pt%
+      \pgfmathsetlength\pgfutil@tempdimb{.6\pgflinewidth-.4*\pgfinnerlinewidth}%
+    \fi
+    \advance\pgfutil@tempdima by.3\pgfutil@tempdimb%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{latex new}%
+    \divide\pgfutil@tempdima by 10%
+    \pgfutil@tempdimb=\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.5pt%
+    \pgftransformxshift{\pgfutil@tempdimb}% to minimize the arrow shaft
+  \fi
+  \pgfpathmoveto{\pgfqpoint{9\pgfutil@tempdima}{0pt}}
+  \pgfpathcurveto
+    {\pgfqpoint{6.3333\pgfutil@tempdima}{.5\pgfutil@tempdima}}
+    {\pgfqpoint{2\pgfutil@tempdima}{2\pgfutil@tempdima}}
+    {\pgfqpoint{-1\pgfutil@tempdima}{3.75\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-1\pgfutil@tempdima}{-3.75\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{2\pgfutil@tempdima}{-2\pgfutil@tempdima}}
+    {\pgfqpoint{6.3333\pgfutil@tempdima}{-.5\pgfutil@tempdima}}
+    {\pgfqpoint{9\pgfutil@tempdima}{0pt}}
+  \pgfusepathqfill
+}
+
+% alternative latex reversed arrow
+\pgfarrowsdeclarereversed{latex new reversed}{latex new reversed}{latex new}{latex new}
+
+% alternative latex' arrow
+\pgfarrowsdeclare{latex' new}{latex' new}
+{
+  \ifdim\pgfgetarrowoptions{latex' new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+    \pgfarrowsleftextend{+-4\pgfutil@tempdima}
+    \pgfarrowsrightextend{+6\pgfutil@tempdima}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{latex' new}%
+    \pgfutil@tempdimb=0.8125\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.5pt%
+    \advance\pgfutil@tempdima by -\pgfutil@tempdimb%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}% to minimize the arrow shaft
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}%
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{latex' new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{latex' new}%
+    \divide\pgfutil@tempdima by 10%
+    \pgfutil@tempdimb=2.125\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.5pt%
+    \pgftransformxshift{\pgfutil@tempdimb}% to minimize the arrow shaft
+  \fi
+  \pgfpathmoveto{\pgfqpoint{6\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.5\pgfutil@tempdima}{.5\pgfutil@tempdima}}
+    {\pgfqpoint{-1\pgfutil@tempdima}{1.5\pgfutil@tempdima}}
+    {\pgfqpoint{-4\pgfutil@tempdima}{3.75\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-1.5\pgfutil@tempdima}{1\pgfutil@tempdima}}
+    {\pgfqpoint{-1.5\pgfutil@tempdima}{-1\pgfutil@tempdima}}
+    {\pgfqpoint{-4\pgfutil@tempdima}{-3.75\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-1\pgfutil@tempdima}{-1.5\pgfutil@tempdima}}
+    {\pgfqpoint{3.5\pgfutil@tempdima}{-.5\pgfutil@tempdima}}
+    {\pgfqpoint{6\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfusepathqfill
+}
+
+% alternative latex' reversed arrow
+\pgfarrowsdeclarereversed{latex' new reversed}{latex' new reversed}{latex' new}{latex' new}
+
+% alternative left hook arrow
+\pgfarrowsdeclare{left hook new}{left hook new}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{left hook new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+    \pgfutil@tempdimb=3.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left hook new}%
+    \pgfutil@tempdima=0.3125\pgfutil@tempdima%
+    \advance\pgfutil@tempdima by 0.1875\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{left hook new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left hook new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 12%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0.75\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{2.415\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{1.665\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{3\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.75\pgfutil@tempdima}{4.665\pgfutil@tempdima}}
+    {\pgfqpoint{2.415\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{6\pgfutil@tempdima}}
+  \pgfusepathqstroke%
+}
+
+% alternative left hook reversed arrow
+\pgfarrowsdeclarereversed{left hook new reversed}{left hook new reversed}{left hook new}{left hook new}
+
+% alternative left to arrow
+\pgfarrowsdeclare{left to new}{left to new}
+{
+  \ifdim\pgfgetarrowoptions{left to new}<0pt%
+    \pgfutil@tempdima=-0.84pt%
+    \advance\pgfutil@tempdima by-1.3\pgflinewidth%
+    \pgfutil@tempdimb=0.21pt%
+    \advance\pgfutil@tempdimb by.625\pgflinewidth%
+    \pgfarrowsleftextend{+\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% arbitrary value (2*0.5*0.8\pgflinewidth)
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+0.8\pgflinewidth}%
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{left to new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+    \pgfutil@tempdimb=0pt%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth
+    \divide\pgfutil@tempdima by 15%
+    \multiply\pgfutil@tempdima by 4%
+    \pgfutil@tempdimb=0.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.4\pgflinewidth% arbitrary value (0.5*0.8\pgflinewidth)
+    \pgftransformxshift{-\pgfutil@tempdimb}
+  \fi  
+  \pgfsetlinewidth{0.8\pgflinewidth}
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{-3\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-2.75\pgfutil@tempdima}{2.5\pgfutil@tempdima}}
+    {\pgfqpoint{0pt}{0.25\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{0pt}}
+  \pgfpathcurveto
+    {\pgfqpoint{0.55\pgfutil@tempdima}{-0.125\pgflinewidth}}
+    {\pgfqpoint{0.5\pgfutil@tempdima}{-0.125\pgflinewidth}}
+    {\pgfqpoint{0.5\pgfutil@tempdima}{-0.125\pgflinewidth}} 
+  \pgfpathlineto{\pgfqpoint{\pgfutil@tempdimb}{-0.125\pgflinewidth}}
+  \pgfusepathqstroke
+}
+
+% alternative left to reversed arrow
+\pgfarrowsdeclare{left to new reversed}{left to new reversed}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{left to new reversed}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth% 
+    \pgfutil@tempdimb=3.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.9\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left to new reversed}%
+    \advance\pgfutil@tempdima by 0.1\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{left to new reversed}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left to new reversed}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth
+    \divide\pgfutil@tempdima by 15%    
+    \multiply\pgfutil@tempdima by 4%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfsetbuttcap
+  \pgfpathmoveto{\pgfqpoint{0.5\pgflinewidth}{0pt}}
+  \pgfpathlineto{\pgfqpoint{-0.1\pgflinewidth}{0pt}}
+  \pgfusepathqstroke
+  \pgfsetroundcap
+  \pgfsetlinewidth{.8\pgflinewidth}
+  {\pgftransformxshift{0.625\pgflinewidth}
+    \pgfpathmoveto{\pgfqpoint{3.75\pgfutil@tempdima}{4\pgfutil@tempdima}}
+    \pgfpathcurveto
+      {\pgfqpoint{3.5\pgfutil@tempdima}{2.5\pgfutil@tempdima}}
+      {\pgfqpoint{0.75\pgfutil@tempdima}{0.25\pgfutil@tempdima}}
+      {\pgfqpoint{0pt}{0.125\pgflinewidth}}
+    \pgfpathmoveto{\pgfqpoint{3.75\pgfutil@tempdima}{4\pgfutil@tempdima}}
+    \pgfpathcurveto
+      {\pgfqpoint{3.5\pgfutil@tempdima}{2.5\pgfutil@tempdima}}
+      {\pgfqpoint{0.75\pgfutil@tempdima}{0.25\pgfutil@tempdima}}
+      {\pgfqpoint{0pt}{-0.125\pgflinewidth}}
+  }
+  \pgfusepathqstroke
+}
+
+% alternative o arrow
+\pgfarrowsdeclare{o new}{o new}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{o new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+    \pgfutil@tempdimb=9\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{o new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{ 
+  \ifdim\pgfgetarrowoptions{o new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{o new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 9%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfpathcircle{\pgfqpoint{4.5\pgfutil@tempdima}{0pt}}{4.5\pgfutil@tempdima}%
+  \pgfusepathqstroke
+}
+
+% alternative open diamond arrow
+\pgfarrowsdeclare{open diamond new}{open diamond new}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}% due to the round cap
+  \ifdim\pgfgetarrowoptions{open diamond new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+    \pgfutil@tempdimb=14\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open diamond new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{open diamond new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open diamond new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 14%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{14\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{7\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{7\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathclose
+  \pgfusepathqstroke
+}
+
+% alternative open square arrow
+\pgfarrowsdeclare{open square new}{open square new}
+{
+  \ifdim\pgfgetarrowoptions{open square new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+    \advance\pgfutil@tempdima by7\pgfutil@tempdima%
+    \advance\pgfutil@tempdima by.5\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open square new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+  \fi
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \pgfarrowsrightextend{+\pgfutil@tempdima}
+}
+{
+  \ifdim\pgfgetarrowoptions{open square new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open square new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 8%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{8\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{8\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathclose
+  \pgfusepathqstroke
+}
+
+% alternative open triangle 45 arrow
+\pgfarrowsdeclare{open triangle 45 new}{open triangle 45 new}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 45 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=9.205\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by1.28\pgflinewidth%
+  \else
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 45 new}%
+    \advance\pgfutil@tempdimb by -0.5\pgflinewidth%
+  \fi
+    \pgfarrowsleftextend{+-.5\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin  
+  \ifdim\pgfgetarrowoptions{open triangle 45 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{9.205\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{157}{10\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{9.205\pgfutil@tempdima}{0pt}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{9.205\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-157}{10\pgfutil@tempdima}}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 45 new}%
+    \advance\pgfutil@tempdima by -1.80656\pgflinewidth% -(1.30656+0.5)
+    \pgftransformxshift{\pgfutil@tempdima}
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(22.5)}    
+    \pgfpathmoveto{\pgfqpointpolar{157.5}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-157.5}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi    
+}
+
+% alternative open triangle 45 reversed arrow
+\pgfarrowsdeclare{open triangle 45 new reversed}{open triangle 45 new reversed}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 45 new reversed}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfarrowsleftextend{+-1.28\pgflinewidth}
+    \pgfutil@tempdimb=9.205\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+  \else
+    \pgfarrowsleftextend{+-1.30656\pgflinewidth}%
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 45 new reversed}%
+    \advance\pgfutil@tempdimb by -1.30656\pgflinewidth%
+  \fi
+  \pgfarrowsrightextend{+\pgfutil@tempdimb}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{open triangle 45 new reversed}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfqpointpolar{23}{10\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-23}{10\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 45 new reversed}%
+    \advance\pgfutil@tempdima by -1.80656\pgflinewidth% -(1.30656+0.5)
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(22.5)}    
+    \pgfpathmoveto{\pgfqpointpolar{22.5}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-22.5}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi  
+}
+
+% alternative open triangle 60 arrow
+\pgfarrowsdeclare{open triangle 60 new}{open triangle 60 new}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 60 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=7.794\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by\pgflinewidth%
+  \else
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 60 new}%
+    \advance\pgfutil@tempdimb by -0.5\pgflinewidth%
+  \fi
+    \pgfarrowsleftextend{+-.5\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{open triangle 60 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{7.794\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{150}{9\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{7.794\pgfutil@tempdima}{0pt}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{7.794\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-150}{9\pgfutil@tempdima}}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 60 new}%
+    \advance\pgfutil@tempdima by -1.5\pgflinewidth% -(1+0.5)
+    \pgftransformxshift{\pgfutil@tempdima}
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(30)}  
+    \pgfpathmoveto{\pgfqpointpolar{150}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-150}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi    
+}
+
+% alternative open triangle 60 reversed
+\pgfarrowsdeclare{open triangle 60 new reversed}{open triangle 60 new reversed}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 60 new reversed}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%   
+    \pgfutil@tempdimb=7.794\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth% 
+  \else
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 60 new reversed}%
+    \advance\pgfutil@tempdimb by -\pgflinewidth%
+  \fi
+  \pgfarrowsleftextend{+-\pgflinewidth}
+  \pgfarrowsrightextend{+\pgfutil@tempdimb}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{open triangle 60 new reversed}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%  
+    \pgfpathmoveto{\pgfqpointpolar{30}{9\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-30}{9\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 60 new reversed}%
+    \advance\pgfutil@tempdima by -1.5\pgflinewidth% -(1+0.5)
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(30)}    
+    \pgfpathmoveto{\pgfqpointpolar{30}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-30}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi  
+}
+
+% alternative open triangle 90 arrow
+\pgfarrowsdeclare{open triangle 90 new}{open triangle 90 new}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 90 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=6\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.707\pgflinewidth%
+  \else
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 90 new}%
+    \advance\pgfutil@tempdimb by -0.5\pgflinewidth%
+  \fi
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \pgfarrowsrightextend{+\pgfutil@tempdimb}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{open triangle 90 new}<0pt%  
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth% 
+    \pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{6\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{0\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 90 new}%
+    \advance\pgfutil@tempdima by -1.20711\pgflinewidth% -(0.70711+0.5)  
+    \pgfpathmoveto{\pgfqpoint{0pt}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{\pgfutil@tempdima}{0pt}}
+    \pgfpathlineto{\pgfqpoint{0pt}{-\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi    
+}
+
+% alternative open triangle 90 reversed arrow
+\pgfarrowsdeclare{open triangle 90 new reversed}{open triangle 90 new reversed}
+{
+  \ifdim\pgfgetarrowoptions{open triangle 90 new reversed}<0pt%  
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfarrowsleftextend{+-.707\pgflinewidth}
+    \pgfutil@tempdimb=6\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdimb=\pgfgetarrowoptions{open triangle 90 new reversed}%
+    \advance\pgfutil@tempdimb by -0.70711\pgflinewidth%
+    \pgfarrowsleftextend{+-0.70711\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{open triangle 90 new reversed}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfqpoint{6\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{6\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+   \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{open triangle 90 new reversed}%
+    \advance\pgfutil@tempdima by -1.20711\pgflinewidth% -(0.70711+0.5)   
+    \pgfpathmoveto{\pgfqpoint{\pgfutil@tempdima}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpoint{\pgfutil@tempdima}{-\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqstroke
+  \fi  
+}
+
+% alternative right hook arrow
+\pgfarrowsdeclare{right hook new}{right hook new}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{right hook new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+    \pgfutil@tempdimb=3.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{right hook new}%
+    \pgfutil@tempdima=0.3125\pgfutil@tempdima%
+    \advance\pgfutil@tempdima by 0.1875\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{right hook new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{right hook new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 12%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0.75\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{2.415\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-1.665\pgfutil@tempdima}}
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-3\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.75\pgfutil@tempdima}{-4.665\pgfutil@tempdima}}
+    {\pgfqpoint{2.415\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative right hook reversed arrow
+\pgfarrowsdeclarereversed{right hook new reversed}{right hook new reversed}{right hook new}{right hook new}
+
+% alternative right to arrow
+\pgfarrowsdeclare{right to new}{right to new}
+{
+  \ifdim\pgfgetarrowoptions{right to new}<0pt%
+    \pgfutil@tempdima=-0.84pt%
+    \advance\pgfutil@tempdima by-1.3\pgflinewidth%
+    \pgfutil@tempdimb=0.21pt%
+    \advance\pgfutil@tempdimb by.625\pgflinewidth%
+    \pgfarrowsleftextend{+\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{right to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% arbitrary value (2*0.5*0.8\pgflinewidth)
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+0.8\pgflinewidth}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{right to new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+    \pgfutil@tempdimb=0pt%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{left to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth
+    \divide\pgfutil@tempdima by 15%    
+    \multiply\pgfutil@tempdima by 4%
+    \pgfutil@tempdimb=0.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.4\pgflinewidth% arbitrary value (0.5*0.8\pgflinewidth)
+    \pgftransformxshift{-\pgfutil@tempdimb}
+  \fi  
+  \pgfsetlinewidth{0.8\pgflinewidth}
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{-3\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-2.75\pgfutil@tempdima}{-2.5\pgfutil@tempdima}}
+    {\pgfqpoint{0pt}{-0.25\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{0pt}}
+  \pgfpathcurveto
+    {\pgfqpoint{0.55\pgfutil@tempdima}{0.125\pgflinewidth}}
+    {\pgfqpoint{0.5\pgfutil@tempdima}{0.125\pgflinewidth}}
+    {\pgfqpoint{0.5\pgfutil@tempdima}{0.125\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{\pgfutil@tempdimb}{0.125\pgflinewidth}}
+  \pgfusepathqstroke
+}
+
+% alternative right to reversed arrow
+\pgfarrowsdeclare{right to new reversed}{right to new reversed}
+{
+ \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \ifdim\pgfgetarrowoptions{right to new reversed}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth% 
+    \pgfutil@tempdimb=3.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.9\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{right to new reversed}%
+    \advance\pgfutil@tempdima by 0.1\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{right to new reversed}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{right to new reversed}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth 
+    \divide\pgfutil@tempdima by 15%    
+    \multiply\pgfutil@tempdima by 4%
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfsetbuttcap
+  \pgfpathmoveto{\pgfqpoint{0.5\pgflinewidth}{0pt}}
+  \pgfpathlineto{\pgfqpoint{-0.1\pgflinewidth}{0pt}}
+  \pgfusepathqstroke
+  \pgfsetroundcap 
+  \pgfsetlinewidth{.8\pgflinewidth}
+  {\pgftransformxshift{0.625\pgflinewidth}
+    \pgfpathmoveto{\pgfqpoint{3.75\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+    \pgfpathcurveto
+      {\pgfqpoint{3.5\pgfutil@tempdima}{-2.5\pgfutil@tempdima}}
+      {\pgfqpoint{0.75\pgfutil@tempdima}{-0.25\pgfutil@tempdima}}
+      {\pgfqpoint{0pt}{-0.125\pgflinewidth}}
+    \pgfpathmoveto{\pgfqpoint{3.75\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+    \pgfpathcurveto
+      {\pgfqpoint{3.5\pgfutil@tempdima}{-2.5\pgfutil@tempdima}}
+      {\pgfqpoint{0.75\pgfutil@tempdima}{-0.25\pgfutil@tempdima}}
+      {\pgfqpoint{0pt}{0.125\pgflinewidth}}
+  }
+  \pgfusepathqstroke
+}
+
+% original round cap arrow (just for completeness)
+\pgfarrowsdeclare{round cap new}{round cap new}
+{
+  \pgfarrowsleftextend{+0pt}
+  \pgfarrowsrightextend{+\pgflinewidth}
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfpathmoveto{\pgfpointorigin}
+  \pgfpathlineto{\pgfqpoint{0.5\pgflinewidth}{0pt}}
+  \pgfusepathqstroke
+}
+
+% original serif cm arrow (just for completeness)
+\pgfarrowsdeclare{serif cm new}{serif cm new}
+{
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.45\pgflinewidth%
+  \pgfarrowsleftextend{+-.75\pgfutil@tempdima}
+  \pgfarrowsrightextend{+.04\pgflinewidth}
+}
+{
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.45\pgflinewidth%
+  \pgftransformxshift{.04\pgflinewidth}
+  \pgfpathmoveto{\pgfqpoint{-.75\pgfutil@tempdima}{.5\pgflinewidth}}
+  \pgfpathcurveto
+    {\pgfqpoint{-.375\pgfutil@tempdima}{.5\pgflinewidth}}
+    {\pgfqpoint{-.375\pgfutil@tempdima}{.7\pgflinewidth}}
+    {\pgfqpoint{-.375\pgfutil@tempdima}{1.95\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{0pt}{1.95\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-.04\pgflinewidth}{.5\pgfutil@tempdima}}
+    {\pgfqpoint{-.04\pgflinewidth}{-.5\pgfutil@tempdima}}
+    {\pgfqpoint{0pt}{-1.95\pgfutil@tempdima}}  
+  \pgfpathlineto{\pgfqpoint{-.375\pgfutil@tempdima}{-1.95\pgfutil@tempdima}}  
+  \pgfpathcurveto
+    {\pgfqpoint{-.375\pgfutil@tempdima}{-.7\pgflinewidth}}
+    {\pgfqpoint{-.375\pgfutil@tempdima}{-.5\pgflinewidth}}
+    {\pgfqpoint{-.75\pgfutil@tempdima}{-.5\pgflinewidth}}
+  \pgfpathclose
+  \pgfusepathqfill
+}
+
+% original space arrow (just for completeness)
+\pgfarrowsdeclare{space new}{space new}
+{
+  \pgfutil@tempdima=0.88pt%
+  \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \pgfarrowsleftextend{0pt}
+  \pgfarrowsrightextend{\pgfutil@tempdima}
+}
+{}
+
+% alternative square arrow
+\pgfarrowsdeclare{square new}{square new}
+{
+  \ifdim\pgfgetarrowoptions{square new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \advance\pgfutil@tempdima by.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{square new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsleftextend{+-.5\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{square new}<0pt%
+    \pgfutil@tempdima=0.4pt%
+    \advance\pgfutil@tempdima by.275\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{square new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 8%
+    \pgftransformxshift{7\pgfutil@tempdima}
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{1\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-7\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{-7\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfqpoint{1\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfpathclose
+  \pgfusepathqfillstroke
+}
+
+% alternative stealth arrow
+\pgfarrowsdeclare{stealth new}{stealth new}
+{
+  \ifdim\pgfgetarrowoptions{stealth new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \pgfutil@tempdimb=\pgflinewidth%
+    \ifdim\pgfinnerlinewidth>0pt%
+      \pgfmathsetlength\pgfutil@tempdimb{.6\pgflinewidth-.4*\pgfinnerlinewidth}%
+    \fi
+    \advance\pgfutil@tempdima by.3\pgfutil@tempdimb%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{stealth new}%
+    \divide\pgfutil@tempdima by 8%
+  \fi
+  \pgfarrowsleftextend{+-3\pgfutil@tempdima}
+  \pgfarrowsrightextend{+5\pgfutil@tempdima}
+}
+{
+  \ifdim\pgfgetarrowoptions{stealth new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \pgfutil@tempdimb=\pgflinewidth%
+    \ifdim\pgfinnerlinewidth>0pt%
+      \pgfmathsetlength\pgfutil@tempdimb{.6\pgflinewidth-.4*\pgfinnerlinewidth}%
+    \fi
+    \advance\pgfutil@tempdima by.3\pgfutil@tempdimb%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{stealth new}%
+    \divide\pgfutil@tempdima by 8%
+  \fi
+  \pgfpathmoveto{\pgfqpoint{5\pgfutil@tempdima}{0pt}}
+  \pgfpathlineto{\pgfqpoint{-3\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathlineto{\pgfpointorigin}
+  \pgfpathlineto{\pgfqpoint{-3\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfusepathqfill
+}
+
+% alternative stealth reversed arrow
+\pgfarrowsdeclarereversed{stealth new reversed}{stealth new reversed}{stealth new}{stealth new}
+
+% alternative stealth' arrow
+\pgfarrowsdeclare{stealth' new}{stealth' new}
+{
+  \ifdim\pgfgetarrowoptions{stealth' new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+    \pgfutil@tempdimb=6\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=2\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{stealth' new}%
+    \pgfutil@tempdimb=0.71875\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.21875\pgflinewidth%
+    \advance\pgfutil@tempdima by -\pgfutil@tempdimb%
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \fi  
+}
+{
+  \ifdim\pgfgetarrowoptions{stealth' new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{stealth' new}%
+    \advance\pgfutil@tempdima by -\pgflinewidth%
+    \divide\pgfutil@tempdima by 8%
+    \pgftransformxshift{3.75\pgfutil@tempdima}
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{2\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-.5\pgfutil@tempdima}{.5\pgfutil@tempdima}}
+    {\pgfqpoint{-3\pgfutil@tempdima}{1.5\pgfutil@tempdima}}
+    {\pgfqpoint{-6\pgfutil@tempdima}{3.25\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-3\pgfutil@tempdima}{1\pgfutil@tempdima}}
+    {\pgfqpoint{-3\pgfutil@tempdima}{-1\pgfutil@tempdima}}
+    {\pgfqpoint{-6\pgfutil@tempdima}{-3.25\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-3\pgfutil@tempdima}{-1.5\pgfutil@tempdima}}
+    {\pgfqpoint{-.5\pgfutil@tempdima}{-.5\pgfutil@tempdima}}
+    {\pgfqpoint{2\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathclose
+  \pgfusepathqfillstroke
+}
+
+% alternative stealth' reversed arrow
+\pgfarrowsdeclarereversed{stealth' new reversed}{stealth' new reversed}{stealth' new}{stealth' new}
+
+% alternative to arrow
+\pgfarrowsdeclare{to new}{to new}
+{
+  \ifdim\pgfgetarrowoptions{to new}<0pt%
+    \pgfutil@tempdima=-0.84pt%
+    \advance\pgfutil@tempdima by-1.3\pgflinewidth%
+    \pgfutil@tempdimb=0.21pt%
+    \advance\pgfutil@tempdimb by.625\pgflinewidth%
+    \pgfarrowsleftextend{+\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% arbitrary value (2*0.5*0.8\pgflinewidth)
+    \pgfarrowsleftextend{+-\pgfutil@tempdima}
+    \pgfarrowsrightextend{+0.8\pgflinewidth}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{to new}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{to new}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth
+    \divide\pgfutil@tempdima by 15%    
+    \multiply\pgfutil@tempdima by 4%
+    \pgfutil@tempdimb=0.75\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by -0.4\pgflinewidth% arbitrary value (0.5*0.8\pgflinewidth)
+    \pgftransformxshift{-\pgfutil@tempdimb}
+  \fi
+  \pgfsetlinewidth{0.8\pgflinewidth}
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetroundjoin
+  \pgfpathmoveto{\pgfqpoint{-3\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{-2.75\pgfutil@tempdima}{2.5\pgfutil@tempdima}}
+    {\pgfqpoint{0pt}{0.25\pgfutil@tempdima}}
+    {\pgfqpoint{0.75\pgfutil@tempdima}{0pt}}
+  \pgfpathcurveto
+    {\pgfqpoint{0pt}{-0.25\pgfutil@tempdima}}
+    {\pgfqpoint{-2.75\pgfutil@tempdima}{-2.5\pgfutil@tempdima}}
+    {\pgfqpoint{-3\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative to reversed arrow
+\pgfarrowsdeclare{to new reversed}{to new reversed}
+{
+  \ifdim\pgfgetarrowoptions{to new reversed}<0pt%
+    \pgfutil@tempdima=-0.21pt%
+    \advance\pgfutil@tempdima by-0.475\pgflinewidth%
+    \pgfutil@tempdimb=0.98pt%
+    \advance\pgfutil@tempdimb by1.45\pgflinewidth%
+    \pgfarrowsleftextend{+\pgfutil@tempdima}
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{to new reversed}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% arbitrary value (2*0.5*0.8\pgflinewidth)
+    \pgfarrowsleftextend{+-0.8\pgflinewidth}
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \ifdim\pgfgetarrowoptions{to new reversed}<0pt%
+    \pgfutil@tempdima=0.28pt%
+    \advance\pgfutil@tempdima by.3\pgflinewidth%
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{to new reversed}%
+    \advance\pgfutil@tempdima by -0.8\pgflinewidth% because thickness is set to 0.8\pgflinewidth
+    \divide\pgfutil@tempdima by 15%    
+    \multiply\pgfutil@tempdima by 4%
+    \pgfutil@tempdimb=0.25\pgfutil@tempdima%  
+    \advance\pgfutil@tempdimb by -0.4\pgflinewidth% arbitrary value (0.5*0.8\pgflinewidth)
+    \pgftransformxshift{\pgfutil@tempdimb}
+  \fi
+  \pgfsetdash{}{+0pt}
+  \pgfsetroundcap
+  \pgfsetroundjoin
+  \pgfsetlinewidth{+0.8\pgflinewidth}
+  \pgfpathmoveto{\pgfqpoint{3.5\pgfutil@tempdima}{4\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{3.25\pgfutil@tempdima}{2.5\pgfutil@tempdima}}
+    {\pgfqpoint{0.5\pgfutil@tempdima}{0.25\pgfutil@tempdima}}
+    {\pgfqpoint{-0.25\pgfutil@tempdima}{0\pgfutil@tempdima}}
+  \pgfpathcurveto
+    {\pgfqpoint{0.5\pgfutil@tempdima}{-0.25\pgfutil@tempdima}}
+    {\pgfqpoint{3.25\pgfutil@tempdima}{-2.5\pgfutil@tempdima}}
+    {\pgfqpoint{3.5\pgfutil@tempdima}{-4\pgfutil@tempdima}}
+  \pgfusepathqstroke
+}
+
+% alternative triangle 45 arrow
+\pgfarrowsdeclare{triangle 45 new}{triangle 45 new}
+{
+  \ifdim\pgfgetarrowoptions{triangle 45 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=8.705\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by1.28\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfarrowsleftextend{+-0.5\pgflinewidth}
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 45 new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%   
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{triangle 45 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                  {\pgfqpointpolar{157}{10\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-157}{10\pgfutil@tempdima}}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 45 new}%
+    \advance\pgfutil@tempdima by -1.80656\pgflinewidth% -(1.30656+0.5)
+    \pgftransformxshift{\pgfutil@tempdima}
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(22.5)}    
+    \pgfpathmoveto{\pgfqpointpolar{157.5}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-157.5}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \fi
+}
+
+% alternative triangle 45 reversed arrow
+\pgfarrowsdeclarereversed{triangle 45 new reversed}{triangle 45 new reversed}{triangle 45 new}{triangle 45 new}
+
+% alternative triangle 60 arrow
+\pgfarrowsdeclare{triangle 60 new}{triangle 60 new}
+{
+  \ifdim\pgfgetarrowoptions{triangle 60 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=7.29\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfarrowsleftextend{+-0.5\pgflinewidth}
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 60 new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%   
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{triangle 60 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%   
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{150}{9\pgfutil@tempdima}}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointadd{\pgfqpoint{0.5\pgfutil@tempdima}{0pt}}
+                               {\pgfqpointpolar{-150}{9\pgfutil@tempdima}}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 60 new}%
+    \advance\pgfutil@tempdima by -1.5\pgflinewidth% -(1+0.5)
+    \pgftransformxshift{\pgfutil@tempdima}
+    \pgfmathsetlength{\pgfutil@tempdima}{\pgfutil@tempdima/cos(30)}    
+    \pgfpathmoveto{\pgfqpointpolar{150}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfpointorigin}
+    \pgfpathlineto{\pgfqpointpolar{-150}{\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \fi
+}
+
+% alternative triangle 60 reversed arrow
+\pgfarrowsdeclarereversed{triangle 60 new reversed}{triangle 60 new reversed}{triangle 60 new}{triangle 60 new}
+
+% alternative triangle 90 arrow
+\pgfarrowsdeclare{triangle 90 new}{triangle 90 new}
+{
+  \ifdim\pgfgetarrowoptions{triangle 90 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfutil@tempdimb=5.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by.5\pgflinewidth%
+    \pgfarrowsleftextend{+-\pgfutil@tempdimb}
+    \pgfutil@tempdimb=.5\pgfutil@tempdima%
+    \advance\pgfutil@tempdimb by0.707\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdimb}
+  \else
+    \pgfarrowsleftextend{+-0.5\pgflinewidth}
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 90 new}%
+    \advance\pgfutil@tempdima by -0.5\pgflinewidth%
+    \pgfarrowsrightextend{+\pgfutil@tempdima}
+  \fi
+}
+{
+  \pgfsetdash{}{+0pt}
+  \pgfsetmiterjoin
+  \ifdim\pgfgetarrowoptions{triangle 90 new}<0pt%
+    \pgfutil@tempdima=0.5pt%
+    \advance\pgfutil@tempdima by.25\pgflinewidth%
+    \pgfpathmoveto{\pgfqpoint{-5.5\pgfutil@tempdima}{-6\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{0.5\pgfutil@tempdima}{0\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{-5.5\pgfutil@tempdima}{6\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \else
+    \pgfutil@tempdima=\pgfgetarrowoptions{triangle 90 new}%
+    \advance\pgfutil@tempdima by -1.20711\pgflinewidth% -(0.70711+0.5)
+    \pgfpathmoveto{\pgfqpoint{0pt}{\pgfutil@tempdima}}
+    \pgfpathlineto{\pgfqpoint{\pgfutil@tempdima}{0pt}}
+    \pgfpathlineto{\pgfqpoint{0pt}{-\pgfutil@tempdima}}
+    \pgfpathclose
+    \pgfusepathqfillstroke
+  \fi
+}
+
+% alternative triangle 90 reversed arrow
+\pgfarrowsdeclarereversed{triangle 90 new reversed}{triangle 90 new reversed}{triangle 90 new}{triangle 90 new}
+
+% original triangle 90 cap arrow (just for completeness)
+\pgfarrowsdeclare{triangle 90 cap new}{triangle 90 cap new}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \pgfarrowsrightextend{+\pgflinewidth}
+}
+{
+  \pgfpathmoveto{\pgfqpoint{-.1\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{.5\pgflinewidth}{.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{\pgflinewidth}{0pt}}
+  \pgfpathlineto{\pgfqpoint{.5\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{-.1\pgflinewidth}{-0.5\pgflinewidth}}
+  \pgfusepathqfill
+}
+
+% original triangle 90 cap reversed arrow (just for completeness)
+\pgfarrowsdeclare{triangle 90 cap new reversed}{triangle 90 cap new reversed}
+{
+  \pgfarrowsleftextend{+-.1\pgflinewidth}
+  \pgfarrowsrightextend{+\pgflinewidth}
+}
+{
+  \pgfpathmoveto{\pgfqpoint{1\pgflinewidth}{0.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{-.1\pgflinewidth}{.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{-.1\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{1\pgflinewidth}{-.5\pgflinewidth}}
+  \pgfpathlineto{\pgfqpoint{0.5\pgflinewidth}{0\pgflinewidth}}
+  \pgfusepathqfill
+}
+
+% alias alternative to arrow
+\pgfarrowsdeclarealias{< new}{> new}{to new}{to new}
+
+% alias alternative to reversed arrow
+\pgfarrowsdeclarealias{> new}{< new}{to new reversed}{to new reversed}
+
+% arrow head length code
+\pgfsetarrowoptions{* new}{-1pt}
+\pgfsetarrowoptions{< new}{-1pt}
+\pgfsetarrowoptions{> new}{-1pt}
+\pgfsetarrowoptions{) new}{-1pt}
+\pgfsetarrowoptions{( new}{-1pt}
+\pgfsetarrowoptions{[ new}{-1pt}
+\pgfsetarrowoptions{] new}{-1pt}
+\pgfsetarrowoptions{| new}{-1pt}
+\pgfsetarrowoptions{angle 45 new}{-1pt}
+\pgfsetarrowoptions{angle 45 new reversed}{-1pt}
+\pgfsetarrowoptions{angle 60 new}{-1pt}
+\pgfsetarrowoptions{angle 60 new reversed}{-1pt}
+\pgfsetarrowoptions{angle 90 new}{-1pt}
+\pgfsetarrowoptions{angle 90 new reversed}{-1pt}
+\pgfsetarrowoptions{diamond new}{-1pt}
+\pgfsetarrowoptions{hooks new}{-1pt}
+\pgfsetarrowoptions{hooks new reversed}{-1pt}
+\pgfsetarrowoptions{latex new}{-1pt}
+\pgfsetarrowoptions{latex new reversed}{-1pt}
+\pgfsetarrowoptions{latex' new}{-1pt}
+\pgfsetarrowoptions{latex' new reversed}{-1pt}
+\pgfsetarrowoptions{left hook new}{-1pt}
+\pgfsetarrowoptions{left hook new reversed}{-1pt}
+\pgfsetarrowoptions{left to new}{-1pt}
+\pgfsetarrowoptions{left to new reversed}{-1pt}
+\pgfsetarrowoptions{o new}{-1pt}
+\pgfsetarrowoptions{open diamond new}{-1pt}
+\pgfsetarrowoptions{open square new}{-1pt}
+\pgfsetarrowoptions{open triangle 45 new}{-1pt}
+\pgfsetarrowoptions{open triangle 45 new reversed}{-1pt}
+\pgfsetarrowoptions{open triangle 60 new}{-1pt}
+\pgfsetarrowoptions{open triangle 60 new reversed}{-1pt}
+\pgfsetarrowoptions{open triangle 90 new}{-1pt}
+\pgfsetarrowoptions{open triangle 90 new reversed}{-1pt}
+\pgfsetarrowoptions{right hook new}{-1pt}
+\pgfsetarrowoptions{right hook new reversed}{-1pt}
+\pgfsetarrowoptions{right to new}{-1pt}
+\pgfsetarrowoptions{right to new reversed}{-1pt}
+\pgfsetarrowoptions{square new}{-1pt}
+\pgfsetarrowoptions{stealth new}{-1pt}
+\pgfsetarrowoptions{stealth new reversed}{-1pt}
+\pgfsetarrowoptions{stealth' new}{-1pt}
+\pgfsetarrowoptions{stealth' new reversed}{-1pt}
+\pgfsetarrowoptions{to new}{-1pt}
+\pgfsetarrowoptions{to new reversed}{-1pt}
+\pgfsetarrowoptions{triangle 45 new}{-1pt}
+\pgfsetarrowoptions{triangle 45 new reversed}{-1pt}
+\pgfsetarrowoptions{triangle 60 new}{-1pt}
+\pgfsetarrowoptions{triangle 60 new reversed}{-1pt}
+\pgfsetarrowoptions{triangle 90 new}{-1pt}
+\pgfsetarrowoptions{triangle 90 new reversed}{-1pt}
+
+\pgfkeys{/tikz/.cd, arrow head/.default=-1pt, arrow head/.code={%
+  \pgfsetarrowoptions{* new}{#1}%
+  \pgfsetarrowoptions{< new}{#1}%
+  \pgfsetarrowoptions{> new}{#1}%
+  \pgfsetarrowoptions{) new}{#1}%
+  \pgfsetarrowoptions{( new}{#1}%
+  \pgfsetarrowoptions{[ new}{#1}%
+  \pgfsetarrowoptions{] new}{#1}%
+  \pgfsetarrowoptions{| new}{#1}%
+  \pgfsetarrowoptions{angle 45 new}{#1}%
+  \pgfsetarrowoptions{angle 45 new reversed}{#1}%
+  \pgfsetarrowoptions{angle 60 new}{#1}%
+  \pgfsetarrowoptions{angle 60 new reversed}{#1}%
+  \pgfsetarrowoptions{angle 90 new}{#1}%
+  \pgfsetarrowoptions{angle 90 new reversed}{#1}%
+  \pgfsetarrowoptions{diamond new}{#1}%
+  \pgfsetarrowoptions{hooks new}{#1}%
+  \pgfsetarrowoptions{hooks new reversed}{#1}%
+  \pgfsetarrowoptions{latex new}{#1}%
+  \pgfsetarrowoptions{latex new reversed}{#1}%
+  \pgfsetarrowoptions{latex' new}{#1}%
+  \pgfsetarrowoptions{latex' new reversed}{#1}%
+  \pgfsetarrowoptions{left hook new}{#1}%
+  \pgfsetarrowoptions{left hook new reversed}{#1}%
+  \pgfsetarrowoptions{left to new}{#1}%
+  \pgfsetarrowoptions{left to new reversed}{#1}%
+  \pgfsetarrowoptions{o new}{#1}%
+  \pgfsetarrowoptions{open diamond new}{#1}%
+  \pgfsetarrowoptions{open square new}{#1}%
+  \pgfsetarrowoptions{open triangle 45 new}{#1}%
+  \pgfsetarrowoptions{open triangle 45 new reversed}{#1}%
+  \pgfsetarrowoptions{open triangle 60 new}{#1}%
+  \pgfsetarrowoptions{open triangle 60 new reversed}{#1}%
+  \pgfsetarrowoptions{open triangle 90 new}{#1}%
+  \pgfsetarrowoptions{open triangle 90 new reversed}{#1}%
+  \pgfsetarrowoptions{right hook new}{#1}%
+  \pgfsetarrowoptions{right hook new reversed}{#1}%
+  \pgfsetarrowoptions{right to new}{#1}%
+  \pgfsetarrowoptions{right to new reversed}{#1}%
+  \pgfsetarrowoptions{square new}{#1}%
+  \pgfsetarrowoptions{stealth new}{#1}%
+  \pgfsetarrowoptions{stealth new reversed}{#1}%
+  \pgfsetarrowoptions{stealth' new}{#1}%
+  \pgfsetarrowoptions{stealth' new reversed}{#1}%
+  \pgfsetarrowoptions{to new}{#1}%
+  \pgfsetarrowoptions{to new reversed}{#1}%
+  \pgfsetarrowoptions{triangle 45 new}{#1}%
+  \pgfsetarrowoptions{triangle 45 new reversed}{#1}%
+  \pgfsetarrowoptions{triangle 60 new}{#1}%
+  \pgfsetarrowoptions{triangle 60 new reversed}{#1}%
+  \pgfsetarrowoptions{triangle 90 new}{#1}%
+  \pgfsetarrowoptions{triangle 90 new reversed}{#1}%
+}}
+
+\endinput
