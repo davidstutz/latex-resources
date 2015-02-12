@@ -1,10 +1,12 @@
 # LaTeX Resources
 
-This repository provides several resources concerned with LaTex:
+This repository provides several resources concerned with LaTeX:
 
 * Useful and adapted packages in `packages/`.
 * Algorithm examples in `algorithms/`.
 * TikZ examples in `tikz/`.
+
+All examples are tested using MikTeX 2.9 on Windows 7.
 
 ## License
 

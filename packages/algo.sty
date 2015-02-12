@@ -101,7 +101,8 @@
 \def\algorithmcounter#1{\gdef\a@counter{#1}
   \gdef\thealgorithm{\csname the#1\endcsname}}
 % Set counter to include chapter:
-\renewcommand{\thealgorithm}{\thechapter .\arabic{algo}}
+% \renewcommand{\thealgorithm}{\thechapter .\arabic{algo}}
+\renewcommand{\thealgorithm}{\thesection .\arabic{algo}}
 %
 % Algorithm environment:
 % Use list environment to take care of vertical spacing before and

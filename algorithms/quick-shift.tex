@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{../packages/algo}
+
+% Following packages only required for this sample, not for using algo.sty in the first place!
+\usepackage{color}
+\usepackage{listings}
+\lstset{language=TeX}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{dkgray}{rgb}{0.25,0.25,0.25}
+
+\lstset{%
+  	backgroundcolor=\color{white},
+  	basicstyle=\footnotesize,
+  	breakatwhitespace=false,
+  	breaklines=true,
+  	captionpos=b,
+  	commentstyle=\color{dkgreen},
+  	deletekeywords={...},
+  	escapeinside={\%*}{*)},
+  	extendedchars=true,
+  	frame=single,
+  	keepspaces=true,
+  	keywordstyle=\color{blue},
+  	language=Octave,
+  	morekeywords={*,...},
+  	numbers=left,
+  	numbersep=5pt,
+  	numberstyle=\tiny\color{dkgray},
+  	rulecolor=\color{dkgray},
+  	showspaces=false,
+  	showstringspaces=false, 
+  	showtabs=false,
+  	stepnumber=1,
+  	tabsize=2,
+  	title=\lstname
+}
+
+\begin{document}
+
+	\section{Quick Shift}
+
+	To use the \lstinline!alog.sty! package for a book, update the following lines of \lstinline!algo.sty!:
+	
+\begin{lstlisting}
+% Set counter to include chapter:
+% \renewcommand{\thealgorithm}{\thechapter .\arabic{algo}}
+\renewcommand{\thealgorithm}{\thesection .\arabic{algo}}
+\end{lstlisting}
+
+	\begin{algorithm}[h]
+		\begin{algo}{QS}{\label{algo:related-work-qs}\qinput{color image $I$}\qoutput{superpixel segmentation $S$}}
+			\qfor $n = 1$ \qto $N$\\
+				initialize $t(x_n) = \boldsymbol 0$\qrof\\
+			\qfor $n = 1$ \qto $N$\\
+				\qcom{$N_R(x_n)$ is the set of all pixels in the local neighborhood of size $R \times R$ around pixel $x_n$:}\\
+				calculate $p(x_n) = \sum_{x_m \in N_R(x_n)} \exp\left(\frac{-d(x_n,x_m)^2}{(2/3) R}\right)$ \qrof\\
+			\qfor $n = 1$ \qto $N$\\
+				set $t(x_n) = \arg\max_{x_m \in N_R(x_n): p(x_m) > p(x_n)} \{p(x_m)\}$\qrof\\
+				\qcom{$t$ maps each pixel to its neighbor $x_m$ with highest $p(x_m)$ if $p(x_m) > p(x_n)$;}\\
+			\qcom{$t$ can be interpreted as forest, where all pixels $x_n$ with $t(x_n) = \boldsymbol 0$ are roots.}\\
+			derive superpixel segmentation $S$ from $t$\\
+			\qreturn $S$
+		\end{algo}
+		\caption{The superpixel algorithm \textbf{QS} proposed in \cite{QuickShift}.}
+		\label{fig:related-work-qs-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{QuickShift}
+		A. Vedaldi,
+		S. Soatto,
+		\emph{Quick shift and kernel methods for mode seeking},
+		ECCV,
+		2008.
+	\end{thebibliography}
+
+\end{document}

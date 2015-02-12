@@ -4,6 +4,7 @@ Packages:
 
 * `tikylibraryarrowsnew.new.code.tex`: Arrows for TikZ, see [http://tex.stackexchange.com/questions/5461/is-it-possible-to-change-the-size-of-an-arrowhead-in-tikz-pgf](http://tex.stackexchange.com/questions/5461/is-it-possible-to-change-the-size-of-an-arrowhead-in-tikz-pgf).
 
+    \documentclass[12pt,a4paper]{article}
     \usepackage{tikz}
     \usepackage{pgfplots}
     \usetikzlibrary{arrows.new}
