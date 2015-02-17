@@ -1,0 +1,229 @@
+%
+% Georgia Tech LaTeX Beamer Theme
+%
+% Based on the RWTH Aachen University LaTex Beamer Theme
+% created by Tobias Pohlen <tobias.pohlen@gmail.com>.
+%
+% Released under GPL License.
+%
+% David Stutz <david.stutz@rwth-aachen.de>
+%
+
+\mode<presentation>
+\usepackage{pgfcomp-version-0-65}
+\usepackage{color}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[scaled]{helvet}
+
+\setlength{\leftmargini}{5mm}
+
+% webpage gold is #EEB211
+%\definecolor{GTgold}{rgb}{0.8,0.7,0.23}
+\definecolor{GTgold}{rgb}{0.933,0.698,0.067}
+%\definecolor{GTnavy}{rgb}{0,0,0.5}
+\definecolor{GTnavy}{rgb}{0,0.145,0.298}
+\definecolor{GTwhite}{rgb}{1,1,1}
+\definecolor{GTlightgray}{rgb}{0.97,0.97,0.97}
+\definecolor{GTblack}{rgb}{0,0,0}
+\definecolor{GTwhite}{rgb}{1,1,1}
+
+% Assign the colors to the differen pars
+% Title
+\setbeamercolor{title}{fg = GTgold}
+% Frame title
+\setbeamercolor{frametitle}{fg = GTgold}
+% Table of contents
+\setbeamercolor{section in toc}{fg = GTblack}
+\setbeamercolor{subsection in toc}{fg = GTgold}
+\setbeamercolor{section in toc shaded}{fg = GTblack}
+% List colors (itemize)
+\setbeamercolor{item}{fg = GTgold}
+\setbeamercolor{subitem}{fg = GTblack}
+\setbeamercolor{subsubitem}{fg = GTblack}
+% The color of the bullets points
+\setbeamercolor{description item}{fg = GTgold}
+% Captions
+\setbeamercolor{caption}{fg = GTblack}
+\setbeamercolor{caption name}{fg = GTblack}
+
+% Style the block elements:
+% - Standard blocks
+% - Alert blocks
+% - Example block
+% Standard block
+\setbeamercolor{block title}{fg = GTwhite, bg = GTnavy}
+\setbeamercolor{block body}{fg = GTblack, bg = GTlightgray}
+
+% Alert block
+\setbeamercolor{block title alerted}{fg = GTwhite, bg = GTwhite}
+\setbeamercolor{block body alerted}{fg = GTblack, bg = GTwhite}
+
+% Example block
+\setbeamercolor{block title example}{fg = GTwhite, bg = GTgold}
+\setbeamercolor{block body example}{fg = GTblack, bg = GTlightgray}
+    
+% Normal text
+\setbeamercolor{normal text}{fg = GTblack}
+
+% Define the fonts
+% Here we are using default fonts
+\usefonttheme{default}
+% Math elements ought to be rendered in serif-font
+\usefonttheme[onlymath]{serif}
+
+% Fontsize for the presentation title
+\setbeamerfont{title}{size = \huge}
+
+% Fontsize of the frame titles
+\setbeamerfont{frametitle}{size = \Large}
+
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Draw blue circles around the main section numbers
+\useinnertheme{circles}
+
+% Set the list-style-type of an itemized list to triangles. 
+\setbeamertemplate{itemize items}[triangle]
+
+% Remove the circles in an enumerated itemized list
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{blocks}[default]
+
+% We declare the image that will be used as the logo
+\pgfdeclareimage[width = 0.25\paperwidth]{GTlogo}{logo-gt.png}
+
+% Remove the navigation symbols since I don't think they are useful at all
+\setbeamertemplate{navigation symbols}{}
+
+%
+% Create header using GT's gold and the white on black logo from gatech.edu
+% 
+% @param black header bar text (usually current slide/section)
+% @param title of frame
+%
+\newcommand{\GTheader}[2]
+{
+    \begin{textblock*}{\paperwidth}(0pt,2.5mm)
+        \begin{pgfpicture}{0}{0}{0}{0}
+            \pgfsetlinewidth{5mm}
+            \textblockcolour{GTgold}
+            \color{GTgold}
+            \pgfline{\pgfpoint{0mm}{0mm}}{\pgfpoint{128mm}{0}}
+        \end{pgfpicture}
+    \end{textblock*}
+    \begin{textblock*}{\paperwidth}(42mm, 1.7mm)
+        \textblockcolour{GTgold}
+        \textbf{\tiny{\textcolor{GTblack}{\GTremovelinebreaks{#1}}}}
+    \end{textblock*}
+    \begin{textblock*}{\paperwidth}(42mm, 9.5mm)
+        #2
+    \end{textblock*}
+    % GT logo:
+    \begin{textblock*}{0.25\paperwidth}(5mm,0mm)
+    	   \textblockcolour{GTblack}
+        \pgfuseimage{GTlogo}
+    \end{textblock*}
+    % The space to emulate the height of the object.
+    \vspace*{18mm}
+}
+
+%
+% Create white footer bar.
+%
+% @param text in footer bar
+%
+\newcommand{\GTfooter}[1]
+{
+    % Outer box around footer text.
+    \begin{textblock*}{\paperwidth}(0pt,94mm)
+        \begin{pgfpicture}{0}{0}{0}{0}
+            \pgfsetlinewidth{5mm}
+            \textblockcolour{GTwhite}
+            \color{GTwhite}
+            \pgfline{\pgfpoint{0mm}{0mm}}{\pgfpoint{128mm}{0}}
+        \end{pgfpicture}
+    \end{textblock*}
+    % Text in footer box.
+    \begin{textblock*}{\paperwidth}(5mm,93.2mm)
+        \textblockcolour{GTwhite}
+        \makebox[118mm]{\textbf{\tiny{\textcolor{GTgold}{#1}}}}
+    \end{textblock*}
+    % Space to emulate the height of the box.
+    \vspace*{6mm}
+}
+
+%
+% Used to remove the linebreaks from the title to display the title in the header bar
+%
+% @param text whose linebreaks shall be removed
+%
+\newcommand{\GTremovelinebreaks}[1]
+{
+    \begingroup\def\\{ }#1\endgroup
+}
+
+%
+% Create title page.
+%
+\newcommand{\GTtitle}
+{
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
+}
+
+%
+% Show table of contents.
+%
+% @param frame title
+%
+\newcommand{\GTtoc}[1]
+{
+    \AtBeginSubsection[]
+    {
+        \begin{frame}
+            \frametitle{#1}
+            % Highlight the current subsection and its parent section.
+            \tableofcontents[currentsection,currentsubsection]
+        \end{frame}
+    }
+}
+
+% Style the frame title.
+\setbeamertemplate{frametitle}{
+    % Print "-" only if subsection is given.
+   \ifx\insertsubsection\empty
+        \GTheader{\insertsection}{\insertframetitle}
+    \else
+        \GTheader{\insertsection \ \textbullet \ \insertsubsection}{\insertframetitle}
+    \fi
+}
+
+% Style the frame footer.
+\setbeamertemplate{footline}{
+    % Use the predefined command.
+    \GTfooter{\insertauthor  \ | \insertdate \hfill \insertframenumber/\inserttotalframenumber}
+}
+
+% Style the title page.
+\setbeamertemplate{title page}{
+    \GTheader{\inserttitle}{}
+    \GTfooter{\insertauthor  \ | \insertdate \hfill \insertframenumber/\inserttotalframenumber}
+    
+    % The presentation title.
+    \centering \huge{\inserttitle}
+
+    \medskip
+
+    % Authors:
+    \centering \textcolor{GTwhite}{\large{\insertauthor}}
+
+    % Current date:
+    \centering \textcolor{GTwhite}{\normalsize{\insertdate}}
+    
+    % Don't remove this line break ^
+}

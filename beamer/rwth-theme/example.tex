@@ -1,0 +1,192 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+    % Include the theme
+    \usetheme{rwth}
+    \setbeamercovered{transparent = 28}
+}
+
+\title{This is a simple \\
+\LaTeX{} \\
+beamer demonstration}
+
+\author{Tobias Pohlen}
+
+% Display the table of contents every time a new subsection begins. The parameter is used as the frame title.
+\RWTHtoc{Table of contents}
+
+\begin{document}
+
+% Display the title frame
+\RWTHtitle
+
+\section{Section}
+
+    \subsection{Subsection 1}
+
+        \begin{frame}{Test}
+            \begin{itemize}
+                \item Test1
+                \pause
+                \item Test1
+                \pause
+                \item Test1
+            \end{itemize}
+        \end{frame}
+
+    \subsection{Subsection 2}
+
+        \begin{frame}{Test 2}
+            \begin{block}{Definition}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+            \end{block}
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{Test 3}
+            \begin{block}{Definition}
+            \begin{itemize}
+                \item Test1
+                \item Test1
+                \item Test1
+            \end{itemize}
+            \end{block}
+        \end{frame}
+
+   \subsection{Subsection 3}
+   
+        \begin{frame}{Test 2}
+       	    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+
+            \begin{align}
+                R(\alpha) = \int \frac{1}{2} |y - f(x;\alpha)| dP(x,y) \leq R_{emp}(\alpha) + \epsilon(N, \delta, h)
+            \end{align}   
+        \end{frame}
+
+   
+        \begin{frame}{Test 2}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+            \begin{block}{Definition}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+            \end{block}
+            \pause
+            \begin{block}{Definition}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+            \end{block}
+        \end{frame}
+
+        \begin{frame}{Test 3}
+            \begin{block}{Normal block}
+            block text
+            \end{block}
+            
+            \begin{exampleblock}{Example block}
+            block text
+            \end{exampleblock}
+            
+            
+            \begin{alertblock}{Alert block}
+            block text
+            \end{alertblock}
+        \end{frame}
+
+        \begin{frame}{Test 4}
+            \begin{theorem}
+            block text
+            \end{theorem}
+            
+            \begin{proof}
+            block text
+            \end{proof}
+
+        \end{frame}
+
+
+        \begin{frame}{Test 5}
+
+            \begin{tabular}{|c|c|c|}
+            \hline
+            \textbf{Test0} & \textbf{Test1} & \textbf{Test2} \\
+            \hline
+            Test1 & Test2 & Test3 \LaTeX  \\
+            \hline
+            Test4 & Test5& Test6\\
+            \hline
+            \end{tabular}
+            
+        \end{frame}
+
+        \begin{frame}{Test 6}
+
+            \begin{exampleblock}{Example block}
+                \smallskip 
+
+                \begin{tabular}{|c|c|c|}
+                \hline
+                \textbf{Test0} & \textbf{Test1} & \textbf{Test2} \\
+                \hline
+                Test1 & Test2 & Test3 \LaTeX  \\
+                \hline
+                Test4 & Test5& Test6\\
+                \hline
+                \end{tabular}
+            \end{exampleblock}
+
+            \begin{block}{Block}
+                \smallskip 
+
+                \begin{tabular}{|c|c|c|}
+                \hline
+                \textbf{Test0} & \textbf{Test1} & \textbf{Test2} \\
+                \hline
+                Test1 & Test2 & Test3 \LaTeX  \\
+                \hline
+                Test4 & Test5& Test6\\
+                \hline
+                \end{tabular}
+            \end{block}
+        \end{frame}
+
+	 \begin{frame}{Test 7}
+            
+         	\begin{block}{Block A}
+            
+                \begin{description}[longest label]
+                    \item[short] Short stuff
+                    \item[long] Longer stuff
+                    \item[longest label] Longest stuff (insert cat)
+                \end{description}
+            
+                \begin{itemize}
+                    \item item1
+                    \item item2
+                    \item item3
+                \end{itemize}  
+            \end{block}
+
+        \end{frame}
+
+        \begin{frame}[t]{Frame with Columns}
+            \begin{columns}[t]
+                \column{0.4\textwidth}
+
+                \begin{block}{Block 1}
+                    Text here
+                \end{block}
+
+                \column{0.4\textwidth}
+
+                \begin{block}{Block 2}
+                    More text here
+                \end{block}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}[t]{Frame without Columns}
+            \leavevmode
+            \begin{block}{Block}
+                Even more text here
+            \end{block}
+        \end{frame}
+\end{document}
