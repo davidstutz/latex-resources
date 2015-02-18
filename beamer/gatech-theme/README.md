@@ -2,6 +2,37 @@
 
 Georgia Tech LaTex Beamer Theme based on the RWTH Aachen University LaTex Beamer Theme by Tobias Pohlen.
 
+## FAQ
+
+**How to not show the table of contents before each _sub_section?**
+
+In the method `GTtoc` comment out the `AtBeginSubsection` statement:
+
+    %
+    % Show table of contents.
+    %
+    % @param frame title
+    %
+    \newcommand{\GTtoc}[1]
+    {
+        \AtBeginSection[]
+        {
+            \begin{frame}
+                \frametitle{#1}
+                % Highlight the current subsection and its parent section.
+                \tableofcontents[currentsection]
+            \end{frame}
+        }
+        %\AtBeginSubsection[]
+        %{
+        %    \begin{frame}
+        %        \frametitle{#1}
+        %        % Highlight the current subsection and its parent section.
+        %        \tableofcontents[currentsection,currentsubsection]
+        %    \end{frame}
+        %}
+    }
+
 ## License
 
 **Note:** The below license does not include the Georgia Tech logo (that is, `logo-gt.png`), that is Georgia Tech is copyright holder of the provided logo.

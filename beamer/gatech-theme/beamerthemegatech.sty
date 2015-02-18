@@ -183,6 +183,14 @@
 %
 \newcommand{\GTtoc}[1]
 {
+    \AtBeginSection[]
+    {
+        \begin{frame}
+            \frametitle{#1}
+            % Highlight the current subsection and its parent section.
+            \tableofcontents[currentsection]
+        \end{frame}
+    }
     \AtBeginSubsection[]
     {
         \begin{frame}
