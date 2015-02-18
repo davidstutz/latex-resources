@@ -8,9 +8,16 @@ This repository provides several resources concerned with LaTeX:
 
 All examples are tested using MikTeX 2.9 on Windows 7.
 
-## Links
+## Index 
 
-* [How to hide the "References" heading from the `thebibliography` environment?](http://tex.stackexchange.com/questions/22645/hiding-the-title-of-the-bibliography)
+* [Algorithms](algorithms/README.md)
+* [Beamer](beamer/README.md)
+* [BibTeX](bibtex/README.md)
+* [Figures](beamer/README.md)
+* [Listings](listings/README.md)
+* [Mathematics](math/README.md)
+* [Packages](packages/README.md)
+* [TikZ](tikz/README.md)
 
 ## License
 
