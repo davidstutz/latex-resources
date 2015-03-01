@@ -34,7 +34,7 @@ New code:
 
 ## License
 
-**Note:** The below license does not include the RWTH Aachen University logo (that is, `logo.png`), that is RWTH Aachen University is copyright holder of the provided logo.
+**Note:** The below license does not include the RWTH Aachen University logo (that is, `logo.png`, which was taken from the official website [rwth-aachen.de](http://www.rwth-aachen.de/)), that is RWTH Aachen University is copyright holder of the provided logo.
 
 Copyright (c) 2012 - 2014 by Tobias Pohlen <tobias.pohlen@gmail.com>
 

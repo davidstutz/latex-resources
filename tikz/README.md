@@ -7,3 +7,4 @@
 
 ## Links
 
+* [Available TikZ node shapes.](http://www.texample.net/tikz/examples/node-shapes/)

@@ -12,12 +12,19 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 
 * [Algorithms](algorithms/README.md)
 * [Beamer](beamer/README.md)
-* [BibTeX](bibtex/README.md)
+* [BibTeX](bibliography/README.md)
 * [Figures](beamer/README.md)
 * [Listings](listings/README.md)
 * [Mathematics](math/README.md)
 * [Packages](packages/README.md)
 * [TikZ](tikz/README.md)
+* [Additional Resources](#additiona-resources)
+
+## Additional Resources
+
+* [LaTeX source: "Dart - A Brief Introduction" seminar paper](https://github.com/davidstutz/proseminar-dart)
+* [LaTeX source: "Introduction to Neural Networks" seminar paper](https://github.com/davidstutz/seminar-neural-networks)
+* [LaTeX source: "Understanding Convolutional Neural Networks" seminar paper](https://github.com/davidstutz/seminar-convolutional-neural-networks)
 
 ## License
 
