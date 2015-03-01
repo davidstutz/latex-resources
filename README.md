@@ -25,6 +25,7 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 * [LaTeX source: "Dart - A Brief Introduction" seminar paper](https://github.com/davidstutz/proseminar-dart)
 * [LaTeX source: "Introduction to Neural Networks" seminar paper](https://github.com/davidstutz/seminar-neural-networks)
 * [LaTeX source: "Understanding Convolutional Neural Networks" seminar paper](https://github.com/davidstutz/seminar-convolutional-neural-networks)
+* [LaTeX source: "Superpixel Segmentation using Depth Information" bachelor thesis](https://github.com/davidstutz/bachelor-thesis-superpixels)
 
 ## License
 
