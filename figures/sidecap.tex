@@ -1,0 +1,23 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{sidecap}
+
+% Not necessary for sidecap to work.
+\usepackage[margin=1in]{geometry}
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\begin{document}
+\begin{SCfigure}[1.5]
+	\includegraphics[scale=0.5]{pictures/heat_9}
+	\includegraphics[scale=0.5]{pictures/heat_10}
+	\includegraphics[scale=0.5]{pictures/heat_11}
+	\includegraphics[scale=0.5]{pictures/heat_12}
+	\includegraphics[scale=0.5]{pictures/heat_13}
+	\caption{Visualizations of the object prior on the ``Basketball'' sequence: yellow denotes high probability. Note that the object prior is highly dependent on the covariance matrix of the Gaussian and the number of clusters computed in $K$-means clustering.}
+	\label{fig:prior-clustering}
+\end{SCfigure}
+\end{document}

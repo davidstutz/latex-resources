@@ -17,7 +17,7 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 * [Listings](listings/README.md)
 * [Mathematics](math/README.md)
 * [Packages](packages/README.md)
-* [TikZ](tikz/README.md)
+* [PGFPlots / TikZ](pgfplots-tikz/README.md)
 * [Additional Resources](#additiona-resources)
 
 ## Additional Resources
