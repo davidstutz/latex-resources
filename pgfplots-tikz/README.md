@@ -9,5 +9,6 @@
 
 ## Links
 
+* [Bayesian Networks in TikZ: `tikz-bayesnet` library.](https://github.com/jluttine/tikz-bayesnet)
 * [Available TikZ node shapes.](http://www.texample.net/tikz/examples/node-shapes/)
 * [PGFPlots Gallery: Listing most examples from the documentation.](http://pgfplots.sourceforge.net/gallery.html)
