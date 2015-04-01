@@ -1,4 +1,4 @@
-# RWTH Aachen University LaTeX Theme
+# Georgia Tech LaTeX Theme
 
 Georgia Tech LaTex Beamer Theme based on the RWTH Aachen University LaTex Beamer Theme by Tobias Pohlen.
 
