@@ -10,6 +10,7 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 
 ## Index 
 
+* [General LaTeX](general/README.md)
 * [Algorithms](algorithms/README.md)
 * [Beamer](beamer/README.md)
 * [BibTeX](bibliography/README.md)

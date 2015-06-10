@@ -1,0 +1,45 @@
+% http://tex.stackexchange.com/questions/164636/subsubsubsection-paragraph-and-subparagraph-count-not-reset-when-starting-a
+\documentclass{article}
+\usepackage{titlesec}
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}}
+\renewcommand\thesubparagraph{\theparagraph.\arabic{subparagraph}}
+
+\titleformat{\subsubsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{%
+  \@startsection{paragraph}{5}{\z@}{3.25ex \@plus1ex \@minus.2ex}{-1em}{\normalfont\normalsize\bfseries}
+}
+\renewcommand\subparagraph{%
+  \@startsection{subparagraph}{6}{\parindent}{3.25ex \@plus1ex \@minus .2ex}{-1em}{\normalfont\normalsize\bfseries}
+}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\@addtoreset{subsubsubsection}{section}
+\@addtoreset{subsubsubsection}{subsection}
+\@addtoreset{paragraph}{subsubsubsection}
+\makeatother
+
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+
+\begin{document}
+\tableofcontents
+
+\section{Section 1}
+\subsection{subsection 1}
+\subsubsection{subsubsection 1}
+\subsubsubsection{Subsubsubsection 1}
+\paragraph{paragraph 1}
+
+\end{document}
