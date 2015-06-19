@@ -6,6 +6,7 @@
 
 ## Links
 
+* [How to deactivate page numbering?](http://tex.stackexchange.com/questions/54333/no-page-numbering)
 * [How to change spacing between items in itemize?](http://tex.stackexchange.com/questions/12373/how-to-change-the-space-between-the-itemize-items-in-latex)
 * [How to start section numbering at 0?](http://tex.stackexchange.com/questions/107470/getting-section-numbering-to-start-at-0)
 * [How to adapt padding in tables?](http://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables)

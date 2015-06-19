@@ -21,12 +21,26 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 * [PGFPlots / TikZ](pgfplots-tikz/README.md)
 * [Additional Resources](#additiona-resources)
 
-## Additional Resources
+## Additional Resources/Repositories
 
+Some additional repositories with LaTeX source code.
+
+### CVs
+
+* [Deedy-Resume: Resume from Debarghya Das](https://github.com/deedydas/Deedy-Resume)
+* [Curriculum Vitae: David Stutz](https://github.com/davidstutz/curriculum-vitae)
+
+### Seminar Papers and Theses
+
+* [Ph.D. dissertation by Gilles Louppe](https://github.com/glouppe/phd-thesis)
 * [LaTeX source: "Dart - A Brief Introduction" seminar paper](https://github.com/davidstutz/proseminar-dart)
 * [LaTeX source: "Introduction to Neural Networks" seminar paper](https://github.com/davidstutz/seminar-neural-networks)
 * [LaTeX source: "Understanding Convolutional Neural Networks" seminar paper](https://github.com/davidstutz/seminar-convolutional-neural-networks)
 * [LaTeX source: "Superpixel Segmentation using Depth Information" bachelor thesis](https://github.com/davidstutz/bachelor-thesis-superpixels)
+
+## Examples and Misc
+
+* [LaTeX Examples by Martin Thomas](https://github.com/MartinThoma/LaTeX-examples)
 
 ## License
 
