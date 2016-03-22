@@ -19,10 +19,15 @@ All examples are tested using MikTeX 2.9 on Windows 7.
 * [Mathematics](math/README.md)
 * [Packages](packages/README.md)
 * [PGFPlots / TikZ](pgfplots-tikz/README.md)
-* [Additional Resources](#additiona-resources)
 
-## Additional Resources
+## Additional Resources/Repositories
 
+Some additional repositories with LaTeX source code.
+
+* [Deedy-Resume: Resume from Debarghya Das](https://github.com/deedydas/Deedy-Resume)
+* [Curriculum Vitae: David Stutz](https://github.com/davidstutz/curriculum-vitae)
+* [LaTeX Examples by Martin Thomas](https://github.com/MartinThoma/LaTeX-examples)
+* [Ph.D. dissertation by Gilles Louppe](https://github.com/glouppe/phd-thesis)
 * [LaTeX source: "Dart - A Brief Introduction" seminar paper](https://github.com/davidstutz/proseminar-dart)
 * [LaTeX source: "Introduction to Neural Networks" seminar paper](https://github.com/davidstutz/seminar-neural-networks)
 * [LaTeX source: "Understanding Convolutional Neural Networks" seminar paper](https://github.com/davidstutz/seminar-convolutional-neural-networks)

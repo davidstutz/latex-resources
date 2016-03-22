@@ -1,0 +1,197 @@
+% RWTH Aachen Latex Theme for beamer presentations
+%
+% http://xtemplate.net/rwth.html
+% (c) 2012-2014 by Tobias Pohlen <tobias.pohlen@gmail.com>
+% Released under the GPL License.
+%
+% Version 0.4
+
+\mode<presentation>
+\usepackage{pgfcomp-version-0-65}
+\usepackage{color}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% \usepackage[ngerman]{babel}
+%use helvetica as recommened in the corporate identity manual 
+\usepackage[scaled]{helvet}
+
+% Restyle the left margins for the itemize lists
+\setlength{\leftmargini}{5mm}
+
+% Define some colors. The colors defined in the  manual
+    \definecolor{RWTHblue}{RGB}{0,83,159}
+    \definecolor{RWTHblack}{RGB}{0,0,0}
+    \definecolor{RWTHwhite}{RGB}{255,255,255}
+    \definecolor{RWTHlightblue}{RGB}{142,186,226}
+    \definecolor{RWTHgrey}{RGB}{51,51,51}
+    \definecolor{RWTHlightgrey}{RGB}{204,204,204}
+    \definecolor{RWTHsuperlightgrey}{RGB}{247,247,247}
+    \definecolor{RWTHpetrol}{RGB}{0,97,101}
+    \definecolor{RWTHteal}{RGB}{0,152,161}
+    \definecolor{RWTHmaygreen}{RGB}{189,205,0}
+    \definecolor{RWTHgreen}{RGB}{87,171,39}
+    \definecolor{RWTHyellow}{RGB}{255,237,0}
+    \definecolor{RWTHorange}{RGB}{246,168,0}
+    \definecolor{RWTHmagenta}{RGB}{227,0,102}
+    \definecolor{RWTHred}{RGB}{204,7,30}
+    \definecolor{RWTHbordeaux}{RGB}{161,16,53}
+    \definecolor{RWTHviolet}{RGB}{97,33,88}
+    \definecolor{RWTHpurple}{RGB}{122,111,172}
+
+% Assign the colors to the differen pars
+    % Title
+    \setbeamercolor{title}{fg = RWTHblue}
+    % Frame title
+    \setbeamercolor{frametitle}{fg = RWTHblue}
+    % Table of contents
+    \setbeamercolor{section in toc}{fg = RWTHblack}
+    \setbeamercolor{subsection in toc}{fg = RWTHblue}
+    \setbeamercolor{section in toc shaded}{fg = RWTHblack}
+    % List colors (itemize)
+    \setbeamercolor{item}{fg = RWTHblue}
+    \setbeamercolor{subitem}{fg = RWTHblack}
+    \setbeamercolor{subsubitem}{fg = RWTHblack}
+    % The color of the bullets points
+    \setbeamercolor{description item}{fg = RWTHblue}
+    % Captions
+    \setbeamercolor{caption}{fg = RWTHblack}
+    \setbeamercolor{caption name}{fg = RWTHblack}
+
+    % Style the block elements:
+    % - Standard blocks
+    % - Alert blocks
+    % - Example block
+        % Standard block
+        \setbeamercolor{block title}{fg = RWTHblue, bg = RWTHlightgrey}
+        \setbeamercolor{block body}{fg = RWTHblack, bg = RWTHsuperlightgrey}
+    
+        % Alert block
+        \setbeamercolor{block title alerted}{fg = RWTHwhite, bg = RWTHgrey}
+        \setbeamercolor{block body alerted}{fg = RWTHblack, bg = RWTHsuperlightgrey}
+        
+        % Example block
+        \setbeamercolor{block title example}{fg = RWTHwhite, bg = RWTHblue}
+        \setbeamercolor{block body example}{fg = RWTHblack, bg = RWTHsuperlightgrey}
+    
+    % Normal text
+    \setbeamercolor{normal text}{fg = RWTHblack}
+
+% Define the fonts
+    % Here we are using default fonts
+    \usefonttheme{default}
+    % Math elements ought to be rendered in serif-font
+    \usefonttheme[onlymath]{serif}
+    
+    % Fontsize for the presentation title
+    \setbeamerfont{title}{size = \Huge}
+    
+    % Fontsize of the frame titles
+    \setbeamerfont{frametitle}{size = \LARGE}
+
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Draw blue circles around the main section numbers
+\useinnertheme{circles}
+
+% Set the list-style-type of an itemized list to triangles. 
+\setbeamertemplate{itemize items}[triangle]
+
+% Remove the circles in an enumerated itemized list
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{blocks}[default]
+
+
+% We declare the image that will be used as the logo
+\pgfdeclareimage[width = 0.25\paperwidth]{RWTHlogoblue}{logo.png}
+
+% Remove the navigation symbols since I don't think they are useful at all
+\setbeamertemplate{navigation symbols}{}
+
+% This command creates the website like headline with the RWTH logo.
+% 
+% @param1 The content of the black header bar
+% @param1 The content of the light grey bar next to the logo
+\newcommand{\RWTHheader}[1]
+{
+    \begin{textblock*}{\paperwidth}(4mm, 4mm)
+        #1
+    \end{textblock*}
+    \vspace*{10mm}
+}
+
+% This command creates the dark grey footerbar. 
+%
+% @param1 The content of the bar
+\newcommand{\RWTHfooter}[1]
+{
+    % The text in the dark grey box
+    \begin{textblock*}{\paperwidth}(4mm,91mm)
+        \makebox[120mm]{\textbf{\tiny{\textcolor{RWTHblue}{#1}}}}
+    \end{textblock*}
+    % Space to emulate the height of the box
+    \vspace*{6mm}
+}
+
+% This command is used to remove the linebreaks from the title to display the title in the header bar
+%
+% @param1 The string whose linebreaks shall be removed
+\newcommand{\RWTHremovelinebreaks}[1]
+{
+    \begingroup\def\\{ }#1\endgroup
+}
+
+% This command creates the title page
+\newcommand{\RWTHtitle}
+{
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
+}
+
+% This command shows the table of contents everytime you enter a new subsection
+%
+% @param1 The title of the frame
+\newcommand{\RWTHtoc}[1]
+{
+	\AtBeginSection[]
+    {
+        \begin{frame}
+            % This shouldn't be fixed. 
+            \frametitle{#1}
+            % Highlight just the current subsection and its parent section
+            \tableofcontents[currentsection]
+        \end{frame}
+    }
+}
+
+% Style the frame title
+\setbeamertemplate{frametitle}{
+    \RWTHheader{\insertframetitle}
+}
+
+% Style the frame footer
+\setbeamertemplate{footline}{
+    % Use the predefined command
+    \RWTHfooter{\insertauthor  \ | \insertdate \hfill \insertframenumber/\inserttotalframenumber}
+}
+
+% Style the title page
+\setbeamertemplate{title page}{
+    \RWTHheader{}{}
+    \RWTHfooter{\insertauthor  \ | \insertdate \hfill \insertframenumber/\inserttotalframenumber}
+    
+    % The presentation title
+    \centering \huge{\inserttitle}
+
+    \medskip
+
+    % The authors
+    \centering \textcolor{RWTHgrey}{\large{\insertauthor}}
+
+    % The current date
+    \centering \textcolor{RWTHgrey}{\normalsize{\insertdate}}
+    
+    % Don't remove this line break ^
+}
