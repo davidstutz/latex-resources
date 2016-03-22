@@ -1,0 +1,56 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\usepackage{listings}
+\lstset{%
+	numbers=left,
+	frame=single,
+	basicstyle=\small,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=15pt,tabsize=4,
+	flexiblecolumns=true,
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen}, 
+	stringstyle=\color{mauve},
+	numberstyle=\tiny\color{gray},
+	language=Java,
+	breaklines=true,
+	breakatwhitespace=true,
+	morekeywords={*,num,String,var,library,get,set} ,
+}
+
+\begin{document}
+
+\begin{lstlisting}
+#import('dart:html');
+
+class Contacts {
+
+  Contacts() {
+  }
+
+  void run() {
+    write("Hello World!");
+  }
+
+  void write(String message) {
+    // the HTML library defines a global "document" variable
+    document.query('#status').innerHTML = message;
+  }
+}
+
+void main() {
+  new Contacts().run();
+}
+\end{lstlisting}
+
+\end{document}

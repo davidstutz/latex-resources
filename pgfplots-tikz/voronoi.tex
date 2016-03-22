@@ -1,0 +1,54 @@
+\documentclass[twoside,11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, latexsym}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{fadings}
+
+\begin{document}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+                        axis equal image,
+                        ticks=none,
+                        height=6cm,
+                        width=10cm,
+                    ]
+                    \addplot [only marks, black] table {points.txt};
+                    \addplot [only marks, blue] (4.25,6);
+                    \addplot [no markers, update limits=false] table {voronoi.txt};
+                    \addplot [no markers, blue] coordinates {(4.25,6) (3,5)};
+                    \node [below] at (axis cs:  4.9,  6.35) {{\color{blue} $y_{l,n}$}};
+                    \node [below] at (axis cs:  3,  4.9) {$\hat{y}_m$};
+		\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+                        axis equal image,
+                        ticks=none,
+                        height=6cm,
+                        width=10cm,
+                    ]
+                    \addplot [only marks, black] table {points.txt};
+                    \addplot [only marks, blue] (3.2,6);
+                    \addplot [no markers, update limits=false] table {voronoi.txt};
+                    \addplot [no markers, blue] coordinates {(3.2,6) (3,5)};
+                    \addplot [no markers, blue, opacity=0.75] coordinates {(3.2,6) (2,6)};
+                    \node [below] at (axis cs:  3.85,  6.35) {{\color{blue} $y_{l,n}$}};
+                    \node [below] at (axis cs:  3,  4.9) {$\hat{y}_m$};
+                    \node [below] at (axis cs:  2,  6) {$\hat{y}_{m'}$};
+		\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+\end{document}
