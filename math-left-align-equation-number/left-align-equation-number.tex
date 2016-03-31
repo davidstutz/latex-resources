@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+
+% http://tex.stackexchange.com/questions/8092/placing-equation-number-on-left-with-reqno-option-in-amsart-document-class
+\usepackage{environ}
+\makeatletter
+\NewEnviron{Lalign}{\tagsleft@true\begin{align}\BODY\end{align}}
+\makeatother
+
+\begin{document}
+	Let $H: \mathbb{R}^n \rightarrow \mathbb{R}$ be a function satisfying
+	\begin{Lalign}
+		H(z^{(n + 1)}) + a\Delta_n^2 \leq H(z^{(n)}).\tag{H1}
+	\end{Lalign}
+	
+	It can easily be shown:
+	\begin{align}
+		2\Delta_1 \leq \frac{b}{a} D_n^\phi + \frac{1}{2}(\Delta_0 + \Delta_1) \quad\Leftrightarrow\quad \Delta_1 \leq \frac{b}{a} D_n^\phi + \frac{1}{2}(\Delta_0 + \Delta_1) - \Delta_1
+	\end{align}
+\end{document}

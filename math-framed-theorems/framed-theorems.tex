@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage[top=3cm,left=3cm,bottom=3cm,right=3cm]{geometry}
+
+% http://tex.stackexchange.com/questions/36278/box-around-theorem-statement
+% http://tex.stackexchange.com/questions/188051/skipbelow-does-not-work-for-combination-of-mdframed-and-thmtools
+%\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mdframed}
+
+\declaretheoremstyle[
+	postfoothook={\vskip 0.35cm},
+	mdframed={
+		skipabove=0.35cm,
+		innerbottommargin=0.2cm,
+		innertopmargin=0.2cm,
+		innerleftmargin=0.2cm,
+		innerrightmargin=0.2cm,
+	}
+]{skips}
+
+\declaretheorem[style=skips,name={Theorem}]{theoremmd}
+\declaretheorem[style=skips,name={Corollary}]{corollarymd}
+\declaretheorem[style=skips,name={Lemma}]{lemmamd}
+\declaretheorem[style=skips,name={Definition}]{definitionmd}
+
+
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{{e.g}\onedot} \def\Eg{{E.g}\onedot}
+\def\ie{{i.e}\onedot} \def\Ie{{I.e}\onedot}
+\def\cf{{c.f}\onedot} \def\Cf{{C.f}\onedot}
+\def\etc{{etc}\onedot} \def\vs{{vs}\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{{et al}\onedot}
+
+% proximal map operator
+\DeclareRobustCommand{\prox}[1]{%
+    \ifmmode
+        \text{prox}_{#1}
+    \else
+        $\text{prox}_{#1}$
+    \fi
+}
+\def\dom{\text{dom}}
+\def\per{\text{per}}
+
+\title{Framed Theorems}
+\author{David Stutz}
+
+\begin{document}
+
+\maketitle
+
+\begin{definitionmd}
+	A sequence $(z^{(n)})_{n \in \mathbb{N}} := (x^{(n)}, x^{(n - 1)})_{n \in \mathbb{N}} \subset \mathbb{R}^{n} \times \mathbb{R}^n$ and a proper lower semicontinuous function $H : \mathbb{R}^{n} \times \mathbb{R}^n \rightarrow \mathbb{R} \cup \{\infty\}$ satisfy Conditions \ref{cond:1} - \ref{cond:3} for fixed $a,b > 0$ and $\Delta_n := \|x^{(n)} - x^{(n - 1)}\|_2$ if:
+	\setlist[enumerate,1]{leftmargin=1.25cm}
+	\begin{enumerate}[label=(H\arabic*)]
+		\item for each $n \in \mathbb{N}$, it holds\label{cond:1}
+	\end{enumerate}
+	\begin{align}
+		H(z^{(n + 1)}) + a\Delta_n^2 \leq H(z^{(n)});
+	\end{align}
+	\begin{enumerate}[label=(H\arabic*)]
+		\setcounter{enumi}{1}
+		\item for each $n \in \mathbb{N}$, there exists $w^{(n + 1)} \in \partial H(z^{(n + 1)})$ with\label{cond:2}
+	\end{enumerate}
+	\begin{align}
+		\|w^{(n + 1)}\|_2 \leq \frac{b}{2}(\Delta_n + \Delta_{n + 1});
+	\end{align}
+	\begin{enumerate}[label=(H\arabic*)]
+		\setcounter{enumi}{2}
+		\item there exists a subsequence $(z^{(n_j)})_{j \in \mathbb{N}}$ with\label{cond:3}
+	\end{enumerate}
+	\begin{align}
+		z^{(n_j)} \rightarrow \tilde{z} = (\tilde{x}, \tilde{x})\quad\text{ and }\quad H(z^{(n_j)}) \rightarrow H(\tilde{z}),\quad j \rightarrow \infty.
+	\end{align}\label{def:conditions}
+\end{definitionmd}
+
+\begin{lemmamd}
+	Let $H : \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R} \cup \{\infty\}$ be a proper lower semicontinuous function satisfying the Kurdyka-Lojasiewicz property at some point $z^\ast = (x^\ast, x^\ast) \in \mathbb{R}^n \times \mathbb{R}^n$. Let
+	\begin{itemize}
+		\item[--] $U$, $\eta$, $\phi : [0, \eta) \rightarrow \mathbb{R}_+$  be the elements from the KL-property for point $z^\ast$;
+		\item[--] $\sigma, \rho > 0$ such that $B_\sigma(z^\ast) \subset U$ and $\rho \in (0, \sigma)$;
+		\item[--] $(z^{(n)})_{n \in \mathbb{N}} = (x^{(n)}, x^{(n - 1)})_{n \in \mathbb{N}}$ be a sequence satisfying Conditions \ref{cond:1} - \ref{cond:3}.
+	\end{itemize}
+	Furthermore, we make the following assumptions:
+	\setlist[enumerate,1]{leftmargin=1.25cm}
+	\begin{enumerate}[label=(A\arabic*)]
+		\item for each $n \in \mathbb{N}$, the sequence $(z^{(n)})_{n \in \mathbb{N}}$ satisfies $H(z^{(n + 1)}), H(z^{(n + 2)}) \geq H(z^\ast)$ and\label{ass:1}
+	\end{enumerate}
+	\begin{align}
+		z^{(n)} \in B_\rho(z^\ast) \quad \Rightarrow \quad z^{(n + 1)} \in B_\sigma(z^\ast)
+	\end{align}
+	\begin{enumerate}[label=(A\arabic*)]
+		\setcounter{enumi}{1}
+		\item $z^{(0)} = (x^{(0)}, x^{(-1)})$ satisfies $H(z^\ast) \leq H(z^{(0)}) \leq H(z^\ast) + \eta$ and\label{ass:2}
+	\end{enumerate}
+	\begin{align}
+		\|x^\ast - x^{(0)}\|_2 + \sqrt{\frac{H(z^{(0)}) - H(z^\ast)}{a}} + \frac{b}{a} \phi(H(z^{(0)}) - H(z^\ast)) < \frac{\rho}{2}.
+	\end{align}
+	where $a$ and $b$ are from Definition \ref{def:conditions}. Then, for each $n \in \mathbb{N}$, $z^{(n)} \in B_\rho(z^\ast)$ and
+	\begin{align}
+		\sum_{i = 0}^\infty \Delta_i < \infty\quad\text{ and }\quad H(z^{(n)}) \rightarrow H(z^\ast)
+	\end{align}
+	and $z^{(n)} \rightarrow \bar{z} = (\bar{x}, \bar{x}) \in B_\sigma(z^\ast)$ with $H(\bar{z}) = H(z^\ast)$ and $0 \in \partial H(\bar{z})$.\label{lemma:lemma}
+\end{lemmamd}
+
+\begin{corollarymd}
+	Given $\eta$, $\sigma$ and $\rho$ as in Lemma \ref{lemma:lemma}, Assumption \ref{ass:1} can be replaced by
+	\setlist[enumerate,1]{leftmargin=1.25cm}
+	\begin{enumerate}[label=(A\arabic*')]
+		\item for each $n \in \mathbb{N}$, the sequence $(z^{(n)})_{n \in \mathbb{N}}$ satisfies $H(z^{(n)}) \geq H(z^\ast)$\label{ass:1p} and it holds
+	\end{enumerate}
+	\begin{align}
+		\eta < a\left(\frac{\sigma - \rho}{2}\right)^2\label{eq:corollary}.
+	\end{align}\label{corollary:corollary}
+\end{corollarymd}
+
+\begin{theoremmd}
+	Let $H: \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R} \cup \{\infty\}$ be a proper lower semicontinuous function and $(z^{(n)})_{n \in \mathbb{N}} = (x^{(n)}, x^{(n - 1)})_{n \in \mathbb{N}}$ be a sequence satisfying Conditions \ref{cond:1} - \ref{cond:3}. Furthermore, let $H$ satisfy the Kurdyka-Lojasiewicz property at the cluster point $\tilde{z}$ specified in Condition \ref{cond:3}. Then, the sequence $(x^{(n)})_{n \in \mathbb{N}}$  converges to $\tilde{x}$ such that $\tilde{z} = (\tilde{x}, \tilde{x})$ is a critical point of $H$.
+\end{theoremmd}
+
+\end{document}

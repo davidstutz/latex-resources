@@ -1,0 +1,23 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{algorithmic}
+\usepackage{xspace}
+\usepackage{enumitem}
+\usepackage[font=small]{caption}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage[top=3cm,bottom=3cm,left=2.5cm,right=2.5cm]{geometry}
+
+% http://tex.stackexchange.com/questions/23773/a-centered-plus-minus-symbol
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+\begin{document}
+	\begin{align}
+		c_{\rpm} = \frac{\int_\Omega (1 \rpm u(x))^2 u^{(0)}(x) dx}{\int_\Omega (1 \rpm u(x))^2 dx}
+	\end{align}
+\end{document}

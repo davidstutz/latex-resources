@@ -1,37 +1,21 @@
 # LaTeX Resources
 
-This repository provides several resources concerned with LaTeX:
-
-* Useful and adapted packages in `packages/`.
-* Algorithm examples in `algorithms/`.
-* TikZ examples in `tikz/`.
-
-All examples are tested using MikTeX 2.9 on Windows 7.
-
-## Index 
-
-* [General LaTeX](general/README.md)
-* [Algorithms](algorithms/README.md)
-* [Beamer](beamer/README.md)
-* [BibTeX](bibliography/README.md)
-* [Figures](beamer/README.md)
-* [Listings](listings/README.md)
-* [Mathematics](math/README.md)
-* [Packages](packages/README.md)
-* [PGFPlots / TikZ](pgfplots-tikz/README.md)
+This repository provides several examples and resources for LaTeX. All examples are tested using MikTeX 2.9 on Windows 7 and on Ubuntu 12.04/14.04 using `texlive-full`.
 
 ## Additional Resources/Repositories
 
 Some additional repositories with LaTeX source code.
 
-* [Deedy-Resume: Resume from Debarghya Das](https://github.com/deedydas/Deedy-Resume)
-* [Curriculum Vitae: David Stutz](https://github.com/davidstutz/curriculum-vitae)
 * [LaTeX Examples by Martin Thomas](https://github.com/MartinThoma/LaTeX-examples)
-* [Ph.D. dissertation by Gilles Louppe](https://github.com/glouppe/phd-thesis)
-* [LaTeX source: "Dart - A Brief Introduction" seminar paper](https://github.com/davidstutz/proseminar-dart)
-* [LaTeX source: "Introduction to Neural Networks" seminar paper](https://github.com/davidstutz/seminar-neural-networks)
-* [LaTeX source: "Understanding Convolutional Neural Networks" seminar paper](https://github.com/davidstutz/seminar-convolutional-neural-networks)
-* [LaTeX source: "Superpixel Segmentation using Depth Information" bachelor thesis](https://github.com/davidstutz/bachelor-thesis-superpixels)
+* [Curriculum Vitae: Deedy-Resume: Resume from Debarghya Das](https://github.com/deedydas/Deedy-Resume)
+* [Curriculum Vitae: David Stutz](https://github.com/davidstutz/curriculum-vitae)
+* [Curriculum Vitae: Awesome-CV](https://github.com/posquit0/Awesome-CV)
+* [Thesis: Gilles Louppe](https://github.com/glouppe/phd-thesis)
+* [Seminar: "Dart - A Brief Introduction"](https://github.com/davidstutz/proseminar-dart)
+* [Seminar: "Introduction to Neural Networks"](https://github.com/davidstutz/seminar-neural-networks)
+* [Seminar: "Understanding Convolutional Neural Networks"](https://github.com/davidstutz/seminar-convolutional-neural-networks)
+* [Thesis: "Superpixel Segmentation using Depth Information"](https://github.com/davidstutz/bachelor-thesis-superpixels)
+* [Beamer: PowerPoint Themes for Beamer](https://bitbucket.org/marczellm/beamerports)
 
 ## Links
 
@@ -64,8 +48,6 @@ Some additional repositories with LaTeX source code.
 * [How to draw shifted plots from the same data?](http://tex.stackexchange.com/questions/27451/drawing-curves-and-multiple-y-axes-in-one-plot-with-pgfplots)
 
 ## License
-
-Concerning the packages, see the links provided in `packages/README.md`.
 
 Several examples have been taken from different places all over the world wide web. This is usually indicated by the corresponding URL within the source code. 
 

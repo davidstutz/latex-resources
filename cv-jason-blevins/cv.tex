@@ -1,0 +1,150 @@
+% http://jblevins.org/projects/cv-template/
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+\usepackage[T1]{fontenc}
+\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{Harold Hotelling}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{http://jblevins.org/projects/cv-template/}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {economics, statistics, mathematics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+{\huge \name}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+  \href{http://www.unc.edu/}{University of North Carolina} \\
+  Department of Statistics \\
+  Smith Building \\
+  Chapel Hill, NC 27599
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+    Phone: & (919) 962-1234 \\
+    Fax: &  (919) 962-5678 \\
+    Email: & \href{mailto:hotelling@unc.edu}{\tt hotelling@unc.edu} \\
+    Homepage: & \href{http://www.stat-or.unc.edu/}{\tt http://www.stat-or.unc.edu/} \\
+  \end{tabular}
+\end{minipage}
+
+\section*{Personal}
+
+\begin{itemize}
+\item Born on September 29, 1895.
+\item United States Citizen.
+\end{itemize}
+
+\section*{Education}
+
+\begin{itemize}
+  \item B.S. Journalism, Washington University, 1919.
+
+  \item M.A. Mathematics, Washington University, 1921.
+
+  \item Ph.D. Mathematics, Princeton University, 1924.
+\end{itemize}
+
+\section*{Employment}
+
+\begin{itemize}
+\item Stanford University 1927--1931.
+\item Columbia University 1931--1946.
+\item University of North Carolina, 1946--1973.
+\end{itemize}
+
+\section*{Publications}
+
+\subsection*{Journal Articles}
+
+\begin{itemize}
+\item A General Mathematical Theory of Depreciation, 1929, {\it Journal
+    of The American Statistical Association} 20, 340--353.
+\item Differential Equations Subject to Error, 1927, {\it Journal of The
+    American Statistical Association}.
+\item Applications of the Theory of Error to the Interpretation of
+  Trends (with H. Working), 1929, {\it Journal of the American
+    Statistical Association}.
+\end{itemize}
+
+\subsection*{Proceedings}
+
+\begin{itemize}
+\item A generalized T-Test and measure of multivariate dispersion,
+  Proc. Second Berkeley Symposium of Mathematical Statistics and
+  Probability, 1951.
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+    \href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{document}

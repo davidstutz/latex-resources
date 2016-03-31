@@ -1,0 +1,384 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=3cm,left=3cm,bottom=3cm,right=3cm]{geometry}
+
+% http://tex.stackexchange.com/questions/81834/whats-the-best-way-to-typeset-c-codes-in-latex
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{%
+	language=C++,
+	backgroundcolor=\color{white},
+	basicstyle=\tiny,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	language=Octave,
+	%otherkeywords={*,...},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	stringstyle=\color{mymauve},
+	tabsize=4,
+	title=\lstname
+}
+
+\lstdefinestyle{customcpp}{
+	belowcaptionskip=0pt,
+	breaklines=true,
+	%frame=L,
+	%xleftmargin=\parindent,
+	language=C++,
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customcpp}
+
+\begin{document}
+	\begin{lstlisting}
+#ifndef NMIPIANO_H
+#define	NMIPIANO_H
+
+#include <random>
+#include <fstream>
+#include <functional>
+#include <Eigen/Dense>
+#include <glog/logging.h>
+
+/** \brief Implementation of nmiPiano (algorithm 4) as proposed in [1]:
+ *  [1] P. Ochs, Y. Chen, T. Brox, T. Pock.
+ *      iPiano: Inertial Proximal Algorithm for Nonconvex Optimization.
+ *      SIAM J. Imaging Sciences, vol. 7, no. 2, 2014.
+ * \author David Stutz
+ */
+class nmiPiano
+{
+public:
+    
+    /** \brief Options of algorithm. */
+    struct Options
+    {
+        /** \brief Initial iterate. */
+        Eigen::MatrixXf x_0;
+        /** \brief Maximum number of iterations. */
+        unsigned int max_iter;
+        /** \brief Fixed beta in [0, 1). */
+        float beta = 0.5f;
+        /** \brief Fixed eta for backtracking the local lipschitz constant. */
+        float eta = 1.05f;
+        /** \brief Initialization of loca Lipschitz. */
+        float L_0m1 = 1.f;
+        /** \brief Whether to bound estimated Lipschitz constant below by the given L_n. */
+        bool BOUND_L_N = false;
+        /** \brief Termination criterion; stop if Delta_n smaller than epsilon. */
+        float epsilon = 0;
+    };
+    
+    /** \brief Structure representing an iteration, passed as is to a callback function
+     * to be able to monitor process. */
+    struct Iteration
+    {
+        /** \brief Current iterate. */
+        Eigen::MatrixXf x_n;
+        /** \brief Last iterate. */
+        Eigen::MatrixXf x_nm1;
+        /** \brief Update: x_np1 = x_n + Delta_x_n. */
+        Eigen::MatrixXf Delta_x_n;
+        /** \brief Difference between two iterates. */
+        float Delta_n;
+        /** \brief Smooth objective function at current iterate. */
+        float f_x_n;
+        /** \brief Derivative of smooth objective at current iterate. */
+        Eigen::MatrixXf df_x_n;
+        /** Nonsmooth objective function at current iterate. */
+        float g_x_n;
+        /** \brief L_n of current iterate (within iterations, this is also used to estimate L_np1 via backtracking). */
+        float L_n;
+        /** \brief alpha_n of current iterate (within iterations, this is also used to estimate alpha_np1). */
+        float alpha_n;
+        /** \brief Current iteration. */
+        int n;
+    };
+    
+    // Definition of different callbacks skipped ...
+    
+    /** \brief Constructor.
+     * \param[in] f
+     * \param[in] df
+     * \param[in] prox_g
+     * \param[in] callback
+     */
+    nmiPiano(const std::function<float(const Eigen::MatrixXf&)> f, 
+            const std::function<void(const Eigen::MatrixXf&, Eigen::MatrixXf&)> df,
+            std::function<float(const Eigen::MatrixXf&)> g,
+            const std::function<void(const Eigen::MatrixXf&, Eigen::MatrixXf&, float alpha)> prox_g,
+            Options options,
+            const std::function<void(const Iteration&)> callback = [](const Iteration &iteration) -> void { /* Nothing ... */ });
+            
+    /** \brief Destructor. */
+    ~nmiPiano();
+    
+    /** \brief Optimize the given objective using the nmiPiano algorithm. 
+     * \param[out] x_star
+     * \param[out] f_x_star
+     */
+    void optimize(Eigen::MatrixXf &x_star, float &f_x_star);
+    
+protected:
+    
+    /** \brief Initialize the iteration structure (i.e. set iteration 0): 
+     * \param[in] iteration
+     */
+    void initialize(Iteration &iteration);
+    
+    float estimateL(const Iteration &iteration);
+    
+    /** \brief Do an iteration, i.e. compute x_np1.
+     * \param[in] iteration
+     * \param[in] beta
+     * \param[out] x_np1
+     */
+    void iterate(Iteration &iteration, float beta, Eigen::MatrixXf &x_np1);
+    
+    /** \brief Check the lipschitz condition for backtracking.
+     * \param[in] iteration
+     * \param[in] x_np1
+     * \return
+     */
+    bool checkLipschitz(const Iteration& iteration, const Eigen::MatrixXf &x_np1);
+    
+    /** \brief The smooth part of the objective function. */
+    std::function<float(const Eigen::MatrixXf&)> f_;
+    /** \brief Gradient of smooth part of the objective function (i.e. derivative). */
+    std::function<void(const Eigen::MatrixXf&, Eigen::MatrixXf&)> df_;
+    /** \brief Convex, nonsmooth part of objective. */
+    std::function<float(const Eigen::MatrixXf&)> g_;
+    /** \brief Proximal map for g, i.e. (I + alpha_n*g)^(-1). */
+    std::function<void(const Eigen::MatrixXf&, Eigen::MatrixXf&, float)> prox_g_;
+    /** \brief Callback, can e.g. be sued to monitor process using the provided information in the Iteration structure. */
+    std::function<void(const Iteration&)> callback_;
+    /** \brief Options.*/
+    Options options_;
+};
+
+// Implementation of different callbacks skipped ...
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::nmiPiano
+////////////////////////////////////////////////////////////////////////////////
+
+nmiPiano::nmiPiano(const std::function<float(const Eigen::MatrixXf&)> f, 
+        const std::function<void(const Eigen::MatrixXf&,Eigen::MatrixXf&)> df, 
+        std::function<float(const Eigen::MatrixXf &)> g,
+        const std::function<void(const Eigen::MatrixXf&, Eigen::MatrixXf&, float alpha)> prox_g,
+        nmiPiano::Options options,
+        const std::function<void(const nmiPiano::Iteration&)> callback)
+{
+    f_ = f;
+    df_ = df;
+    g_ = g;
+    prox_g_ = prox_g;
+    callback_ = callback;
+    options_ = options;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::~nmiPiano
+////////////////////////////////////////////////////////////////////////////////
+
+nmiPiano::~nmiPiano()
+{
+    // ...
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::optimize
+////////////////////////////////////////////////////////////////////////////////
+
+void nmiPiano::optimize(Eigen::MatrixXf &x_star, float &f_x_star)
+{
+    nmiPiano::Iteration iteration;
+    initialize(iteration);
+    
+    // Used for backtracking; referring to the next iterate x_np1:
+    Eigen::MatrixXf x_np1;
+    
+    for (unsigned int t = 0; t <= options_.max_iter; t++)
+    {
+        callback_(iteration);
+        
+        // Backtrack for the lipschitz constant L_n:
+        float L_nm1 = estimateL(iteration);
+        
+        // Fall back to last L_n in worst case.
+        if (std::isinf(L_nm1) || std::isnan(L_nm1) || options_.BOUND_L_N)
+        {
+            LOG_IF(INFO, !options_.BOUND_L_N) << "Could not get starting value for local Lipschitz constant, using L_nm1 instead (L_n = " << L_nm1 << ")";
+            L_nm1 = iteration.L_n;
+        }
+        
+        bool condition = false;
+        
+        int l = 0; // Backtracking steps.
+        do
+        {
+            iteration.L_n = std::pow(options_.eta,  l)*L_nm1;
+            
+            LOG_IF(FATAL, std::isinf(iteration.L_n) || std::isnan(iteration.L_n)) 
+                    << "Could not find the local Lipschitz constant - L_n = " 
+                    << iteration.L_n << std::endl;
+            LOG_IF(INFO, l > 0 && l%1000 == 0) 
+                    << "Having a hard time finding the local Lipschitz constant (L_n = " << iteration.L_n 
+                    << "; L_nm1 = " << L_nm1 << "; eta = " << options_.eta << "; l = " << l << ")" << std::endl;
+            
+            iteration.alpha_n = 2*(1 - options_.beta)/iteration.L_n;
+            LOG_IF(FATAL, iteration.alpha_n < 0)
+                    << "Cannot choose alpha_n - it does not exist: alpha_n = " 
+                    << iteration.alpha_n << " (L_n = " << iteration.L_n << ")!";
+            
+            
+            // We fixes L_n and alpha_n, so we can try an iteration to check the
+            // Lipschitz condition.
+            iterate(iteration, options_.beta, x_np1);
+            condition = checkLipschitz(iteration, x_np1);
+            
+            l++;
+        }
+        while (!condition); // Now alpha_n and L_n are set correctly.
+        
+        iteration.x_nm1 = iteration.x_n;
+        iteration.x_n = x_np1;
+        
+        // For iteration 0, this is done in initialize():
+        iteration.f_x_n = f_(iteration.x_n);
+        iteration.g_x_n = g_(iteration.x_n);
+        df_(iteration.x_n, iteration.df_x_n);
+        
+        LOG_IF(FATAL, iteration.x_n.rows() != iteration.df_x_n.rows() 
+                || iteration.x_n.cols() != iteration.df_x_n.cols()) << "Output dimensions of df invalid.";
+        
+        iteration.n++;
+        
+        // Termination criterion
+        if (iteration.Delta_n < options_.epsilon && options_.epsilon > 0)
+        {
+            break;
+        }
+    }
+    
+    x_star = iteration.x_n;
+    f_x_star = iteration.f_x_n;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::initialize
+////////////////////////////////////////////////////////////////////////////////
+
+void nmiPiano::initialize(nmiPiano::Iteration &iteration)
+{
+    iteration.n = 0;
+    iteration.x_n = options_.x_0;
+    iteration.x_nm1 = options_.x_0;
+    
+    iteration.g_x_n = g_(iteration.x_n);
+    iteration.f_x_n = f_(iteration.x_n);
+    df_(iteration.x_n, iteration.df_x_n);
+    
+    LOG_IF(FATAL, iteration.x_n.rows() != iteration.df_x_n.rows() 
+            || iteration.x_n.cols() != iteration.df_x_n.cols()) << "Output dimensions of df invalid.";
+    
+    iteration.alpha_n = 0.1f; // Required for estimateL!
+    
+    // Estimate L_n.
+    if (options_.L_0m1 > 0)
+    {
+        iteration.L_n = options_.L_0m1;
+    }
+    
+    // Estimate L and take max.
+    if (iteration.df_x_n.squaredNorm() > 0.001)
+    {
+        iteration.L_n = std::max(iteration.L_n, estimateL(iteration));
+    }
+    
+    iteration.alpha_n = 2*(1 - options_.beta)/iteration.L_n;
+}
+
+float nmiPiano::estimateL(const nmiPiano::Iteration &iteration)
+{
+    Eigen::MatrixXf x_tilde = iteration.x_n - iteration.alpha_n*iteration.df_x_n;
+
+    Eigen::MatrixXf df_x_tilde;
+    df_(x_tilde, df_x_tilde);
+
+    Eigen::MatrixXf delta_df_x = iteration.df_x_n - df_x_tilde;
+    Eigen::MatrixXf delta_x = iteration.x_n - x_tilde;
+    
+    float L_n = std::sqrt(delta_df_x.squaredNorm())/std::sqrt(delta_x.squaredNorm ());
+    if (options_.BOUND_L_N) {
+        L_n = std::max(L_n, options_.L_0m1);
+    }
+    
+    return L_n;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::iterate
+////////////////////////////////////////////////////////////////////////////////
+
+void nmiPiano::iterate(nmiPiano::Iteration& iteration, float beta, Eigen::MatrixXf& x_np1)
+{
+    // TODO: precompute x_n - x_nm1
+    iteration.Delta_x_n = - iteration.alpha_n*iteration.df_x_n + beta*(iteration.x_n - iteration.x_nm1);
+    
+    prox_g_(iteration.x_n + iteration.Delta_x_n, x_np1, iteration.alpha_n);
+    
+    LOG_IF(FATAL, iteration.x_n.rows() != x_np1.rows() 
+            || iteration.x_n.cols() != x_np1.cols()) << "Output dimensions of prox_g invalid.";
+    
+    Eigen::MatrixXf Delta_n = iteration.x_n - x_np1;
+    iteration.Delta_n = std::sqrt(Delta_n.squaredNorm());
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// nmiPiano::checkLipschitz
+////////////////////////////////////////////////////////////////////////////////
+
+bool nmiPiano::checkLipschitz(const nmiPiano::Iteration& iteration, const Eigen::MatrixXf& x_np1)
+{
+    float f_x_np1 = f_(x_np1);
+    
+    Eigen::MatrixXf residual = x_np1 - iteration.x_n;
+    Eigen::MatrixXf product = iteration.df_x_n.array()*residual.array();
+    float threshold = iteration.f_x_n + product.squaredNorm() + iteration.L_n/2.f * residual.squaredNorm();
+    
+    return (f_x_np1 <= threshold);
+}
+
+#endif	/* NMIPIANO_H */
+	\end{lstlisting}
+\end{document}
