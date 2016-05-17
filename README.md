@@ -16,6 +16,8 @@ Some additional repositories with LaTeX source code.
 * [Seminar: "Understanding Convolutional Neural Networks"](https://github.com/davidstutz/seminar-convolutional-neural-networks)
 * [Thesis: "Superpixel Segmentation using Depth Information"](https://github.com/davidstutz/bachelor-thesis-superpixels)
 * [Beamer: PowerPoint Themes for Beamer](https://bitbucket.org/marczellm/beamerports)
+* [Beamer: Theme Vertex](https://github.com/ibab/beamertheme-vertex)
+* [Beamer: Theme Manc](https://github.com/ibab/beamertheme-manc)
 
 ## Links
 
@@ -38,6 +40,7 @@ Some additional repositories with LaTeX source code.
 * [PGFPlots Gallery: Listing most examples from the documentation.](http://pgfplots.sourceforge.net/gallery.html)
 * [How to move axis labels?](http://tex.stackexchange.com/questions/97019/moving-axes-labels-in-pgfplots) Also [here](http://tex.stackexchange.com/questions/68403/axes-label-positions) or [here](http://tex.stackexchange.com/questions/142120/positioning-of-pgfplot-axis-labels).
 * [X mark.](http://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark)
+* [Boxed check mark.](http://tex.stackexchange.com/questions/16000/creating-boxed-check-mark)
 * [How to remove the References title?](http://tex.stackexchange.com/questions/132646/how-to-remove-the-references-title)
 * [How to insert eps graphics?](http://tex.stackexchange.com/questions/33896/insert-eps-graphics-with-graphicx-file-not-found)
 * [How to remove scientific notation (i.e. *10^(-x)) in pgfplots?](http://tex.stackexchange.com/questions/119887/remove-the-scientific-notation-which-is-unreasonable)
@@ -46,6 +49,20 @@ Some additional repositories with LaTeX source code.
 * [Matrix plot (similar to MatLab imagesc).](http://tex.stackexchange.com/questions/124276/matlab2tikz-imagesc-tikz-pgfplots-equivalent)
 * [How to plot multiple y axes?](http://tex.stackexchange.com/questions/27451/drawing-curves-and-multiple-y-axes-in-one-plot-with-pgfplots)
 * [How to draw shifted plots from the same data?](http://tex.stackexchange.com/questions/27451/drawing-curves-and-multiple-y-axes-in-one-plot-with-pgfplots)
+* [Ditto mark/"same as above" mark (1).](http://tex.stackexchange.com/questions/63236/same-as-above-representation) [(2)](http://tex.stackexchange.com/questions/53823/is-there-a-ditto-symbol)
+* [Why does label create whitespace after phantomsubcaption](http://tex.stackexchange.com/questions/161195/why-does-label-create-an-undesired-white-space-after-phantomsubcaption)
+* [How to start an enumerate at something other than 1?](http://tex.stackexchange.com/questions/142/how-can-i-make-an-enumerate-list-start-at-something-other-than-1)
+* [How to fix SIAM label errors?](http://tex.stackexchange.com/questions/86925/cant-find-a-siam-label-error)
+* [How to place equation numbers on the right/left?](http://tex.stackexchange.com/questions/32751/placing-equation-numbers-on-the-right)
+* [How to get a circle symbol?](http://tex.stackexchange.com/questions/8301/is-there-a-circle-symbol)
+* [How to get one vertically centered equation number for multi-line equations?](http://tex.stackexchange.com/questions/13396/how-to-get-only-one-vertically-centered-equation-number-in-align-environment-wit)
+* [How to get a centered plus-minus symbol?](http://tex.stackexchange.com/questions/23773/a-centered-plus-minus-symbol)
+* [How to disable the numbering of algorithms?](http://tex.stackexchange.com/questions/18325/disable-the-numbering-of-algorithms)
+* [How to get even smaller fonts?](http://tex.stackexchange.com/questions/57673/how-to-get-an-even-smaller-font)
+* [How to remove space between figures and captions?](http://tex.stackexchange.com/questions/94016/how-to-reduce-space-between-image-and-its-caption)
+* [How to reduce padding after figure?](http://tex.stackexchange.com/questions/23313/how-can-i-reduce-padding-after-figure)
+* [How to enable/force minor ticks for logarithmics axes?](http://tex.stackexchange.com/questions/207773/how-to-enable-minor-y-ticks-for-a-logarithmic-axis/207820#207820)
+* [How to customize/force axis-wide scientific notation multiplier?](http://tex.stackexchange.com/questions/29283/pgfplot-customize-the-axis-wide-scientific-notation-multiplier)
 
 ## License
 
