@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \iffalse %%%%
+%                                                                              %
+%  Copyright (c) 2013 - Michiel Helvensteijn   (www.mhelvens.net)              %
+%                                                                              %
+%  Please don't modify and distribute the LaTeX code of my personal CV.        %
+%  The cv.tex file and the rubric files are not released under an open         %
+%  source license. That's only the my-cv.cls and my-whenprinting.sty files.    %
+%                                                                              %
+%  I include these files merely as a usage example.                            %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \fi %%%%
+
+\documentclass[final,a4paper]{my-cv}
+
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CV Headers                                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\leftheader{
+	Address: & Niels Bohrweg 1    \\
+	         & 2333 CA, Leiden    \\
+	         & the Netherlands    \\
+	Office:  & 163                \\
+	Phone:   & +31(0)715277069    \\
+	E-mail:  & \pdfemail{mhelvens@liacs.nl}
+}
+
+\rightheader{
+	Gender:          & Male      \\
+	Nationality:     & Dutch     \\
+	Marital status:  & Single    \\
+	Birth-date:      & 26-9-1986 \\
+	Personal ID nr.: & 196775176 \\
+	Website:         & \pdfurl{www.mhelvens.net}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QR Code                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\photoscale{.1}
+\setlength{\photosep}{-9mm}
+\photo[r]{qr.png}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My Name                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\myname{Michiel Helvensteijn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}                                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makerubric{education}
+\makerubric{professional-experience}
+\makerubric{teaching-experience} \label{rubric:teachingexperience}
+\makerubric{publications}
+\makerubric{awards}
+\makerubric{international}
+\makerubric{refereed-for}
+\makerubric{academic-projects}
+\makerubric{academic-activities}
+\makerubric{courses}
+\makerubric{personal-projects}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

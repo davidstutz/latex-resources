@@ -1,0 +1,127 @@
+\documentclass[fontsize=11pt,parskip=half]{scrartcl}
+
+\usepackage[bottom=2.5cm,top=2.5cm,a4paper]{geometry}
+\usepackage[english]{babel}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{marvosym}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{datetime}
+\usepackage{advdate}
+
+\newdateformat{DateFormat}{\shortmonthname[\THEMONTH]~\twodigit{\THEDAY},~\THEYEAR}
+
+\usepackage{multirow}
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\arraybackslash}X}
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}
+
+\usepackage[draft=false, breaklinks=true, colorlinks=true, linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black, menucolor=black, runcolor=black, urlcolor=black]{hyperref}
+
+\usepackage{xargs}
+\usepackage{xspace}
+
+
+\usepackage{eurosym}
+\newcommand*{\amount}[1]{{\$}#1}
+\newcommand*{\amounteuro}[1]{#1{\text{\euro}}}
+
+\newcommand*{\MyCompanyName}{Name\xspace}
+\newcommand*{\MyCompanyStreet}{Straße Hausnummer\xspace}
+\newcommand*{\MyCompanyCity}{PLZ Stadt\xspace}
+\newcommand*{\MyCompanyTaxNumber}{Steuernummer\xspace}
+\newcommand*{\MyCompanyUstIdNumber}{Identifikationsnummer\xspace}
+
+\newcommand*{\MyMobilePhone}{Telefon\xspace}
+\newcommand*{\MyEmail}{Mail}
+
+\newcommand*{\TheirCompanyName}{Finanzamt\xspace}
+\newcommand*{\TheirCompanyStreet}{Straße Hausnummer\xspace}
+\newcommand*{\TheirCompanyCity}{PLZ Stadt\xspace}
+
+\newcommand*{\VSpace}{1.25em}
+\newcommand*{\Vspace}{0.5em}
+
+\usepackage{lastpage}
+\usepackage{scrpage2}
+\setkomafont{pageheadfoot}{\sffamily\footnotesize}
+\clearscrheadfoot
+\pagestyle{scrheadings}
+
+\begin{document}
+
+\DateFormat
+\sffamily
+
+\begin{minipage}[t]{\textwidth}
+	\raggedleft
+  \begin{tabular}{@{}r@{}}
+    \MyCompanyName\\
+    \MyCompanyStreet\\
+    \MyCompanyCity\\
+    \MyMobilePhone\\
+    \href{mailto:\MyEmail}{\MyEmail}\\
+  \end{tabular}
+\end{minipage}
+
+\vspace{\VSpace}
+
+\begin{minipage}[t]{.5\textwidth}
+	\vspace{0pt}
+  \begin{tabular}{@{}l@{}}
+    \TheirCompanyName\\
+    \TheirCompanyStreet\\
+    \TheirCompanyCity\\
+  \end{tabular}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+  \vspace{0pt}
+  \raggedleft
+  \begin{tabular}{@{}ll}
+    &\\
+    Steuernummer:   & \MyCompanyTaxNumber\\
+    Identifikationsnummer:  & \MyCompanyUstIdNumber\\
+  \end{tabular}
+\end{minipage}
+
+\vspace{\VSpace}
+
+\textbf{Formlose Einnahmenüberschussrechnung}
+
+\vspace{\VSpace}
+
+Sehr geehrte Damen und Herren,
+
+im Folgenden finden Sie eine formlose Einnahmenüberschussrechnung meiner selbstständigen Tätigkeit vom dd.mm.yyyy bis zum dd.mm.yyyy:
+
+\def\arraystretch{1.5}
+\begin{tabularx}{\textwidth}{@{}L{0.8}R{0.2}}
+  \textbf{Betriebseinnamen} &\\
+  \hline
+  Einnahmen & +1000,00\euro{}\\
+  \hline
+  \textbf{Summe Betriebseinnahmen} & +1000,00\euro{}\\
+  \hline\hline
+  \textbf{Betriebsausgaben} &\\
+  \hline
+  Ausgaben & -500,00\euro{}\\
+  \hline
+  \textbf{Summe Betriebsausgaben} & -500,00\euro{}\\
+  \hline\hline
+  \textbf{Gewinn / Verlust} & +500,00\euro{}\\
+\end{tabularx}
+
+\vspace{\Vspace}
+
+Mit freundlichen Grüßen,
+\vspace{\VSpace}
+
+Unterschrift
+\end{document}

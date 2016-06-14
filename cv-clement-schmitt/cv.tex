@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvtheme[blue]{classic} 
+\usepackage[utf8]{inputenc}  %Windows 
+
+%\usepackage[scale=0.975]{geometry}
+\usepackage[top=0.5cm, bottom=0.5cm, left=0.5cm, right=0.5cm]{geometry}
+\usepackage{graphicx}
+
+\firstname{Clément}
+\familyname{Schmitt}
+\title{Développeur Informatique}         
+\address{161 avenue des cevennes}{34400 Saint-Series}   
+\mobile{06.76.80.27.96}    
+%\phone{}                
+%\fax{Votre Fax}                      
+\email{clement.schmitt@etud.univ-montp2.fr}                              
+\extrainfo{}
+\photo[50pt]{photo.png} 
+\quote{Objectif: Intégrer une équipe au sein d'un projet novateur en tant que développeur informatique.}         
+\makeatletter
+\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+\makeatother
+
+\usepackage{multibib}
+\newcites{book,misc}{{Books},{Others}}
+
+\nopagenumbers{}                         
+\begin{document}
+\maketitle
+\section{Cursus}
+\cventry{2012--2015}{Master Spécialité IMAGINA}{Faculté des sciences}{Montpellier}{\textit{Bac+5}}{}
+\cventry{2011--2012}{Diplôme de licence 3}{Faculté des sciences}{Montpellier}{\textit{Bac+3}}{}
+\cventry{2008--2011}{Diplôme Universitaire Technologique Informatique}{IUT}{Montpellier}{\textit{Bac+2}}{} 
+\cventry{2008}{Baccalauréat S option Science de l'ingénieur}{Lycée Louis-Feuillade}{Lunel}{}{}
+
+\section{Compétences Informatiques}
+\cvline{Langages}{C\#, C/C++, JAVA, HTML/CSS, PHP, SQL, JavaScript, jQuery.}
+\cvline{Moteur jeu}{Unity 3D et utilisation de Fmod Studio (son). Utilisation de la librairie OpenGL.}
+\cvline{Web/mobile}{Framework symfony, librairie Hightcharts, jQuery Mobile, yournavigation.}
+
+\section{Projets}
+\cvline{Prototypes}{Projets en C\# (mini-jeux \& applications multiplateformes) avec Unity3D: TowerDefense, Configurateur d'espace, Spaceshooter; Integration de dispostif: Oculus Rift, Falcon, Kinect.}
+\cvline{Moteur 3D}{Réalisation de rendu 3D de scènes virtuelles à l’aide d’OpenGL.}
+
+\section{Expériences Professionnelles}
+\cventry{Avril-Août 2015}{Développeur Unity3D}{NaturalPad}{Montpellier}{}{Stage encadré par l'Université de Montpellier II. Réalisation d'un jeu sérieux pour les kinésithérapeutes, gestion de projet (méthode agile: Scrum)}
+\cventry{Juin-Août 2014}{Développeur Unity3D}{VISIMMO 3D}{Paris}{}{Réalisation d'un configurateur d'espace, et création d'applications multiplateformes: maquettes virtuelles/intéractives. (IOS, Android et Windows)}
+
+\cventry{Mars-Mai 2014}{Développeur Unity3D}{Pointcube}{Lyon}{}{Ajout de fonctionnalités dans l'interface 2D, correction de bugs, maintenance (intégration des modèles 3D) pour un configurateur d'extérieur/paysage.}
+
+\cventry{Juin-Août 2013}{Développeur Web}{Adwin}{La Grande Motte}{}{Stage volontaire au sein l'entreprise Adwin. Adapter l'outil de gestion aux appareils mobiles.}
+
+  \cventry{Février-Avril 2011}{Développeur Web}{PMSIpilot}{Lyon}{}{Stage encadré par l'IUT de Montpellier. Réalisation d'applications de gestion.}
+
+\section{Références}
+\cventry{}{Marc Poisson}{VISIMMO 3D}{Paris}{marc.poisson@v3d-corporate.com}{Co-fondateur et associé. Directeur des pôles V3D Immo, V3D Com, V3D Formation.}
+\cventry{}{David Thibault}{Adways}{Lyon}{dthibaul@gmail.com}{Développeur 3D.}
+
+\section{Expériences - Centres d'intérêts}
+\cvline{Langues}{Français(langue maternelle), Anglais(bon niveau), Allemand(niveau bac).}
+\cvline{Emplois saisonniers}{Voiture pilote chez Mediaco (Juillet/Août 2011-2012). Moniteur de voile (Juillet/Août 2007-2010).}
+\cvline{Evènements}{Montpellier In Game: Game Summit Conference (2012, 2013), participation à la  Retro Game Jam (2013).}
+\cvline{Permis}{Voiture, Moto et Bateau.}
+
+\end{document}
