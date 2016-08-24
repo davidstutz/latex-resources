@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \iffalse %%%%
+%                                                                              %
+%  Copyright (c) 2013 - Michiel Helvensteijn   (www.mhelvens.net)              %
+%                                                                              %
+%  This work may be distributed and/or modified under the conditions           %
+%  of the LaTeX Project Public License, either version 1.3 of this             %
+%  license or (at your option) any later version. The latest version           %
+%  of this license is in       http://www.latex-project.org/lppl.txt           %
+%  and version 1.3 or later is part of all distributions of LaTeX              %
+%  version 2005/12/01 or later.                                                %
+%                                                                              %
+%  This work has the LPPL maintenance status `author-maintained'.              %
+%                                                                              %
+%  The Current Maintainer of this work is Michiel Helvensteijn.                %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \fi %%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meta                                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-whenprinting}[2012/10/28
+	Special handling of elements on a printed page]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{calc}
+\RequirePackage{color}
+\RequirePackage{xparse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creating the PDF Layers                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% I did not write this myself, just hacked it a bit. The original code
+% came from http://tex.stackexchange.com/a/74224/14886
+%
+% I'll probably soon replace this code with the p-ocg package.
+%
+
+
+%%% Create optional content group dictionary for screen-only content
+%
+\immediate\pdfobj{%
+<<%
+  /Type/OCG%
+  /Name(Printing)%
+  /Usage<<%
+    /Print<<%
+      /PrintState/ON%
+     >>%
+    /View<<%
+      /ViewState/OFF%
+    >>%
+  >>%
+>>}
+\xdef\ocg@printonly{\the\pdflastobj\space 0 R}
+
+%%% Add OCG to resource dictionary
+%
+\immediate\pdfobj{<</OCprintonly\space\ocg@printonly\space>>}
+\xdef\ocg@mapping{\the\pdflastobj\space 0 R}%
+\begingroup\edef\x{\endgroup
+   \pdfpageresources{%
+      \the\pdfpageresources%
+      /Properties \ocg@mapping%
+   }%
+}\x
+
+%%% List of all optional content groups
+%
+\newcount\ocg@listocgs
+\pdfobj reserveobjnum
+\ocg@listocgs=\pdflastobj
+
+%%% Create optional content usage dictionary
+%
+\pdfcatalog{%
+/OCProperties<<%
+  /OCGs \the\ocg@listocgs\space0 R\space%
+  /D<<%
+    /Order [\ocg@printonly\space]% if this line is removed, the OCG isn't shown in the layer toolbar of the viewer
+    /OFF [\ocg@printonly\space]%
+    /AS[%
+      <<%
+        /Event/View%
+        /OCGs \the\ocg@listocgs\space0 R\space%
+        /Category[/View]%
+      >>%
+      <<%
+        /Event/Print%
+        /OCGs \the\ocg@listocgs\space0 R\space%
+        /Category[/Print]%
+      >>%
+      <<%
+        /Event/Export%
+        /OCGs \the\ocg@listocgs\space0 R\space%
+        /Category[/Print]%
+      >>%
+    ]%
+  >>%
+>>}
+
+%%% List all OCGs
+%
+\AtEndDocument{%
+   \immediate\pdfobj useobjnum \ocg@listocgs {%
+      [\ocg@printonly\space]%
+   }%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Commands                                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Only typeset this content when printing, not when viewing on screen
+%
+\NewDocumentCommand{\printonly}{+m}{%
+	\pdfliteral{/OC /OCprintonly\space BDC}%
+		#1%
+	\pdfliteral{EMC}%
+}
+
+\newlength{\wp@lenOriginal}
+\newlength{\wp@lenCover}
+
+%%% Only typeset this content when viewing on screen, not when printing.
+%%% This command is designed to show the content even when using a
+%%% viewer that doesn't support these PDF layers. Those viewers
+%%% will also feed the content to the printer, but that's better than
+%%% *not* having it on the screen.
+%
+\NewDocumentCommand{\coverwhenprinting}{om}{%
+	#2%
+	\printonly{{% local scope
+		\setlength{\fboxsep}{0pt}%
+		\setlength{\wp@lenOriginal}{\widthof{#2}}%
+		\hspace{-\wp@lenOriginal}%
+		\colorbox{white}{%
+			\phantom{#2}%
+			\IfValueT{#1}{{%
+				\hspace{-\wp@lenOriginal}%
+				\setlength{\wp@lenCover}{\wp@lenOriginal-\widthof{#1}}%
+				#1%
+				\hspace{\wp@lenCover}%
+			}}%
+		}%
+	}}%
+}

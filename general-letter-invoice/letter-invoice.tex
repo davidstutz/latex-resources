@@ -1,0 +1,138 @@
+\documentclass[fontsize=11pt,parskip=half]{scrartcl}
+
+\usepackage[bottom=2.75cm,top=2.75cm,a4paper]{geometry}
+\usepackage[english]{babel}
+
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{marvosym}
+
+\usepackage{graphicx}
+\usepackage{datetime}
+\usepackage{advdate}
+
+\newdateformat{DateFormat}{\shortmonthname[\THEMONTH]~\twodigit{\THEDAY},~\THEYEAR}
+
+\usepackage{multirow}
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\arraybackslash}X}
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}
+
+\usepackage[draft=false, breaklinks=true, colorlinks=true, linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black, menucolor=black, runcolor=black, urlcolor=black]{hyperref}
+
+\usepackage{xargs}
+\usepackage{xspace}
+\xspaceaddexceptions{]\}}
+
+\newcommand*{\amount}[1]{{\$}#1}
+\newcommand*{\amounteuro}[1]{#1{\text{\euro}}}
+
+\newcommand*{\MyCompanyName}{[Name]\xspace}
+
+\newcommand*{\MyCompanyStreet}{[Adress 1]\xspace}
+\newcommand*{\MyCompanyCity}{[Adress 2]\xspace}
+\newcommand*{\MyCompanyCountry}{[Adress 3]\xspace}
+\newcommand*{\MyCompanyUstIdNumber}{[Tax Number]\xspace}
+
+\newcommand*{\MySignatureName}{[Signature]\xspace} % may coincide with company name
+\newcommand*{\MyMobilePhone}{[Phone]\xspace}
+\newcommand*{\MyEmail}{[Mail]}
+\newcommand*{\MyURL}{[Website]}
+
+\newcommand*{\MyAccountHolder}{[Account holder]\xspace}
+\newcommand*{\MyIBAN}{[IBAN]\xspace}
+\newcommand*{\MyBIC}{[BIC]\xspace}
+\newcommand*{\MyBank}{[Bank name]\xspace}
+
+\newcommand*{\TheirCompanyName}{[Company]\xspace}
+\newcommand*{\TheirCompanyStreet}{[Company adress 1]\xspace}
+\newcommand*{\TheirCompanyCity}{[Company adress 2]\xspace}
+\newcommand*{\TheirCompanyCountry}{[Company adress 3]\xspace}
+
+\newcommand*{\InvoiceNumber}{[Invoice number]\xspace}
+\newcommand*{\InvoiceDate}{[Invoice date]\xspace}
+\newcommand*{\FromDate}{[Start]\xspace}
+\newcommand*{\UntilDate}{[End]\xspace} 
+\newcommand*{\DeadlineDate}{[Deadline]\xspace}
+
+\newcommand*{\VSpace}{1em}
+\newcommand*{\Vspace}{0.25em}
+
+\begin{document}
+
+	\DateFormat
+	\sffamily
+
+	\begin{minipage}[t]{\textwidth}
+		\raggedleft
+		\begin{tabular}{@{}r@{}}
+			\MyCompanyName\\
+			\MyCompanyStreet\\
+			\MyCompanyCity\\
+			\MyCompanyCountry\\
+			\MyMobilePhone\\
+			\href{mailto:\MyEmail}{\MyEmail}\\
+			\href{\MyURL}{\MyURL}
+		\end{tabular}
+	\end{minipage}
+	\vspace{\VSpace}
+
+	\begin{minipage}[t]{.5\textwidth}
+		\vspace{0pt}
+  		\begin{tabular}{@{}l@{}}
+   			Invoice to:\\
+    			\TheirCompanyName\\
+    			\TheirCompanyStreet\\
+    			\TheirCompanyCity\\
+    			\TheirCompanyCountry\\
+  		\end{tabular}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+  		\vspace{0pt}
+  		\raggedleft
+  		\begin{tabular}{@{}ll}
+    			&\\
+    			Invoice number: & \InvoiceNumber\\
+    			Invoice date:   & \InvoiceDate\\
+    			Tax-id number:  & \MyCompanyUstIdNumber\\
+  		\end{tabular}
+	\end{minipage}
+	\vspace{\VSpace}
+
+	\textbf{Invoice}
+	\vspace{\VSpace}
+
+	Dear Director of Finance,
+
+	For my services from \FromDate until \UntilDate I allow myself to charge the following positions:
+
+	\def\arraystretch{1.5}
+	\begin{tabularx}{\textwidth}{@{}L{0.8}C{0.1}R{0.1}}
+  		\textbf{Services} & Hours & Amount\\
+  		\hline
+  		Example & 1 & \amount{100}\\
+  		\hline
+  		\textbf{Total} && \amount{100}\\
+	\end{tabularx}
+	\vspace{\Vspace}
+
+	Please transfer the specified amount until \DeadlineDate to:
+	\vspace{\Vspace}
+
+	\def\arraystretch{1.0}
+	\begin{tabularx}{\textwidth}{@{}ll}
+    		Account holder: & \MyAccountHolder \\
+    		IBAN: & \MyIBAN\\
+   		BIC: & \MyBIC\\
+    		Bank: & \MyBank\\
+	\end{tabularx}
+	\vspace{\Vspace}
+
+	Best regards,
+	\vspace{\VSpace}
+
+	\MySignatureName
+\end{document}

@@ -1,0 +1,209 @@
+% resume.tex
+%
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\documentclass[letterpaper,11pt]{article}
+
+%-----------------------------------------------------------
+%Margin setup
+
+\setlength{\voffset}{0.1in}
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{11in}
+\setlength{\textheight}{9.5in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\textwidth}{7in}
+\setlength{\topskip}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+%-----------------------------------------------------------
+%\usepackage{fullpage}
+\usepackage{shading}
+%\textheight=9.0in
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{{\large \parashade[.9]{sharpcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
+\newcommand{\ressubheading}[4]{
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+\end{tabular*}\vspace{-6pt}}
+%-----------------------------------------------------------
+
+
+\begin{document}
+
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+\textbf{\Large David Grant}  & 604-555-5555\\
+\#666-1234 Main Street &  davidgrant-at-gmail.com \\
+Vancouver, BC A1B 2C3 & http://www.davidgrant.ca\\
+\end{tabular*}
+\\
+
+\vspace{0.1in}
+
+\resheading{Education}
+\begin{itemize}
+\item
+	\ressubheading{University of Waterloo}{Waterloo, ON}{M.A.Sc., Electrical Engineering (Grades: 80\%)}{Sep. 2002 - May. 2004}
+	\begin{itemize}
+		\resitem{Relevant courses: Semiconductor Devices: Physics and Modelling, Digital VLSI Design, Amorphous Silicon, Mixed-signal modelling with VHDL-AMS}
+	\end{itemize}
+
+\item
+	\ressubheading{University of British Columbia}{Vancouver, BC}{B.A.Sc. Engineering Physics (Electrical Engineering Option)}{1997-2002}
+	\begin{itemize}
+		\resitem{Graduated with Honors, \textbf{86\%} cumulative average, and Dean's Honour List each year.}
+		\resitem{Relevant courses: Solid-state physics, Quantum Mechanics, Semiconductor Devices (BJT, HBT, FET, analog IC layout and simulation), Digital Systems Design using VHDL, Waveguides and Photonics, RF, Analog/Digital Communications Systems, Analog Hardware Design}
+	\end{itemize}
+
+\end{itemize}
+
+\resheading{Work Experience}
+\begin{itemize}
+\item
+	\ressubheading{D-Wave Systems}{Vancouver, BC}{Junior Research Scientist and Software Engineer}{May 2002 - Aug. 2002}
+	\begin{itemize}
+		\resitem{Implemented quantum computing algorithms in a JAVA quantum computer simulator, such as quantum Fourier transform, and the quantum eigenvalue finding algorithm.}
+		\resitem{Implemented algorithms for generating Hamiltonians for small molecules.}
+	\end{itemize}
+
+\item 
+	\ressubheading{EXI Wireless}{Richmond, BC}{Bluetooth Group Software and Hardware Engineer}{May 2001 - Aug. 2001}
+	\begin{itemize}
+		%\resitem{Part of a group working to produce a Bluetooth-LAN Access Point and other OEM products.}
+		\resitem{Wrote firmware and PC software tools to implement an embedded FLASH/EPROM memory serial programmer for an Atmel Thumb AT91FR4081 processor.}
+		%\resitem{Wrote documentation for firmware programmers describing the hardware.}
+		\resitem{Tested, debugged, and fixed Bluetooth development boards with hardware problems.}
+		\resitem{Programmed an embedded serial command interface and memory peak/poke utilities.}
+		\resitem{Integrated EXI's patient monitoring system with Bluetooth wireless networking technology.}
+	\end{itemize}
+
+\item
+	\ressubheading{EXI Wireless}{Richmond, BC}{RFID Tags Group Hardware Engineer}{Sep. 2000 - Dec. 2000}
+	\begin{itemize}
+		\resitem{Managed a Bluetooth daughter-board project; created schematics and PCBs using OrCAD.}
+		\resitem{Created an embedded web server demo using a DOS Stamp single-board computer.}
+		\resitem{Designed and implemented an automated RFID Tag Tester.  Created schematics and PCB using OrCAD, and programmed GPIB and serial port communication routines in C.}
+		\resitem{Tested RF ID tags using RF equipment (spectrum analyzers, attenuators, TEM cells, antennae).}
+		\resitem{Programmed GPIB data acquisition routines in C for an RFID RF Immunity testing program.}
+	\end{itemize}
+
+\item
+	\ressubheading{Dr. Andre Marziali's Biophysics Lab}{UBC}{NSERC Research Enginner}{May 2000 - Aug. 2000}
+	\begin{itemize}
+		\resitem{Developed novel technology for thermal cycling of DNA samples in sub-micro litre volumes.}
+		\resitem{Designed mechanical and electrical components for a 384-sample prototype system.}
+		\resitem{Wrote control software/drivers in LabVIEW for the gantry robot and plate stacker.}
+		\resitem{Built three prototypes for a 384 hole aluminium thermal cycling block.}
+		%\resitem{Sketched components using GenericCAD and AutoCAD 2000 Mechanical Desktop software.}
+		%\resitem{Tested and debugged major system components including a high-precision pipetting tool.}
+	\end{itemize}
+
+\item
+	\ressubheading{Nortel Networks, OPTera Solutions, Photonic Group}{Kanata, ON}{Research Engineer}{Jan. 1999 - Apr. 1999}
+	\begin{itemize}
+		\resitem{Designed a new method of measuring thermal and adiabatic chirp in 1.25/2.5 GHz Lasers.  This new method has now been patented by my supervisor Kihong Kim (U.S. patent \# 6,178,001).}
+		\resitem{Tested and characterized laser diodes, DWDM filters, and Mach-Zehnder Interferometers}
+		\resitem{Programmed automated DC Laser Testing and Mach-Zehnder Interferometer data acquisition and analysis programs using LabVIEW (over GPIB).}
+		%\resitem{Designed a solderless laser diode clamp, for clamping diode packages to PCB without soldering.}
+		\resitem{Constructed Mach-Zehnder Interferometers using bare fibre spliced together, and characterized them.}
+		\resitem{Was responsible for all lab testing routines involving lasers, filters, and interferometers.}
+	\end{itemize}
+\end{itemize}
+
+\resheading{School Projects}
+\begin{itemize}
+\item
+	\ressubheading{SpectraVu Medical}{Vancouver, BC}{Engineering Physics Project Lab, APSC 479}{Sep. 2001 - Apr. 2002}
+	\begin{itemize}
+		\resitem{	Designed and implemented a digital video processing system for lung cancer imaging,}
+		\resitem{Selected components (video DAC, ADC) and created schematics in OrCAD.}
+		\resitem{Implemented image processing functions and data control blocks in VHDL using an Altera ACEK1K FPGA.  Learned VHDL and MAX+PlusII development tool on my own time.}
+		%\resitem{Simulated the various blocks using MAX+PlusII simulation tool.}
+	\end{itemize}
+
+\item
+	\ressubheading{Analog Circuit Design and MOSFET Device Design}{}{Semiconductor Devices Course, EECE 480}{Sep. 2001 - Apr. 2002}
+	\begin{itemize}
+		\resitem{Designed a high-frequency cascode amplifier, simulated it using HSPICE, and did layout using Cadence Virtuoso Layout software.  Manufactured on a Gennum GA911 chip.}
+		\resitem{Designed and simulated a deep sub-micron (~70 nm channel) MOSFET using MEDICI.}
+	\end{itemize}
+
+\item
+	\ressubheading{Low-cost Optoelectronic Localizer}{}{Engineering Physics Project Lab, APSC 459}{Sep. 2000 - Apr. 2001}
+	\begin{itemize}
+		\resitem{Worked on the LoCOL (Low-cost Optoelectronic Localizer) project in a team of three.}
+		\resitem{Programmed a PIC microcontroller to control the timing of the three CCD cameras.}
+		\resitem{Designed power supply and re-built electrical circuits for the CCD sensors, processors.}
+		%\resitem{Helped build an enclosure for optics and electronics in the Student Machine Shop.}
+	\end{itemize}
+
+\item
+	\ressubheading{Other Projects}{}{UBC and at home}{1999-2000}
+	\begin{itemize}
+		\resitem{Designed and debugged a digital voltmeter using a Motorola 68000 processor.}
+		\resitem{Added features to the digital voltmeter including scrolling text, and a warning buzzer, which won 3rd place in the IEEE Voltmeter Competition.}
+		\resitem{Constructed and debugged a digital clock on a PCB for PHYS 159.}
+		\resitem{Built an AM short-wave radio at home, on a 2" $\times$ 2.5'' piece of breadboard.}
+	\end{itemize}
+
+\end{itemize}
+
+\resheading{Awards}
+	\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+		Faculty of Engineering Scholarship (\$2,300) & 2002\\
+		Ontario Graduate Scholarship (OGS) (\$15,000) & 2002-2003\\
+		Industrial NSERC Undergraduate Research Award (\$4500) & 2002\\
+		UBC OSI (Outstanding Student Initiative) Entrance Scholarship (\$10,000) & 1997-2002\\
+		Engineering Physics 50th Anniversary Scholarship (\$600) & 2001\\
+		Anne. M. Mack Scholarship (\$500) & 2001\\
+		NSERC Undergraduate Student Research Award (\$4000) & 2000\\
+		United Food and Commercial Workers Union, Local 1518 Scholarship (\$1000) & 1998\\
+		Top Senior Math Student Award & 1997\\
+		B.C. Provincial Exam Scholarship (\$1000) & 1997\\
+		B.C. Government Passport to Education (\$800) & 1997\\
+		James Whiteside Elementary Parent Advisory Committee Award (\$200) & 1997\\
+\end{tabular*}
+
+\resheading{Skills}
+
+\begin{description}
+\item[Languages:]
+C/C++, \LaTeX, Java, SPICE, MEDICI (TCAD), VHDL/VHDL-AMS, 68000 and PIC Assembly
+\item[Operating Systems:]
+Linux (Debian), Solaris, UNIX, MacOS X, Windows 95/98/NT/2000/XP
+\item[Applications:]
+Mathematica, MatLab, GNU Octave, LabVIEW, Cadence, \LaTeX, OpenOffice, MS Office XP, OrCAD schematic capture \& PCB layout, Altera MAX+PlusII VHDL FPGA Design
+\item[Lab Skils:]
+Digital/Analog Scopes, Spectrum Analyzer, Function Generators
+\item[Fab Skills:]
+PECVD and sputtering deposition, UV lithography, wet etch, dry etch (RIE), mask aligner, step profiler, ellipsometry, infrared spectroscopy, x-ray diffraction
+\item[Miscellaneous:]
+software configuration management, strong verbal and written communication skills, excellent troubleshooting and debugging skills, exceptional problem solving skills, good teams skills
+\end{description}
+
+\resheading{Interests}
+
+\begin{description}
+\item[Academic:] Solid state devices,  nanotechnology, photonics, microcontrollers, RF/wireless
+\item[Sports:] Playing hockey and swimming
+\item[Computers:] Currently maintain two official Debian Linux packages, Mozilla beta tester, enjoy using and learning Linux systems, Building electronics projects at home, and writing JAVA software
+\item[Musical:] Playing guitar and piano
+\item[Membership:] Student member of IEEE since 1998, Materials Research Society member since 2002
+\item[Other:] Reading novels
+\end{description}
+
+\end{document}
