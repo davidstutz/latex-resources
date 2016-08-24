@@ -1,0 +1,37 @@
+% SIAM Article Template
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{algorithm}[h]
+	\caption{iPiano.}
+	\label{alg:ipiano}
+	\begin{algorithmic}[1]
+		\STATE{choose $c_1, c_2 > 0$ // With $c_1$, $c_2$ close to zero.}
+		\STATE{choose $L_{-1} > 0$}
+		\STATE{choose $\eta > 1$}
+		\STATE{choose $x^{(0)}$}
+		\STATE{$x^{(-1)} := x^{(0)}$}
+		\STATE{// Fixed number of iterations; or $\epsilon$-criterion.}
+		\FOR{$n = 0, \ldots$}
+			\STATE{$L_n := \frac{1}{\eta} L_{n - 1}$ // Initial estimate of $L_n$ is $L_{n-1}$}
+			\REPEAT
+				\STATE{$L_n := \eta L_n$ // Next estimate of $L_n$.}
+				\REPEAT
+					\STATE{choose $\alpha_n \geq c_1$}\label{line:ipiano-alpha}
+					\STATE{choose $\beta_n \geq 0$}\label{line:ipiano-beta}
+					\STATE{$\delta_n := \frac{1}{\alpha_n} - \frac{L_n}{2} - \frac{\beta_n}{2\alpha_n}$}
+					\STATE{$\gamma_n := \frac{1}{\alpha_n} - \frac{L_n}{2} - \frac{\beta_n}{\alpha_n}$}
+				\UNTIL{$\delta_n \geq \gamma_n \geq c_2$}
+				\STATE{$\tilde{x}^{(n + 1)} = \text{prox}_{\alpha_n g} \left(x^{(n)} - \alpha_n \nabla f(x^{(n)}) + \beta_n (x^{(n)} - x^{(n - 1)})\right)$ // Re-estimate $\tilde{x}^{(n + 1)}$.}
+			\UNTIL{Lipschitz condition is satisifed for $\tilde{x}^{(n + 1)}$}
+			\STATE{$x^{(n + 1)} := \tilde{x}^{(n + 1)}$}
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+\end{document}
