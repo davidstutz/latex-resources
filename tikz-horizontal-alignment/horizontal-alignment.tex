@@ -1,0 +1,18 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+\begin{tikzpicture}[align=center]
+  \matrix[matrix of nodes,
+    nodes={rectangle, draw},
+    column 1/.style={anchor=base}, % base east for align right; base west for align left
+  ]{
+    col1\\
+    col111111111\\
+    col1111\\
+  };
+
+\end{tikzpicture}
+\end{document}

@@ -64,6 +64,8 @@ Some additional repositories with LaTeX source code.
 * [How to reduce padding after figure?](http://tex.stackexchange.com/questions/23313/how-can-i-reduce-padding-after-figure)
 * [How to enable/force minor ticks for logarithmics axes?](http://tex.stackexchange.com/questions/207773/how-to-enable-minor-y-ticks-for-a-logarithmic-axis/207820#207820)
 * [How to customize/force axis-wide scientific notation multiplier?](http://tex.stackexchange.com/questions/29283/pgfplot-customize-the-axis-wide-scientific-notation-multiplier)
+* [How to enable shell-escale in TeXworks?](http://tex.stackexchange.com/questions/82699/how-to-enable-shell-escape-in-texworks)
+* [How to horizontally align TikZ nodes of different sizes?](http://tex.stackexchange.com/questions/111986/horizontal-alignment-of-text-nodes-of-varying-length-in-tikz-matrix-like-in-tex)
 
 ## License
 
