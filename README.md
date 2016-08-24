@@ -18,6 +18,7 @@ Some additional repositories with LaTeX source code.
 * [Beamer: PowerPoint Themes for Beamer](https://bitbucket.org/marczellm/beamerports)
 * [Beamer: Theme Vertex](https://github.com/ibab/beamertheme-vertex)
 * [Beamer: Theme Manc](https://github.com/ibab/beamertheme-manc)
+* [BaPoster](http://www.brian-amberg.de/uni/poster/)
 
 ## Links
 
