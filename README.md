@@ -66,6 +66,7 @@ Some additional repositories with LaTeX source code.
 * [How to customize/force axis-wide scientific notation multiplier?](http://tex.stackexchange.com/questions/29283/pgfplot-customize-the-axis-wide-scientific-notation-multiplier)
 * [How to enable shell-escale in TeXworks?](http://tex.stackexchange.com/questions/82699/how-to-enable-shell-escape-in-texworks)
 * [How to horizontally align TikZ nodes of different sizes?](http://tex.stackexchange.com/questions/111986/horizontal-alignment-of-text-nodes-of-varying-length-in-tikz-matrix-like-in-tex)
+* [How to define the background color in mdframed?](http://tex.stackexchange.com/questions/191572/beginframed-with-background-color)
 
 ## License
 
