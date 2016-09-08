@@ -69,6 +69,10 @@ Some additional repositories with LaTeX source code.
 * [How to define the background color in mdframed?](http://tex.stackexchange.com/questions/191572/beginframed-with-background-color)
 * [How to do a proper liminf and limsup?](http://tex.stackexchange.com/questions/35781/is-it-limsup-or-lim-sup)
 * [How to do a proper argmax and argmin?](http://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax)
+* [How to create page-width tables?](http://tex.stackexchange.com/questions/10535/how-to-force-a-table-into-page-width)
+* [How to create multi-columns in tables?](http://texblog.org/2012/12/21/multi-column-and-multi-row-cells-in-latex-tables/)
+* [How to create multi-rows in tables?](http://tex.stackexchange.com/questions/73283/how-to-use-multirow)
+* [How to set row and column padding in tables?](http://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables)
 
 ## License
 

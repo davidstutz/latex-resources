@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{hhline}
+
+\begin{document}
+	\begin{table}
+		\centering
+		\begin{tabular}{| c c c |}
+			\hline
+			\textbf{Column A} & \textbf{Column B} & \textbf{column C}\\
+			\multirow{2}{*}{Multirow} & \multicolumn{2}{c |}{Multicolumn}\\
+			& Cell & Cell\\
+			\hline
+		\end{tabular}
+		\caption{Multirows and multicolumns.}
+	\end{table}
+	\begin{table}
+		\centering
+		\begin{tabular}{|@{} c@{}| c@{}| c@{} |}
+			\hline
+			\textbf{Column A} & \textbf{Column B} & \textbf{column C}\\
+			Cell & Cell & Cell\\
+			\hline
+		\end{tabular}
+		\caption{Zero padding.}
+	\end{table}
+	{\renewcommand{\arraystretch}{2}
+	\begin{table}
+		\centering
+		\begin{tabular}{| c | c | c |}
+			\hline
+			\textbf{Column A} & \textbf{Column B} & \textbf{column C}\\
+			Cell & Cell & Cell\\
+			\hline
+		\end{tabular}
+		\caption{Zero padding.}
+	\end{table}
+	}
+	\begin{table}
+		\centering
+		\begin{tabular}{r || c | c | c}
+			& \textbf{Column A} & \textbf{Column B} & \textbf{column C}\\
+			\hhline{=::===}
+			\textbf{Row 1} & Cell & Cell & Cell\\
+			\hhline{-||---}
+			\textbf{Row 2} & Cell & Cell & Cell\\
+		\end{tabular}
+		\caption{Zero padding.}
+	\end{table}
+	\begin{table}
+		\begin{tabularx}{\textwidth}{|X|l|}
+			\hline
+			\textbf{Column A} & \textbf{Column B}\\
+			Long, very long cell -- still not over ... & Shorter cell\\
+			\hline
+		\end{tabularx}
+		\caption{Page-width table.}
+	\end{table}
+\end{document}
