@@ -73,6 +73,7 @@ Some additional repositories with LaTeX source code.
 * [How to create multi-columns in tables?](http://texblog.org/2012/12/21/multi-column-and-multi-row-cells-in-latex-tables/)
 * [How to create multi-rows in tables?](http://tex.stackexchange.com/questions/73283/how-to-use-multirow)
 * [How to set row and column padding in tables?](http://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables)
+* [How to avoid "TeX capacity exceeded" in MikTeX?](https://github.com/matlab2tikz/matlab2tikz/wiki/TeX-capacity-exceeded,-sorry)
 
 ## License
 
