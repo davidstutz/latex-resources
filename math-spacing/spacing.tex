@@ -1,0 +1,47 @@
+\documentclass[11pt,4apaper]{article}
+
+\usepackage{tabularx}
+
+% see http://tex.stackexchange.com/questions/74353/what-commands-are-there-for-horizontal-spacing
+\begin{document}
+
+\noindent\begin{tabularx}{\textwidth}{| l | X |}
+	\hline
+	\verb|a\,b| & a\,b \\
+	\verb|$a\,b$| & $a\,b$ \\
+	\verb|a\thinspace b| & a\thinspace b \\
+	\verb|$a\thinspace b$| & $a\thinspace b$ \\
+	\verb|$a\!b$| & $a\!b$ \\
+	\verb|$a\mkern-\thinmuskip b$| & $a\mkern-\thinmuskip b$ \\
+	\verb|$a\>b$| & $a\>b$ \\
+	\verb|$a\mkern\medmuskip b$| & $a\mkern\medmuskip b$ \\
+	\verb|$a\;b$| & $a\;b$ \\
+	\verb|$a\mkern\thickmuskip b$| & $a\mkern\thickmuskip b$ \\
+	\verb|$a\:b$| & $a\:b$ \\
+	\verb|$a\mkern\medmuskip b$| & $a\mkern\medmuskip b$ \\
+	\verb|a\enspace b| & a\enspace b \\
+	\verb|$a\enspace b$| & $a\enspace b$ \\
+	\verb|a\quad b| & a\quad b \\
+	\verb|$a\quad b$| & $a\quad b$ \\
+	\verb|a\qquad b| & a\qquad b \\
+	\verb|$a\qquad b$| & $a\qquad b$ \\
+	\verb|a\hskip 1em b| & a\hskip 1em b \\
+	\verb|$a\hskip 1em b$| & $a\hskip 1em b$ \\
+	\verb|a\kern 1pc b| & a\kern 1pc b \\
+	\verb|$a\kern 1pc b$| & $a\kern 1pc b$ \\
+	\verb|a\hspace{35pt}b| & a\hspace{35pt}b \\
+	\verb|$a\hspace{35pt}b$| & $a\hspace{35pt}b$ \\
+	\verb|axyzb| & axyzb \\
+	\verb|a\hphantom{xyz}b| & a\hphantom{xyz}b \\
+	\verb|$axyzb$| & $axyzb$ \\
+	\verb|$a\hphantom{xyz}b$| & $a\hphantom{xyz}b$ \\
+	\verb|a\ b| & a\ b \\
+	\verb|$a\ b$| & $a\ b$ \\
+	\verb|a~b| & a~b \\
+	\verb|$a~b$| & $a~b$ \\
+	\verb|a\hfill b| & a\hfill b \\
+	\verb|$a\hfill b$| & $a\hfill b$\\
+	\hline
+\end{tabularx}
+
+\end{document}
