@@ -1,0 +1,35 @@
+\documentclass[%
+	backaddress=off,
+	fromalign=locationright,
+	fromname,
+	fromaddress,
+	fromphone,
+	fromemail,
+]{scrlttr2}
+
+\usepackage{lipsum}
+
+\setkomavar{fromname}{Sender Name}
+\setkomavar{fromaddress}{Sender Street\\Sender City}
+\setkomavar{fromphone}{Sender Phone}
+\setkomavar{fromemail}{Sender E-Mail}
+
+\begin{document}
+\begin{letter}{%
+	Recipient Name\\
+	Recipient Street\\
+	Recipient City
+}
+\opening{Dear Sir or Madam,}
+
+
+\lipsum[1]
+
+\setkomavar{subject}{Subject}
+\closing{Best Regards,}
+
+\ps PS: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum, dolor non sollicitudin viverra, odio tellus pretium lectus, sed vestibulum libero lorem a tellus. Pellentesque.
+\encl{Wikipedia.}
+
+\end{letter}
+\end{document}
