@@ -1,0 +1,30 @@
+\documentclass{article}
+
+% http://tex.stackexchange.com/questions/100731/omit-hanging-indent-in-bibtex
+\usepackage{etoolbox}
+
+
+\begin{document}
+\nocite{*}
+\bibliographystyle{alpha}
+\begin{thebibliography}{1}
+	\bibitem{gcpr}
+	D. Stutz.
+	\emph{Superpixel Segmentation: An Evaluation}.
+	German Conference on Pattern Recognition, 2015.
+\end{thebibliography}
+
+% !
+\patchcmd{\thebibliography}
+  {\advance\leftmargin\labelsep}
+  {\leftmargin=0pt\itemindent=\labelwidth\advance\itemindent\labelsep}
+  {}{}
+\bibliographystyle{alpha}
+\begin{thebibliography}{1}
+	\bibitem{gcpr}
+	D. Stutz.
+	\emph{Superpixel Segmentation: An Evaluation}.
+	German Conference on Pattern Recognition, 2015.
+\end{thebibliography}
+
+\end{document}

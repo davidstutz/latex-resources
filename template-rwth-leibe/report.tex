@@ -1,0 +1,79 @@
+%    Template for seminar reports
+% Seminar Current Topics in Computer Vision and Machine Learning
+% Summer Semester 2015
+% Computer Vision Group, Visual Computing Institute, RWTH Aachen
+\documentclass[twoside,a4paper,article]{combine}
+
+% =========================================================================
+\usepackage[latin1]{inputenc}
+\usepackage{a4}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{color}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{pslatex}
+\usepackage{ifthen}
+
+\usepackage[T1]{fontenc}
+\usepackage{pslatex}
+
+\usepackage{psfrag}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{blindtext}
+
+% =========================================================================
+
+\setlength{\oddsidemargin}{3.6pt}
+\setlength{\evensidemargin}{22.6pt}
+\setlength{\textwidth}{426.8pt}
+\setlength{\textheight}{654.4pt}
+\setlength{\headsep}{18pt}
+\setlength{\headheight}{15pt}
+\setlength{\topmargin}{-41.7pt}
+\setlength{\topskip}{10pt}
+\setlength{\footskip}{42pt}
+
+\setlength{\parindent}{0pt}
+
+% =========================================================================
+
+% We want also subsubsections to be enumerated
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeglossary
+%\makeindex
+
+% =========================================================================
+\begin{document}
+
+\include{titlepage}
+
+\begin{abstract}
+\blindtext
+\end{abstract}
+
+\tableofcontents
+\newpage
+% =========================================================================
+
+\section{Section 1}
+
+\blindtext
+
+\subsection{Subsection 1}
+
+\Blindtext
+
+% =========================================================================
+\bibliographystyle{alpha}
+\bibliography{report}
+
+% =========================================================================
+
+\end{document}

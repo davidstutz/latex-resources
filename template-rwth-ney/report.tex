@@ -1,0 +1,111 @@
+% Template for seminar reports
+% Seminar "Selected Topics in Human Language Technology and Pattern Recognition"
+% Chair of Computer Science 6, RWTH Aachen University
+\documentclass[twoside,11pt,a4paper]{article}
+
+\usepackage{graphicx,curves,float,rotating}
+
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage{amsopn}
+%\usepackage[ngerman]{babel}
+\usepackage{theorem}
+\usepackage{dcolumn}
+\usepackage{hyperref}
+\usepackage{xspace}
+
+\makeatletter 
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{{e.g}\onedot} \def\Eg{{E.g}\onedot}
+\def\ie{{i.e}\onedot} \def\Ie{{I.e}\onedot}
+\def\cf{{c.f}\onedot} \def\Cf{{C.f}\onedot}
+\def\etc{{etc}\onedot} \def\vs{{vs}\onedot} 
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{{et al}\onedot}
+\def\zB{z.B\onedot} \def\ZB{Z.B\onedot}
+\def\dh{d.h\onedot} \def\Dh{D.h\onedot}
+
+\newcommand*{\Frac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\newlength{\textwd}
+\newlength{\oddsidemargintmp}
+\newlength{\evensidemargintmp}
+\newcommand*{\hspaceof}[2]{\settowidth{\textwd}{#1}\mbox{\hspace{#2\textwd}}}
+\newlength{\textht}
+\newcommand*{\vspaceof}[3]{\settoheight{\textht}{#1}\mbox{\raisebox{#2\textht}{#3}}}
+\newcommand*{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+
+\newenvironment{deflist}[1][\quad]%
+{  \begin{list}{}{%
+      \renewcommand{\makelabel}[1]{\textbf{##1}\hfil}%
+      \settowidth{\labelwidth}{\textbf{#1}}%
+      \setlength{\leftmargin}{\labelwidth}
+      \addtolength{\leftmargin}{\labelsep}}}
+{  \end{list}}
+
+\newenvironment{Quote}% Definition of Quote
+{  \begin{list}{}{%
+      \setlength{\rightmargin}{0pt}}
+      \item[]\ignorespaces}
+{\unskip\end{list}}
+
+\theoremstyle{break}
+\theorembodyfont{\itshape}	
+\theoremheaderfont{\scshape}
+
+\newtheorem{Cor}{Corollary}
+\newtheorem{Def}{Definition}
+
+\newcolumntype{.}{D{.}{.}{-1}}
+
+\pagestyle{headings}
+\textwidth 15cm
+\textheight 23cm
+\oddsidemargin 1cm
+\evensidemargin 0cm
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{center}
+
+    Rheinisch-Westf\"alische Technische Hochschule Aachen \\
+    Lehrstuhl f\"ur Informatik 6 \\
+    Prof. Dr.-Ing. Hermann Ney\\[6ex]
+    Seminar Title\\[12ex]
+   
+    \LARGE
+    \textbf{Title} \\[6ex]
+    \textit{Name} \\[6ex]
+    \Large
+    Matriculationnumer: XXXXXX \\[6ex]
+    \today
+
+    \vfill
+    \Large Advisor: Name
+	    
+\end{center}
+
+\newpage
+\ 
+\newpage
+
+\pagestyle{headings}
+\tableofcontents
+\listoftables
+\listoffigures
+\newpage
+\pagestyle{empty}
+\ 
+\newpage
+\pagestyle{headings}
+
+\section{Section}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\bibliographystyle{plain}
+\bibliography{report}
+
+\end{document}

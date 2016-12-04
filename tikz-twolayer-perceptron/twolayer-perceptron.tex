@@ -1,0 +1,43 @@
+\documentclass[twoside,11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage{sidecap}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+
+\begin{document}
+
+\begin{SCfigure}[12][b]
+	\centering
+    \begin{tikzpicture}[shorten >=1pt]
+        \tikzstyle{unit}=[draw,shape=circle,minimum size=1.15cm]
+
+        \node[unit](x0) at (0,3.5){$x_0$};
+        \node[unit](x1) at (0,2){$x_1$};
+        \node(dots) at (0,1){\vdots};
+        \node[unit](xd) at (0,0){$x_D$};
+
+        \node[unit](y1) at (4,2.5){$y_1$};
+        \node(dots) at (4,1.5){\vdots};
+        \node[unit](yc) at (4,0.5){$y_C$};
+
+        \draw[->] (x0) -- (y1);
+        \draw[->] (x0) -- (yc);
+
+        \draw[->] (x1) -- (y1);
+        \draw[->] (x1) -- (yc);
+
+        \draw[->] (xd) -- (y1);
+        \draw[->] (xd) -- (yc);
+
+        \draw [decorate,decoration={brace,amplitude=10pt},xshift=-4pt,yshift=0pt] (-0.5,4) -- (0.75,4) node [black,midway,yshift=+0.6cm]{input layer};
+        \draw [decorate,decoration={brace,amplitude=10pt},xshift=-4pt,yshift=0pt] (3.5,3) -- (4.75,3) node [black,midway,yshift=+0.6cm]{output layer};
+    \end{tikzpicture}
+    \caption[Network graph of a perceptron with $D$ input units and $C$ output units.]{The perceptron consists of $D$ input units and $C$ output units. All units are labeled according to their output: $y_i = f(z_i)$ in the case of output units; $x_i$ in the case of input units. The input values $x_i$ are propagated to each output unit using the weighted sum propagation rule. The additional input value $x_0 := 1$ is used to include the biases as weights. As suggested in section \ref{subsec:layered-networks} the units are assembled in layers.}
+    \label{fig:perceptron}
+\end{SCfigure}
+
+\end{document}

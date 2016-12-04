@@ -3,3 +3,5 @@
 *.pdf
 *.gz
 *.aux
+*.glo
+*.toc

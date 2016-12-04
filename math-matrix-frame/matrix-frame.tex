@@ -1,0 +1,22 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{fit,matrix}
+
+\begin{document}
+
+% http://tex.stackexchange.com/questions/110899/how-to-make-frame-in-matrix
+\begin{equation}
+	I_3 =
+  	\tikz[baseline=(M.west)]{%
+    		\node[matrix of math nodes,matrix anchor=west,left delimiter=(,right delimiter=),ampersand replacement=\&] (M) {%
+      			1 \& 0 \& 0 \\
+      			0 \& 1 \& 0 \\
+      			0 \& 0 \& 1 \\
+    		};
+   		\node[draw,fit=(M-1-1)(M-2-2),inner sep=-1pt] {};
+  	}
+\end{equation}
+
+\end{document}

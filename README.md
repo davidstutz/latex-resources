@@ -75,6 +75,7 @@ Some additional repositories with LaTeX source code.
 * [How to set row and column padding in tables?](http://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables)
 * [How to avoid "TeX capacity exceeded" in MikTeX?](https://github.com/matlab2tikz/matlab2tikz/wiki/TeX-capacity-exceeded,-sorry)
 * [How to avoid hyphenation](http://tex.stackexchange.com/questions/67571/no-hyphen-for-a-wor) and [how to allo breaks in long words without hyphenation?](http://tex.stackexchange.com/questions/26174/allow-line-break-but-without-inserting-a-dash)
+* [How to change the font size of figure captions?](http://tex.stackexchange.com/questions/86120/font-size-of-figure-caption-header)
 
 ## License
 

@@ -1,0 +1,46 @@
+\documentclass[twoside,11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage{sidecap}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+\begin{SCfigure}[2\sidecaptionrelwidth][t!]
+	\centering
+	\begin{tikzpicture}
+		\node at (1.75,4.5){\begin{tabular}{c}feature maps\\layer $(l-1)$\end{tabular}};
+		
+		\draw[fill=black,opacity=0.2,draw=black] (1.5,1.5) -- (3.5,1.5) -- (3.5,3.5) -- (1.5,3.5) -- (1.5,1.5);
+		\draw[fill=black,opacity=0.2,draw=black] (1,1) -- (3,1) -- (3,3) -- (1,3) -- (1,1);
+		\draw[fill=black,opacity=0.2,draw=black] (0.5,0.5) -- (2.5,0.5) -- (2.5,2.5) -- (0.5,2.5) -- (0.5,0.5);
+		\draw[fill=black,opacity=0.2,draw=black] (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0);
+		
+		\draw (3.1,3.1) -- (3.4,3.1) -- (3.4,3.4) -- (3.1,3.4) -- (3.1,3.1);
+		\draw (2.6,1.1) -- (2.9,1.1) -- (2.9,1.4) -- (2.6,1.4) -- (2.6,1.1);
+		\draw (1.1,0.1) -- (1.4,0.1) -- (1.4,0.4) -- (1.1,0.4) -- (1.1,0.1);
+		
+		\draw (3.4,3.4) -- (7.8,2.8);
+		\draw (3.4,3.1) -- (7.8,2.8);
+		
+		\draw (2.9,1.4) -- (7.3,1.2);
+		\draw (2.9,1.1) -- (7.3,1.2);
+		
+		\draw (1.4,0.4) -- (5.9,0.3);
+		\draw (1.4,0.1) -- (5.9,0.3);
+		
+		\node at (6.5,4.5){\begin{tabular}{c}feature maps\\layer $l$\end{tabular}};
+		
+		\draw[fill=black,opacity=0.2,draw=black] (6.5,1.5) -- (8,1.5) -- (8,3) -- (6.5,3) -- (6.5,1.5);
+		\draw[fill=black,opacity=0.2,draw=black] (6,1) -- (7.5,1) -- (7.5,2.5) -- (6,2.5) -- (6,1);
+		\draw[fill=black,opacity=0.2,draw=black] (5.5,0.5) -- (7,0.5) -- (7,2) -- (5.5,2) -- (5.5,0.5);
+		\draw[fill=black,opacity=0.2,draw=black] (5,0) -- (6.5,0) -- (6.5,1.5) -- (5,1.5) -- (5,0);
+	\end{tikzpicture}
+	\caption[Illustration of a pooling and subsampling layer.]{Illustration of a pooling and subsampling layer. If layer $l$ is a pooling and subsampling layer and given $m_1^{(l-1)} = 4$ feature maps of the previous layer, all feature maps are pooled and subsampled individually. Each unit in one of the $m_1^{(l)} = 4$ output feature maps represents the average or the maximum within a fixed window of the corresponding feature map in layer $(l-1)$.}
+	\label{fig:convolutional-layer}
+\end{SCfigure}
+
+\end{document}
