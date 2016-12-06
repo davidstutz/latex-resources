@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+% Data looks as follows (tab-separated):
+% Threshold	MinSize	Rec		UE			K
+% 50			5		0.99767	0.026864	1080
+% 50			10		0.99671	0.030257	757
+% 50			25		0.99315	0.037258	533
+% 100			5		0.9922	0.035088	660
+% 100			10		0.98974	0.037503	446
+% 100			25		0.98255	0.042693	286
+
+% Allows to highlight one or multiple rows, see example below.
+\pgfplotstableset{
+    highlightrow/.style={
+        postproc cell content/.append code={
+           \count0=\pgfplotstablerow
+            \advance\count0 by1
+            \ifnum\count0=#1
+            \pgfkeysalso{@cell content=\textbf{##1}}%
+            \fi
+        },
+    },
+}
+
+\begin{document}
+	\pgfplotstabletypeset[%
+		font=\footnotesize,
+		highlightrow={2},
+		highlightrow={4},
+		highlightrow={5},
+		highlightrow={6},
+		columns={Threshold,MinSize,Rec,UE,K},
+		columns/Threshold/.style={column name=$\tau$},%
+		columns/MinSize/.style={column name=$A_{\text{min}}$},%
+		columns/Rec/.style={column name=$Rec$},%
+		columns/UE/.style={column name=$UE$},%
+		columns/K/.style={column name=$K$},%
+		every head row/.style={before row=\hline,after row=\hline\hline},%
+		every last row/.style={after row=\hline},%
+		every first column/.style={column type/.add={|}{}},%
+		every last column/.style={column type/.add={}{|}},%
+		row sep=newline]{data.csv}
+\end{document}

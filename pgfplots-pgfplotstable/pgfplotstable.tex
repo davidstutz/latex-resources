@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\newcommand{\pgfequalsign}{=}
+
+% Data:
+% 
+
+\begin{document}
+	\pgfplotstabletypeset[%
+		columns={Kd,Rec7Bins2ItN1,UE7Bins2ItN1,Rec6Bins2ItN1,UE6Bins2ItN1},
+		columns/Kd/.style={column name=$K_d$},%
+		columns/Rec7Bins2ItN1/.style={column name=\begin{tabular}{c}$Rec$\\$Q\pgfequalsign 7^3$\\$T\pgfequalsign 2$\end{tabular}},%
+		columns/UE7Bins2ItN1/.style={column name=\begin{tabular}{c}$UE$\\$Q\pgfequalsign 7^3$\\$T\pgfequalsign 2$\end{tabular}},%
+		columns/Rec6Bins2ItN1/.style={column name=\begin{tabular}{c}$Rec$\\$Q\pgfequalsign 6^3$\\$T\pgfequalsign 2$\end{tabular}},%
+		columns/UE6Bins2ItN1/.style={column name=\begin{tabular}{c}$UE$\\$Q\pgfequalsign 6^3$\\$T\pgfequalsign 2$\end{tabular}},%
+		every head row/.style={before row=\hline,after row=\hline\hline},%
+		every last row/.style={after row=\hline},%
+		every first column/.style={column type/.add={|}{}},%
+		every last column/.style={column type/.add={}{|}},%
+		row sep=newline]{data.csv}
+\end{document}
