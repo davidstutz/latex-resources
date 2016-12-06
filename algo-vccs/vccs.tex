@@ -1,0 +1,35 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+	\begin{algo}{VCCS}{\label{algo:superpixel-segmentation-depth-vccs}\qinput{voxelized point cloud, supervoxel resolution $R$, search radius $R_s$}\qoutput{superpixel segmentation $S$}}
+		place supervoxel centers on a regular grid with step size $R$\\
+		discard unnecessary supervoxel centers based on the search radius $R_s$\\		
+		move supervoxel centers to low gradient magnitude positions\\
+		%\qcom{Eventually, move supervoxel centers to mean position within local neighborhood}\\
+		\qfor $t = 1$ \qto $T$ \qcom{$T$ is the maximum depth.}\\
+			\qfor $k = 1$ \qto $K$\\
+				perform one step breadth first search for supervoxel $S_k$\\
+				update supervoxel center\qrof\qrof\\
+		derive superpixel segmentation $S$ by backprojecting the supervoxels\\
+		\qreturn $S$
+	\end{algo}
+	\caption[The supervoxel algorithm \textbf{VCCS} \cite{PaponAbramovSchoelerWoergoetter}.]{\textbf{VCCS} uses $K$-means clustering based on breadth-first search beginning at the supervoxel centers to assign each voxel to a supervoxel. This way, \textbf{VCCS} ensures that the supervoxels represent connected components within the $26$-adjacency graph derived from the voxelized point cloud. The below algorithm can easily be adapted to return a supervoxel segmentation instead of a superpixel segmentation.}
+	\label{fig:superpixel-segmentation-depth-vccs-breadth-first}
+\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{PaponAbramovSchoelerWoergoetter}
+		J. Papon, A. Abramov, M. Schoeler, F. Wörgötter.
+		\emph{Voxel cloud connectivity segmentation - supervoxels for point clouds}.
+		Conference on Computer Vision and Pattern Recognition, 2013.
+	\end{thebibliography}
+
+\end{document}

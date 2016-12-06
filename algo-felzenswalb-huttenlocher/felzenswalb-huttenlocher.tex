@@ -1,0 +1,34 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+		\begin{algo}{}{\label{algo:related-work-fh}\qinput{undirected, weighted graph $G = (V,E)$}\qoutput{superpixel segmentation $S$}}
+			sort $E$ by increasing edge weight\\
+			let $S$ be the superpixel segmentation where each pixel is its own superpixel\\
+			\qfor $k = 1$ \qto $|E|$\\
+				let $(n,m)$ be the $k^\text{th}$ edge\\
+				\qif $s(x_n) \neq s(x_m)$\\
+				\qthen \qif $w_{n,m}$ is sufficiently small compared to $MInt(S_{s(x_n)}, S_{s(x_m)})$\\
+					\qthen merge superpixels $S_{s(x_n)}$ and $S_{s(x_m)}$\qfi\qfi\qrof\\
+			\qreturn $S$
+		\end{algo}
+		\caption{The superpixel algorithm \textbf{FH} proposed in \cite{FelzenswalbHuttenlocher}.}
+		\label{fig:related-work-fh-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{FelzenswalbHuttenlocher}
+		P. F. Felzenswalb,
+		D. P. Huttenlocher.
+		\emph{Efficient graph-based image segmentation}.
+		International Journal of Computer Vision, 59(2), 2004.
+	\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t!]
+		\begin{algo}{SLIC}{\label{algo:superpixel-segmentation-slic}\qinput{color image $I$, number of superpixels $K$}\qoutput{superpixel segmentation $S$}}
+			initialize superpixel centers on a regular grid with step size $R$\\
+			move centers to low-gradient magnitude positions\\
+			\qrepeat\\
+				\qfor $k = 1$ \qto $K$\\
+					\qforeach pixel $x_n$ in a $2R \times 2R$ neighborhood around $\mu(S_k)$\\
+						\qif $x_n$ is unassigned\\
+							\qthen $S_k$ \qlet $S_k \cup \{x_n\}$\qfi\\
+						\qelseif $d(x_n, S_k) < d(x_n, S_{s(x_n)})$\\
+							\qthen $S_k$ \qlet $S_k \cup \{x_n\}$ and $S_{s(x_n)}$ \qlet $S_{s(x_n)} - \{x_n\}$\qfi\qrof\qrof
+			\quntil nothing changes \qcom{or maximum number of iterations reached.}\\
+			enforce connectivity\\
+			\qreturn $S$
+		\end{algo}
+		\caption[The basic algorithm of \textbf{SLIC} \cite{AchantaShajiSmithLucchiFuaSuesstrunk}.]{\textbf{SLIC} is implemented as local $K$-means clustering. Here, local means that for each superpixel only pixels in a $2R \times 2R$ window around the superpixel's center are of interest. After clustering, \textbf{SLIC} needs to enforce connectivity.}
+		\label{fig:superpixel-segmentation-slic-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{AchantaShajiSmithLucchiFuaSuesstrunk}
+		R. Achanta, A. Shaji, K. Smith, A. Lucchi, P. Fua, S. Süsstrunk.
+		\emph{SLIC superpixels}.
+		Technical report, École Polytechnique Fédérale de Lausanne, Lusanne, Switzerland, June 2010.
+	\end{thebibliography}
+
+\end{document}

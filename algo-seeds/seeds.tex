@@ -1,0 +1,44 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+		\begin{algo}{SEEDS}{\label{algo:superpixel-segmentation-seeds}\qinput{color image $I$, block size $w^{(1)} \times h^{(1)}$, number of levels $L$, histogram size $Q$}\qoutput{superpixel segmentation $S$}}
+			initialize the block hierarchy and the initial superpixel segmentation $S$\\
+			\qcom{Initialize histograms for all blocks and superpixels:}\\
+			\qfor $l = 1$ \qto $L$\\
+				\qforeach block $B_i^{(l)}$ \qcom{For $l = L$ these are the initial superpixels.}\\
+					initialize histogram $h_{B_i^{(l)}}$\qrof\qrof\\
+			\qcom{Block updates:}\\
+			\qfor $l = L - 1$ \qto $1$\\
+				\qforeach block $B_i^{(l)}$\\
+					let $S_j$ be the superpixel $B_i^{(l)}$ belongs to\\
+					\qif a neighboring block belongs to a different superpixel $S_k$\\
+						\qthen \qif $\cap(h_{B_i^{(l)}}, h_{S_k}) > \cap(h_{B_i^{(l)}}, h_{S_j - B_i^{(l)}})$\\
+							\qthen $S_k$ \qlet $S_k \cup B_i^{(l)}$ and $S_j$ \qlet $S_j - B_i^{(l)}$\qfi\qfi\qrof\qrof\\
+			\qcom{Pixel updates:}\\
+			\qfor $n = 1$ \qto $N$\\
+				let $S_j$ be the superpixel $x_n$ belongs to\\
+				\qif a neighboring pixel belongs to a different superpixel $S_k$\\
+					\qthen\qif $h_{S_k}(h(x_n)) > h_{S_j}(h(x_n))$\label{line:superpixel-segmentation-seeds-pixel-criterion}\\
+						\qthen $S_k$ \qlet $S_k \cup \{x_n\}$ and $S_j$ \qlet $S_j - \{x_n\}$\qfi\qfi\qrof\\
+			\qreturn $S$
+		\end{algo}
+		\caption[The basic algorithm of \textbf{SEEDS} \cite{VanDenBerghBoixRoigCapitaniVanGool}.]{The basic algorithm of \textbf{SEEDS}.}
+		\label{fig:superpixel-segmentation-seeds-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{VanDenBerghBoixRoigCapitaniVanGool}
+		M. van den Bergh, X. Boix, G. Roig, B. de Capitani, L. van Gool.
+		\emph{SEEDS: Superpixels extracted via energy-driven sampling}.
+		Computing Research Repository, abs/1309.3848, 2013.
+	\end{thebibliography}
+
+\end{document}

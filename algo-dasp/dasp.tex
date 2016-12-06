@@ -1,0 +1,31 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t!]
+		\begin{algo}{DASP (sed sampling)}{\label{algo:superpixel-segmentation-depth-dasp-random}\qinput{color image $I$, density $p(x_n) \propto \frac{1}{A(x_n)}$}\qoutput{superpixel centers $\mu(S) = \{\mu(S_1),\ldots,\mu(S_K)\}$}}
+			initialize $\mu(S) = \emptyset$\\
+			\qfor $n = 1$ \qto $N$\\
+				$r$ \qlet $random([0, 1])$\\
+				\qif $r < p(x_n)$\\
+					\qthen $\mu(S)$ \qlet  $\mu(S) \cup \{x_n\}$\qfi\qrof\\
+			\qreturn $\mu(S)$
+		\end{algo}
+		\caption[\textbf{DASP} \cite{WeikersdorferGossowBeetz} randomly samples the initial superpixel centers from a custom density based on depth information.]{The easiest way to sample superpixel centers form the superpixel density $p(x_n)$ is given by random sampling. For each pixel, a number in the range $[0,1]$ is randomly chosen and compared to the probability $p(x_n)$ of $x_n$ being an initial superpixel center. For details how the desired number of superpixels is met we refer to the implementation.}
+		\label{fig:superpixel-segmentation-depth-dasp-random}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{WeikersdorferGossowBeetz}
+		D. Weikersdorfer, A. Schick, D. Cremers.
+		\emph{Depth-adaptive supervoxels for RGB-D video segmentation}.
+		International Converence on Image Processing, 2013.
+	\end{thebibliography}
+
+\end{document}

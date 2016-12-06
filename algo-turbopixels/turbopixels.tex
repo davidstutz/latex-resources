@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+		\begin{algo}{TP}{\label{algo:related-work-turbopixels}\qinput{color image $I$, number of superpixels $K$}\qoutput{superpixel segmentation $S$}}
+			\qcom{$R$ can be derived from the image size $W \times H$ and the number of superpixels $K$:}\\
+			place superpixel centers on a regular grid with step size $R$\\
+			\qcom{All pixels $x_n$ where $\Psi(x_n) > 0$ are unassigned.}\\
+			initialize $\Psi^{(0)}$\\
+			\qrepeat\\
+				compute $v_I$ and $v_B$\\
+				evolve the contour by computing $\Psi^{(T+1)}$\\
+				update assigned pixels\\
+				$T$ \qlet $T + 1$
+			\quntil all pixels are assigned\\
+			\qcom{A superpixel segmentation can be derived from the contour given by $\Psi$:}\\
+			derive $S$ from $\Psi$\\
+			\qreturn $S$
+		\end{algo}
+		\caption{The superpixel algorithm \textbf{TP} proposed in \cite{LevinshteinStereKutulakosFleetDickinsonSiddiqi}.}
+		\label{fig:related-work-tp-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{LevinshteinStereKutulakosFleetDickinsonSiddiqi}
+		A. Levinshtein, A. Stere, K. N. Kutulakos, D. J. Fleet, S. J. Dickinson, K. Siddiqi.
+		\emph{TurboPixels: Fast superpixels using geometric flows}.
+		Transactions on Pattern Analysis and Machine Intelligence, 31(12):2290–2297, December 2009.
+	\end{thebibliography}
+
+\end{document}

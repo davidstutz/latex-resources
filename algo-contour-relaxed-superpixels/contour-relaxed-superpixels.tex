@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+		\begin{algo}{CRS}{\label{algo:related-work-contour-relaxed}\qinput{color image $I$, number of superpixels $K$}\qoutput{superpixel segmentation $S$}}
+			\qcom{The step size $R$ can be derived from the image size $W \times H$ and $K$:}\\
+			initialize $S$ as regular grid with step size $R$\\
+			initialize $\boldsymbol \theta$ using sufficient statistics (e.g. Gaussian)\\
+			\qfor $t = 1$ \qto $T$\\
+				\qcom{Originally, the image is traversed multiple times using different directions to avoid a directional bias \cite{ConradMertzMester}:}\\
+				\qfor $n = 1$ \qto $N$\\
+				\qif $x_n$ is a boundary pixel\\
+					\qcom{This can be evaluated by taking $\boldsymbol \theta$ as constant; Conrad et al. suggest to minimize the negative logarithm of \eqref{eq:related-work-contour-relaxed-maximize} instead:}\\
+					\qthen assign $x_n$ to the label maximizing \eqref{eq:related-work-contour-relaxed-maximize}\qfi\qrof\qrof\\
+			\qreturn $S$
+		\end{algo}
+		\caption{The algorithm to maximize the energy given in equation \eqref{eq:related-work-contour-relaxed-energy} to obtain Contour Relaxed Superpixels \cite{ConradMertzMester}.}
+		\label{fig:related-work-contour-relaxed-algorithm}
+	\end{algorithm}
+	
+	\begin{align}
+		\label{eq:related-work-contour-relaxed-maximize}
+		E(S) = \kappa \kappa' \exp(- N_{e} C_{e} - N_{v} C_{v}) \prod_{S_i} \prod_{x_m \in S_i} \prod_{c=1}^3 p(I_c(x_m) | \theta_{i,c})
+	\end{align}
+	
+	\begin{thebibliography}{1}
+		\bibitem{ConradMertzMester}
+		C. Conrad, M. Mertz, R. Mester.
+		\emph{Contour-relaxed superpixels}.
+		Energy Minimization Methods in Computer Vision and Pattern Recognition, 2013.
+	\end{thebibliography}
+
+\end{document}

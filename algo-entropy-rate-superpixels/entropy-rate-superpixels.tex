@@ -1,0 +1,34 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[font=footnotesize]{caption}
+\usepackage[section]{algorithm}
+\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+	\begin{algorithm}[t]
+		\begin{algo}{ERS}{\label{algo:related-work-ers}\qinput{undirected, weighted graph $G = (V, E)$}\qoutput{superpixel segmentation $S$}}
+			initialize $M = \emptyset$\\
+			\qforeach edge $(n,m) \in E$\\
+				\qcom{Let $\hat{G}$ denote the graph $\hat{G} = (V, M \cup \{(n, m)\})$:}\\
+				choose edge $(n,m) \in E$ yielding the largest gain in the energy $E(\hat{G})$\\
+				\qif $\hat{G}$ has no cycles and $\hat{G}$ contains less or equal than $K$ connected components\\
+					\qthen $M$ \qlet $M \cup \{(n,m)\}$\qfi\qrof\\
+			\qcom{The superpixel segmentation is given by the connected components in $\hat{G}$:}\\
+			derive superpixel segmentation $S$ from $\hat{G}$\\
+			\qreturn $S$
+		\end{algo}
+		\caption{The greedy algorithm used to maximize the energy $E(\hat{G})$ to obtain Entropy Rate Superpixels \cite{LiuTuzelRamalingamChellappa}.}
+		\label{fig:related-work-ers-algorithm}
+	\end{algorithm}
+
+	\begin{thebibliography}{1}
+		\bibitem{LiuTuzelRamalingamChellappa}
+		M. Y. Lui, O. Tuzel, S. Ramalingam, R. Chellappa.
+		\emph{Entropy rate superpixel segmentation}.
+		Converence on Computer Vision and Pattern Recognition, 2011.
+	\end{thebibliography}
+
+\end{document}
