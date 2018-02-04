@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[section]{algorithm}
+\usepackage[numbered]{algo}
+\usepackage{enumerate}
+
+\newcommand{\Vol}{\ensuremath{\mathrm{Vol}}}
+
+\begin{document}
+
+\begin{algorithm}[t]
+  \small
+	\begin{algo}{Semi-Convex Hull}{
+	\label{alg:data-hull}
+	\qinput{triangular mesh $\mathcal{M}$}
+	\qoutput{simplified mesh $\mathcal{M}^{(T)}$}
+	}
+	  draw sample points $\mathcal{P}$ from $\mathcal{M}$\\
+	  compute convex hull $\mathcal{M}^{(0)} = (V^{(0)}, F^{(0)})$ of $\mathcal{M}$\\
+	  remesh $\mathcal{M}^{(0)}$ using \cite{FuhrmannAckermannGoesele:2010}\\
+		\qfor $t = 0$ \qto $T - 1$\\
+		  \qif $\mathcal{M} \not\subseteq \Vol(V^{(t)})$\\
+		    \qthen find smallest $\alpha > 0$ such that $P \subseteq \Vol((1 + \alpha)V^{(t)})$\\
+		    $V^{(t)} := (1 + \alpha) V^{(t)}$\\
+		    remesh $\mathcal{M}^{(t)}$ using \cite{FuhrmannAckermannGoesele:2010}\qfi\\
+		  $V^{(t + 1)} = V^{(t)} - \gamma \nabla \mathcal{L}(V^{(t)})$\qrof\\
+		\qreturn $\mathcal{M}^{(T)}$
+	\end{algo}
+	% TODO short caption
+	\caption{The semi-convex hull algorithm used in \cite{GueneyGeiger:2015}
+	to obtain watertight, simplified meshes.}
+\end{algorithm}
+
+\begin{thebibliography}{1}
+	\bibitem{GueneyGeiger:2015} F. G\"{u}ney and A. Geiger.
+	\emph{Displets: Resolving stereo ambiguities using object knowledge}.
+	In IEEE Conference on Computer Vision and Pattern Recognition, pages 4165-4175, 2015.
+	
+	\bibitem{FuhrmannAckermannGoesele:2010} S. Fuhrmann, J. Ackermann, T. Kalbe, and M. Goesele.
+	\emph{Direct resampling for isotropic surface remeshing}.
+	In International Symposium on Vision, Modeling and Visualization, pages 9-16, 2010.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepgfplotslibrary{fillbetween}
+
+% https://tex.stackexchange.com/questions/11368/bell-curve-gaussian-function-normal-distribution-in-tikz-pgf
+\makeatletter
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\makeatother
+
+% https://tex.stackexchange.com/questions/107423/erf-function-in-latex
+\makeatletter
+\pgfmathdeclarefunction{erf}{1}{%
+  \begingroup
+    \pgfmathparse{#1 > 0 ? 1 : -1}%
+    \edef\sign{\pgfmathresult}%
+    \pgfmathparse{abs(#1)}%
+    \edef\x{\pgfmathresult}%
+    \pgfmathparse{1/(1+0.3275911*\x)}%
+    \edef\t{\pgfmathresult}%
+    \pgfmathparse{%
+      1 - (((((1.061405429*\t -1.453152027)*\t) + 1.421413741)*\t 
+      -0.284496736)*\t + 0.254829592)*\t*exp(-(\x*\x))}%
+    \edef\y{\pgfmathresult}%
+    \pgfmathparse{(\sign)*\y}%
+    \pgfmath@smuggleone\pgfmathresult%
+  \endgroup
+}
+\makeatother
+
+\begin{document}
+  
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+          every axis plot post/.append style={
+          mark=none,domain=-3:2,samples=50,smooth},
+          axis x line*=bottom,
+          axis y line*=left,
+          enlargelimits=upper,
+          ymax=1.1, ymin=0,
+          ylabel=$p(y)$,
+          xlabel=$y$,
+          legend style={at={(0.65,1)},anchor=north west},
+          height=5cm,
+          width=7cm,
+        ]
+      
+        \addplot[name path=g,blue] {gauss(-0.75,0.5)};
+        \addlegendentry{$p(y)$};
+        %\addplot[red] {gauss(1,0.5)};
+        %\addlegendentry{$\mu_j(z) = -0.5; \sigma^2 = 0.5$};
+        \addplot[blue,dashed,mark=none,forget plot] coordinates {(-0.75, 0) (-0.75, 1)};
+        \node at (axis cs:-0.75,1.1) {$\mu_i(z)$};
+      
+        \addplot[black,dashed,mark=none,forget plot] coordinates {(0, 0) (0, 1)};
+        \node at (axis cs:0,1.1) {$0$};
+      
+        %\addplot[red,dashed,mark=none] coordinates {(1, 0) (1, 0.9)};
+        %\node at (axis cs:1,1) {$\mu_j(z)$};
+      
+        \path[name path=axis] (axis cs:-3,0) -- (axis cs:0,0);
+        \addplot [
+          thick,
+          color=blue,
+          fill=blue, 
+          fill opacity=0.1,
+          area legend, % https://tex.stackexchange.com/questions/246557/custom-area-legend-image-not-working
+        ]
+        fill between[
+          of=g and axis,
+          soft clip={domain=-3:0},
+        ];
+        \addlegendentry{$p(y \leq 0)$}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \begin{tikzpicture}
+      \begin{axis}[
+          every axis plot post/.append style={
+          mark=none,domain=-3:2,samples=50,smooth},
+          axis x line*=bottom,
+          axis y line*=left,
+          enlargelimits=upper,
+          ymax=1.1, ymin=0,
+          ylabel=$p(y' \leq y)$,
+          xlabel=$y$,
+          legend style={at={(0.65,1)},anchor=north west},
+          height=5cm,
+          width=7cm,
+        ]
+      
+        % 1.128379167 = 1/(0.5*sqrt(pi))
+        \addplot[name path=g,blue] (\x,{0.5*(1 + erf((\x + 0.5)*1.128379167))});
+        \addlegendentry{$p(y' \leq y)$};
+        \addplot[black,dashed,mark=none,forget plot] coordinates {(0, -1) (0, 1)};
+        \node at (axis cs:0,1.1) {$0$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+
+\end{document}

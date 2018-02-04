@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[section]{algorithm}
+\usepackage[numbered]{algo}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{algorithm}[h]
+  \small
+  \begin{enumerate}[(1)]
+    \item For a sample $(x_n ,y^*_n)$, propagate the input $x_n$ through the
+    network to compute the outputs $(v_{i_1}, \ldots, v_{i_{|V|}})$ (in topological order).
+    \vspace{-6px}
+    %\begin{enumerate}[(a)]
+    %  \item Given a topological sort $V = (v_{i_1},\ldots,v_{i_{|V|}})$,
+    %  sequentially compute the layers' outputs, also denoted by $v_{i_j}$.
+    %  \item Then $y(x_n;w) = v_{i_{|V|}}$ is the network's output.
+    %\end{enumerate}
+    \item Compute the loss $\mathcal{L}_n := \mathcal{L}(v_{i_{|V|}}, y_n^*)$
+    and its gradient
+    \begin{align}
+      \frac{\partial \mathcal{L}_n}{\partial v_{i_{|V|}}}.
+    \end{align}
+    \vspace{-6px}
+    \item For each $j = |V|,\ldots,1$ compute
+    \begin{align}
+      \frac{\partial \mathcal{L}_n}{\partial w_j} =
+      \frac{\partial \mathcal{L}_n}{\partial v_{i_{|V|}}} \prod_{k = j + 1}^{|V|} \frac{\partial v_{i_k}}{\partial v_{i_{k - 1}}}
+      \frac{\partial v_{i_j}}{\partial w_j}.
+    \end{align}
+    where $w_j$ refers to the weights in node $i_j$.
+    \vspace{-12px}
+  \end{enumerate}
+  \caption{Error backpropagation algorithm for a layered neural network
+  represented as computation graph $G = (V,E)$.}
+\end{algorithm}
+
+\end{document}

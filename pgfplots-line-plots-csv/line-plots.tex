@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+
+\usepackage[font=footnotesize]{caption}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\begin{document}
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \begin{tikzpicture}
+      \begin{axis}[
+          % https://tex.stackexchange.com/questions/68577/compiling-a-document-with-pgfplots-processing-only-every-x-th-data-point
+          %each nth point=2,
+          filter discard warning=false,
+          unbounded coords=discard,
+          % https://tex.stackexchange.com/questions/13816/dimension-too-large-while-plotting-with-pgfplots
+          %restrict y to domain=0:0.1,
+          %restrict x to domain=0:250000,
+          ymin=0,
+          ymax=0.12,
+          xmin=0,
+          xmax=31000,
+          %xticklabel={
+          %  \pgfmathparse{\tick/1000}
+          %  \pgfmathprintnumber{\pgfmathresult}k
+          %},
+          xtick={0,15000,31000},
+          xticklabels={0,15k,31k},
+          xticklabel style={
+            /pgf/number format/fixed
+          },
+          scaled x ticks=false,
+          yticklabel style={
+            /pgf/number format/fixed
+          },
+          scaled y ticks=false,
+          %x coord trafo/.code={\pgfmathparse{\pgfmathresult/1000}},
+          %xticklabel=\pgfmathprintnumber{\tick}k,
+          width=7.5cm,
+          height=5cm,
+          % https://tex.stackexchange.com/questions/48620/pgfplots-alignment-and-size-of-math-in-legend
+          legend cell align=left,
+        ]
+        
+        % https://tex.stackexchange.com/questions/276869/reading-an-unusual-coordinates-file-in-pgfplots
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {training_loss.txt};
+        \addlegendentry{$\mathcal{L}_{\text{BCE}} + \text{KL}$ (train)};
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {training_abs.txt};
+        \addlegendentry{$\text{Abs}$ (train)};
+        
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {validation_loss.txt};
+        \addlegendentry{$\mathcal{L}_{\text{BCE}} + \text{KL}$ (val)};
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {validation_abs.txt};
+        \addlegendentry{$\text{Abs}$ (val)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \begin{tikzpicture}
+      \begin{axis}[
+          % https://tex.stackexchange.com/questions/68577/compiling-a-document-with-pgfplots-processing-only-every-x-th-data-point
+          %each nth point=100,
+          filter discard warning=false,
+          unbounded coords=discard,
+          % https://tex.stackexchange.com/questions/13816/dimension-too-large-while-plotting-with-pgfplots
+          %restrict y to domain=0:0.1,
+          %restrict x to domain=0:250000,
+          ymin=-0.2,
+          ymax=0.5,
+          xmin=0,
+          xmax=31000,
+          %xticklabel={
+          %  \pgfmathparse{\tick/1000}
+          %  \pgfmathprintnumber{\pgfmathresult}k
+          %},
+          xtick={0,15000,31000},
+          xticklabels={0,15k,31k},
+          xticklabel style={
+            /pgf/number format/fixed
+          },
+          scaled x ticks=false,
+          yticklabel style={
+            /pgf/number format/fixed
+          },
+          scaled y ticks=false,
+          %x coord trafo/.code={\pgfmathparse{\pgfmathresult/1000}},
+          %xticklabel=\pgfmathprintnumber{\tick}k,
+          width=7.5cm,
+          height=5cm,
+          % https://tex.stackexchange.com/questions/48620/pgfplots-alignment-and-size-of-math-in-legend
+          legend cell align=left,
+        ]
+        
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {validation_mean.txt};
+        \addlegendentry{$\overline{\mu}$ (val)};
+        \addplot +[mark=none] table[ignore chars={(,)},col sep=comma] {validation_std.txt};
+        \addlegendentry{$|1 - \sqrt{\text{Var}[\mu]}|$ (val)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+\end{document}

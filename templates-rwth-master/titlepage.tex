@@ -1,0 +1,57 @@
+\begin{titlepage}
+  \thispagestyle{fancytitle}
+  \newgeometry{left=2cm,right=7mm}
+  \begin{center}
+
+  {
+  \begin{otherlanguage}{ngerman}
+    Diese Arbeit wurde vorgelegt am\\
+    Lehr- und Forschungsgebiet Informatik 8 (Computer Vision)\\
+    Fakultät für Mathematik, Informatik und Naturwissenschaften\\
+    Prof. Dr. Bastian Leibe
+  \end{otherlanguage}
+  }
+
+  \vspace{1em}
+
+  % headrule
+  \rule{\linewidth}{0.5mm}
+  ~\\[2em]
+
+  {
+    \huge \bfseries\sffamily
+    \ifthenelse{\equal{\thesis}{master}}{Master}{Bachelor} Thesis
+  }
+
+  \vfill
+
+  \begin{addmargin}[1em]{1em}
+    \centering
+    \sffamily \huge \bfseries \thetitle
+  \end{addmargin}
+
+  \vfill
+
+  {
+    vorgelegt von
+			
+    \textsf{\textbf{\theauthor}}\\
+    Matrikelnummer: \matrnumber
+    
+    \thedate
+  }
+
+  % bottomrule
+  ~\\[2em]
+  \rule{\linewidth}{0.5mm}
+
+  \vspace{2em}
+
+  \begin{tabular}{ll}
+    Erstgutachter:  & \erstgutachter\\
+    Zweitgutachter: & \zweitgutachter\\
+  \end{tabular}
+	
+  \end{center}
+  \restoregeometry
+\end{titlepage}

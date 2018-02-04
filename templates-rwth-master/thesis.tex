@@ -1,0 +1,344 @@
+\documentclass[a4paper, 12pt, twoside, openright, bibliography=totoc, USenglish,
+	final % replace with final for handing in
+]{scrbook}
+\setcounter{secnumdepth}{5}
+
+% https://tex.stackexchange.com/questions/108684/spacing-before-and-after-section-titles
+% https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters
+\usepackage{titlesec}
+
+% https://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+\titleformat{\chapter}[display]
+{\sffamily \huge \bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}[hang]
+{\sffamily \Large \bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]
+{\sffamily \large \bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]
+{\sffamily \normalsize \bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\sffamily \normalsize \bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\sffamily \normalsize \bfseries}{\thesubparagraph}{1em}{}
+
+\titlespacing*{\chapter} {0pt}{45pt}{35pt}
+\titlespacing*{\section} {0pt}{2.5ex plus 0.5ex minus 0.25ex}{2.25ex plus 0.25ex}
+\titlespacing*{\subsection} {0pt}{2.25ex plus 0.5ex minus 0.25ex}{1.5ex plus 0.25ex}
+\titlespacing*{\subsubsection}{0pt}{2.25ex plus 0.5ex minus 0.25ex}{1.5ex plus 0.25ex}
+\titlespacing*{\paragraph} {0pt}{2.25ex plus 0.5ex minus 0.25ex}{1em}
+\titlespacing*{\subparagraph} {\parindent}{2.25ex plus 0.5ex minus 0.25ex}{1em}
+
+% chapter heading style
+\usepackage{fncychap}
+\ChNameVar{\sffamily \huge \bfseries}
+\ChTitleVar{\sffamily \huge \bfseries}
+%\declaretheoremstyle[headfont=\ttfamily]{normalhead}
+
+% variables
+\usepackage{titling}
+\makeatletter
+\newcommand{\thesis}{master} % possible values: bachelor, master
+\newbool{uselogo}
+\booltrue{uselogo} % remove this line if you do NOT want to use the logo (you have to sign the form when you use it)
+\title{Title}
+\author{Author}
+\date{Date}
+\newcommand{\matrnumber}{Immatriculation Number}
+\newcommand{\erstgutachter}{First Advisor}
+\newcommand{\zweitgutachter}{Second Advisor}
+\makeatother
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+% language
+\usepackage[USenglish,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[iso]{isodate}
+
+% colors
+\usepackage[table]{xcolor}
+
+% citations
+\usepackage{cite}
+
+%page geometry (for nicer margins on the title page)
+\usepackage[a4paper, twoside, inner=3.5cm, outer=3cm, bottom=4cm]{geometry}
+\usepackage{scrextend}
+\usepackage[final]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage[bf,font=footnotesize]{caption}
+\DeclareCaptionFont{better}{\normalfont\bfseries\sffamily}
+% https://tex.stackexchange.com/questions/57117/algorithms-package-ignores-caption-package
+\captionsetup[algorithm]{font=footnotesize}
+\captionsetup{labelfont=better}
+
+% https://tex.stackexchange.com/questions/32614/vertical-spacing-in-floats
+\setlength{\belowcaptionskip}{-\baselineskip}\addtolength{\belowcaptionskip}{1ex}
+
+% https://tex.stackexchange.com/questions/19766/how-to-control-the-position-of-floating-images
+\usepackage{placeins}
+
+\captionsetup{format=plain}
+\usepackage[font=footnotesize]{subcaption}
+\addtolength{\abovecaptionskip}{-2mm}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.95}
+
+% https://tex.stackexchange.com/questions/28627/how-to-install-the-algorithms-package
+\usepackage[section]{algorithm}
+%\captionsetup[algorithm]{font=footnotesize}
+\usepackage[numbered]{algo}
+
+\usepackage{sidecap}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{shapes.misc}
+% https://tex.stackexchange.com/questions/164991/pgfplots-how-to-fill-bounded-area-under-a-curve-using-addplot-and-fill
+\usepgfplotslibrary{fillbetween}
+
+\pgfplotsset{
+  label style={font=\scriptsize},
+  tick label style={font=\scriptsize},
+  legend style={font=\scriptsize},
+}
+
+\usepackage[sumlimits, intlimits]{amsmath}
+
+% https://tex.stackexchange.com/questions/69662/how-to-globally-change-the-spacing-around-equations
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{6pt}
+  \setlength\belowdisplayskip{6pt}
+  \setlength\abovedisplayshortskip{6pt}
+  \setlength\belowdisplayshortskip{6pt}
+}
+
+%\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% https://tex.stackexchange.com/questions/26637/how-do-you-get-mathbb1-to-work-characteristic-function-of-a-set
+\usepackage{dsfont}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+%\theoremstyle{theorem}
+%\newtheorem*{theorem}{Theorem}
+%\theoremstyle{lemma}
+%\newtheorem*{lemma}{Lemma}
+%\theoremstyle{example}
+%\newtheorem*{example}{Example}
+%\theoremstyle{problem}
+%\newtheorem*{problem}{Problem}
+
+% https://packages.ubuntu.com/trusty/texlive-fonts-extra
+\usepackage{mathabx}
+\usepackage{thmtools}
+\usepackage[thmmarks]{ntheorem}
+\theoremheaderfont{\normalfont\bfseries\sffamily}
+\theorempreskip{6px}
+\theorempostskip{6px}
+\newtheorem{example}{Example}[chapter]
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\itshape}
+\theorembodyfont{\normalfont}
+%\theoremseparator{.\,â€”}
+\theoremsymbol{}
+\newtheorem{proof-wo}{Proof}
+\theoremsymbol{\ensuremath{\color{lightgray}\blacksquare}}
+\newtheorem{proof}{Proof: }
+
+\usepackage[final]{listings}
+
+% https://tex.stackexchange.com/questions/161549/scaling-inline-code-to-the-current-font-size
+\makeatletter
+\lstdefinestyle{mystyle}{
+  basicstyle=%
+    \ttfamily
+    %\color{blue}%
+    \lst@ifdisplaystyle\scriptsize\fi
+}
+\makeatother
+\lstset{style=mystyle}
+
+\usepackage[toc,page]{appendix}
+\usepackage{enumerate}
+\usepackage[subfigure]{tocloft}
+\usepackage{multirow}
+\newcommand{\mycirc}[1][black]{\begin{Large}
+\textcolor{#1}{\ensuremath\bullet}
+\end{Large}}
+
+% hyperref
+\usepackage[final]{hyperref}
+\hypersetup{
+	pdfauthor={\theauthor},
+	pdftitle={\thetitle},
+	colorlinks,
+	linkcolor=black,
+	citecolor=black,
+	a4paper=true,
+	plainpages=false,
+	breaklinks=true,
+}
+
+% headers and footers
+\usepackage{afterpage}
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[RO, LE]{\nouppercase{\leftmark}}
+\fancyhead[RE, LO]{\nouppercase{\rightmark}}
+\fancyfoot[RO, LE]{\thepage}
+\fancypagestyle{fancytitle}{
+	\fancyhf{}
+	%\begin{tikzpicture}[overlay, remember picture]
+	%	\node[anchor=north east, xshift=-1mm, yshift=-1.5mm] at (current page.north east){\includegraphics[width=0.54\paperwidth]{./logo/logo.pdf}};
+	%	\node[anchor=north west, xshift=1mm, yshift=-1.5mm] at (current page.north west){\includegraphics[width=0.34\paperwidth]{./logo/mpi_is}};
+	%\end{tikzpicture}
+	
+	\renewcommand{\headrulewidth}{0pt}
+	\setlength{\headheight}{60pt}
+}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	%\fancyhead{}
+	\fancyfoot[R]{\thepage}%
+	\renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{number}{
+	\fancyhf{}
+	\fancyhead{}
+	\fancyfoot[R]{\thepage}%
+	\renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{empty}{
+	\fancyhf{}
+	\fancyhead{}
+	%\fancyfoot{}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+% latex optimization parameters
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% math
+\newcommand{\Cin}{\ensuremath{C_{\text{in}}}}
+\newcommand{\Cout}{\ensuremath{C_{\text{out}}}}
+\newcommand{\cin}{\ensuremath{c_{\text{in}}}}
+\newcommand{\cout}{\ensuremath{c_{\text{out}}}}
+\newcommand{\Ber}{\ensuremath{\mathrm{Ber}}}
+\newcommand{\Gu}{\ensuremath{\mathrm{Gu}}}
+\newcommand{\Dis}{\ensuremath{\mathrm{Dis}}}
+\newcommand{\const}{\ensuremath{\mathrm{const}}}
+\newcommand{\Var}{\ensuremath{\mathrm{Var}}}
+\newcommand{\Cov}{\ensuremath{\mathrm{Cov}}}
+\newcommand{\Tr}{\ensuremath{\mathrm{Tr}}}
+\newcommand{\diag}{\ensuremath{\mathrm{diag}}}
+\newcommand{\erf}{\ensuremath{\mathrm{erf}}}
+\newcommand{\Vol}{\ensuremath{\mathrm{Vol}}}
+\newcommand{\Exp}{\ensuremath{\mathrm{Exp}}}
+\newcommand{\KL}{\ensuremath{\mathrm{KL}}}
+\newcommand{\uk}{\ensuremath{\bot}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+% abbreviations
+\usepackage{xspace}
+\newcommand*{\eg}{\emph{e.g.}\@\xspace}
+\newcommand*{\Eg}{\emph{E.g.}\@\xspace}
+\newcommand*{\ie}{\emph{i.e.}\@\xspace}
+\newcommand*{\etc}{\emph{etc.}\@\xspace}
+\newcommand*{\etal}{\emph{et al.}\@\xspace}
+\newcommand*{\cf}{\emph{cf.}\@\xspace}
+\newcommand*{\vs}{\emph{vs.}\@\xspace}
+
+% http://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+\usepackage{url}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+\do\Y\do\Z}
+
+\begin{document}
+  \selectlanguage{USenglish}
+  \pagestyle{fancy}
+
+  % titlepage
+  \frontmatter
+  \include{titlepage}
+  \clearemptydoublepage
+  %\include{dedication}
+  %\clearemptydoublepage
+
+  % abstract and toc
+  \include{assertion}
+  \clearemptydoublepage
+  \include{acknowledgements}
+  \clearemptydoublepage
+  
+  \thispagestyle{number}
+  \tableofcontents
+  %\listoffigures
+  \clearemptydoublepage
+
+  % main content
+  \mainmatter
+  
+  \include{introduction}
+  \include{problem}
+  \include{related-work}
+  \include{method}
+  \include{experiments}
+  \include{conclusion}
+	
+  % bibliography and appendix
+  { % https://tex.stackexchange.com/questions/198607/placing-the-appendices-after-the-backmatter-in-a-thesis
+    \backmatter
+    \bibliographystyle{alpha}
+    \bibliography{thesis}
+    \nocite{*}
+  }
+	
+  \appendix
+  \include{appendix}
+
+\end{document}

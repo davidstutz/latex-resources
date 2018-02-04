@@ -1,0 +1,55 @@
+\documentclass[parskip=half]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{libertine}% eine Schrift, die mir persönlich gut gefällt
+
+\setkomafont{disposition}{\normalfont\bfseries}% Standardschrift für Überschriften
+
+\usepackage{graphicx}% stellt \scalebox bereit
+\usepackage{array,booktabs}% für Tabellen
+
+\pagestyle{empty}% keine Seitenzahl
+
+\begin{document}
+
+\begin{center}
+  \scalebox{5}{Vollmacht}
+\end{center}
+
+\vspace{1cm}
+
+\begin{tabular}{@{}m{.5\linewidth}@{}>{\raggedleft}m{.5\linewidth}@{}}
+  \begin{tabular}{@{}l@{}}
+    \bfseries Vollmachtgeber \\
+    David Stutz\\
+    Hauptstraße 1\\
+    11111 Berlin
+  \end{tabular} &
+  \begin{tabular}{@{}l@{}}
+    \bfseries Vollmachtnehmer \\
+    Max Mustermann\\
+    Hauptstraße 1\\
+    11111 Berlin
+  \end{tabular}
+\end{tabular}
+
+\vspace{1cm}
+
+\minisec{Vollmacht}
+
+Hiermit bevollmächtige ich ...
+
+Die Vollmacht gilt ab dem unten stehenden Datum bis die Vollmacht meinerseits
+wieder eingezogen wird.
+
+\vfill
+
+\begin{tabular}{@{}m{.5\linewidth}@{}>{\raggedleft}m{.5\linewidth}@{}}
+  \large\scshape Unterschrift: \\
+  \midrule[3pt]
+  & Ort und Datum, Name
+\end{tabular}
+
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[section]{algorithm}
+\usepackage[numbered]{algo}
+
+\begin{document}
+
+\begin{algorithm}[t]
+	\begin{algo}{Gradient Descent}{
+	\small 
+	\label{alg:deep-learning-gradient-descent}
+	\qinput{initial weights $w^{(0)}$, number of iterations $T$}
+	\qoutput{final weights $w^{(T)}$}
+	}
+		\qfor $t = 0$ \qto $T - 1$\\
+			estimate $\nabla \mathcal{L}(w^{(t)})$\\
+			compute $\Delta w^{(t)} = - \nabla \mathcal{L}(w^{(t)})$\label{lin:deep-learning-delta-w}\\
+			select learning rate $\gamma$\\
+			$w^{(t + 1)} := w^{(t)} + \gamma \Delta w^{(t)}$\qrof\\
+		\qreturn $w^{(T)}$
+	\end{algo}
+	% TODO short caption
+	\caption[]{The general gradient descent algorithm; different choices of
+	the learning rate $\gamma$ and the estimation technique for $\nabla\mathcal{L}(w)$
+	may lead to different implementations.}
+\end{algorithm}
+
+\end{document}
