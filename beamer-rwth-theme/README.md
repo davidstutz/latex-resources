@@ -2,7 +2,7 @@
 
 This is a fork of the RWTH Aachen Unviersity LaTeX/Beamer Theme.
 
-The original project can be found at: [http://geekstack.net/projects/rwth-latex-theme/](http://geekstack.net/projects/rwth-latex-theme/).
+The original project can be found at: [Author's website](http://geekstack.net/index.php?page=rwth_latex_theme), [BitBucket](https://bitbucket.org/geekStack/rwth-aachen-latex-theme/src/default/).
 
 ## FAQ
 
