@@ -1,0 +1,246 @@
+\documentclass[landscape]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{ragged2e}
+\AtBeginDocument{\RaggedRight}
+\usepackage{rotating}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\renewcommand{\labelitemi}{\color{MPIIblue} $\blacktriangleright$}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{calc}
+\usepackage[
+    paperheight=20cm,
+    paperwidth=40cm,
+    %a4paper,
+    left=4mm,
+    right=4mm,
+    top=2mm,
+    bottom=2mm,
+    includehead,
+    headheight=15.5mm,
+    %showframe
+]{geometry}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings,shadows}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage[backend=bibtex,style=numeric]{biblatex}
+
+\pagestyle{fancy}
+\makeatletter
+\def\headrule{}
+\def\footrule{}
+\makeatother
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\lhead{ %
+	\hspace*{0.5mm}
+	\huge Logo
+}
+\chead{%
+    \vspace*{4mm}
+   	\begin{center}
+        {\Huge\bf Lorem Ipsum}\\[1.5mm]
+        {\huge Author, Author, Author}
+    \end{center}
+    %\vspace*{5mm}
+}
+\rhead{ %
+	\huge Logo
+}
+
+\bibliography{bibliography}
+
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+
+\definecolor{MPIIblue}{RGB}{0,51,93}
+\definecolor{MPIIlightblue}{RGB}{103,133,158} % 67859E
+\definecolor{MPIIorange}{RGB}{200,91,15} % C85B0F
+\definecolor{MPIIblack}{RGB}{46,46,46}
+\definecolor{MPIIwhite}{RGB}{255,255,255}
+\definecolor{MPIIdarkgray}{RGB}{123,123,123}
+\definecolor{MPIIdarkergray}{RGB}{89,89,89}
+\definecolor{MPIIgray}{RGB}{169,169,169}
+\definecolor{MPIIlightgray}{RGB}{214,214,214}
+\definecolor{MPIIlightergray}{RGB}{234,234,234}
+\definecolor{MPIIgreen}{HTML}{327a2b} % 0.22,0.54, 0.19
+\definecolor{MPIIred}{rgb}{0.65,0.23,0.25}
+\definecolor{MPIIbeige}{rgb}{0.65,0.23,0.25}
+\definecolor{MPIIpink}{HTML}{d36582}
+\definecolor{MPIIteal}{HTML}{4d7c8a}
+\definecolor{MPIIviolet}{HTML}{3c1642}
+\definecolor{MPIIbrown}{HTML}{5a352a}
+\definecolor{MPIIyellow}{HTML}{eee82c}
+% pink f76f8e d36582
+% teal 7180b9 4d7c8a 55dde0
+% violet 3423a6 7353ba 3c1642
+% light green c5d86d
+% brown 230007 
+% citrine d7cf07
+% yellow eee82c
+% brown 5a352a 60463b 423629
+
+\newenvironment{problem}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIblue,
+    colbacktitle=MPIIblue,coltitle=MPIIwhite,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{related}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIgray,
+    colbacktitle=MPIIgray,coltitle=MPIIwhite,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{method}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIorange,
+    colbacktitle=MPIIorange,coltitle=MPIIwhite,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{data}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIgray,
+    colbacktitle=MPIIgray,coltitle=MPIIwhite,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{results}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIlightgray,
+    colbacktitle=MPIIlightgray,coltitle=MPIIblue,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{moreresults}[1]{%
+	\tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIlightgray,
+	colbacktitle=MPIIwhite,coltitle=MPIIblue,
+	colback=MPIIwhite,
+	titlerule=0mm,sharpish corners,no shadow,
+	left=1.5mm,top=1.5mm,right=1.5mm,bottom=1mm,
+	lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+	title=#1]}%
+{\endtcolorbox}
+\newenvironment{code}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0mm,colframe=MPIIwhite,
+    colback=MPIIorange,coltext=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=2.5mm,top=2.5mm,right=2.5mm,bottom=2.5mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+\newenvironment{references}[1]{%
+    \tcolorbox[noparskip,frame hidden,boxrule=0.5mm,colframe=MPIIlightgray,
+    colbacktitle=MPIIwhite,coltitle=MPIIdarkergray,
+    colback=MPIIwhite,
+    titlerule=0mm,sharpish corners,no shadow,
+    left=1.5mm,top=0.25mm,right=1.5mm,bottom=0.5mm,
+    lefttitle=1.5mm,toptitle=2mm,righttitle=1.5mm,bottomtitle=2mm,
+    title=#1]}%
+{\endtcolorbox}
+
+\begin{document}
+    %\vspace*{0.5mm}
+    
+    \begin{minipage}[t]{0.32\textwidth}
+        \strut\vspace*{-\baselineskip} % !
+        
+        \begin{results}{\Large\bf \fcolorbox{MPIIblue}{MPIIblue}{\hskip 0.05cm\color{MPIIwhite}1\hskip 0.05cm} Part 1}
+            
+            \vspace*{-1mm}
+            \centering
+            \begin{minipage}[t]{0.45\textwidth}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam 
+            \end{minipage}
+            \begin{minipage}[t]{0.49\textwidth}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            \end{minipage}
+            \vspace*{-1mm}
+        \end{results}
+        
+        \vspace*{-1mm}
+        \begin{results}{\Large\bf \fcolorbox{MPIIblue}{MPIIblue}{\hskip 0.05cm\color{MPIIwhite}4\hskip 0.05cm} Part 4}
+            
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+        \end{results}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.34\textwidth}
+        \strut\vspace*{-\baselineskip} % !
+        
+        \begin{problem}{\Large\bfseries Problem}
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        \end{problem}
+        
+        \vspace*{-1mm}
+        \begin{method}{\Large\bfseries Contributions}
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        \end{method}
+    
+        \vspace*{-2.5mm}
+        \begin{minipage}[t]{0.85\textwidth}
+            \strut\vspace*{-\baselineskip} % !
+            
+            \begin{code}{}\Large
+                Paper, Code and Data:\\
+                \bf\url{link}
+            \end{code}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.14\textwidth}
+            \strut\vspace*{-\baselineskip} % !
+            
+            \Large QRCode
+        \end{minipage}
+    
+        \begin{moreresults}{}
+            References\\
+            References\\
+            References\\
+            References\\
+            References\\
+        \end{moreresults}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.32\textwidth}
+        \strut\vspace*{-\baselineskip} % !
+        
+        \begin{results}{\Large\bf \fcolorbox{MPIIblue}{MPIIblue}{\hskip 0.05cm\color{MPIIwhite}2\hskip 0.05cm} Part 2}
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        \end{results}
+        
+        \vspace*{-1mm}
+        \begin{results}{\Large\bf \fcolorbox{MPIIblue}{MPIIblue}{\hskip 0.05cm\color{MPIIwhite}3\hskip 0.05cm} Part 3}
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        \end{results}
+    
+        \vspace*{-1mm}
+        \begin{related}{\Large\bfseries Related Work}
+           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        \end{related}
+    \end{minipage}
+\end{document}
