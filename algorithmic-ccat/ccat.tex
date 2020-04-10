@@ -1,0 +1,29 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{algorithmic}
+
+\begin{document}
+
+	\begin{algorithmic}[1]
+		\WHILE{true}
+		\STATE choose random batch $(x_1,y_1),\ldots,(x_B,y_B)$.
+		\FOR{$b = 1,\ldots,\nicefrac{B}{2}$} 
+		\STATE $\delta_b:=\arg\max\limits_{\|\delta\|_\infty \leq \epsilon} \max\limits_{k \neq y_b} f_k(x_b{+}\delta)$
+		\STATE $\tilde{x}_b := x_b + \delta_b$
+		\STATE $\lambda := (1 - \min(1, \nicefrac{\|\delta_b\|_\infty}{\epsilon}))^\rho$
+		\STATE $\tilde{y_b} := \lambda \,\,\text{one\_hot}(y_b) + (1 - \lambda) \nicefrac{1}{K}$
+		\ENDFOR
+		\STATE update parameters:\\\hspace*{1cm}$\sum_{b = 1}^{\nicefrac{B}{2}} \mathcal{L}(f(\tilde{x}_b), \tilde{y}_b) + \sum_{b = \nicefrac{B}{2}}^{B} \mathcal{L}(f(x_b), y_b)$
+		\ENDWHILE
+	\end{algorithmic}
+
+	\begin{thebibliography}{1}
+		\bibitem{CCAT}
+		D. Stutz, M. Hein, B. Schiele.
+		\emph{Confidence-Calibrated Adversarial Training: Generalizing to Unseen Attacks}.
+		ArXiv, 2019.
+	\end{thebibliography}
+
+\end{document}
