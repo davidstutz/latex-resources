@@ -1,0 +1,40 @@
+\def\figref#1{Figure~\ref{#1}}
+\def\partref#1{Part~\ref{#1}}
+\def\chapref#1{Chapter~\ref{#1}}
+\def\secref#1{Section~\ref{#1}}
+\def\appref#1{Appendix~\ref{#1}}
+\def\eqnref#1{Equation~\eqref{#1}}
+\def\algref#1{Algorithm~\ref{#1}}
+\def\tabref#1{Table~\ref{#1}}
+\newcommand{\defref}[1]{Definition~\ref{#1}}
+
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+% originall in \emph
+\def\eg{e.g\onedot} \def\Eg{E.g\onedot}
+\def\ie{i.e\onedot} \def\Ie{I.e\onedot}
+\def\cf{c.f\onedot} \def\Cf{C.f\onedot}
+\def\etc{etc\onedot} \def\vs{vs\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{et al\onedot}
+\makeatother
+
+\def\mypart#1#2{%
+	%\par\break % Page break
+	\refstepcounter{part}% Next part
+	{\centering\Huge\color{halfgray}\chapterNumber \thepart\par}
+	\vspace{1em}
+	{\centering\huge\normalfont\textls[160]{\scshape #1}\par}
+	\vspace{2em}
+	#2
+	%\vfill\break % Fill the end of page and page break
+}
+
+\makeatletter
+\renewcommand{\paragraph}{%
+	\@startsection{paragraph}{4}%
+	{\z@}{0.75ex \@plus 0.5ex \@minus .25ex}{-1em}%
+	{\normalfont\normalsize\bfseries}%
+}
+\makeatother

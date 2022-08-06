@@ -1,0 +1,345 @@
+% ********************************************************************
+% classicthesis.sty
+%
+% Copyright (C) 2006 André Miede http://www.miede.de
+%
+% André Miede 
+% Detmolder Straße 32
+% 31737 Rinteln
+% Germany
+%
+% Postcardware:
+% If you like this style and/or find it useful, please send me a nice 
+% postcard to the above address. Your comments are highly appreciated. 
+% A collection of the postcards I got so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% ********************************************************************  
+% Important:
+%
+% This style can also be used without the thesis template.
+% It works with both LaTeX and PDFLaTeX now.
+%
+% * You must not use "u etc. in strings/commands that will be spaced out 
+%   (use \"u or real umlauts instead)
+% * Chapters must be marked with the \myChapter{Foo} command 
+%   (sorry for the inconvenience at this point)
+% * For margin notes: \graffito{}
+% * There is a problem with the case of math text in part-,
+%   chapter-, and section titles and I have got no clue on how to fix this 
+%   (either the case or the spacing breaks). So far, I chose the case. :-(
+%
+% ********************************************************************  
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{classicthesis_cw}[2007/01/06 v1.4 Typographic Style for a classic-looking thesis]
+\RequirePackage{ifthen}
+    \newboolean{tocaligned} % the left column of the toc will be aligned (no indention)
+    \newboolean{eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
+    \newboolean{drafting} % print version information on pages
+    \newboolean{linedheaders} % chaper headers will have line above and beneath
+    \newboolean{listsseparated} % toggles the vertical space between lof/lot entries of different chapters
+    \newboolean{nochapters} % disable all chapter-specific commands 
+    \newboolean{beramono} % toggle nice monospaced font (w/ bold) + pre-installed 
+    \newboolean{eulermath} % use awesome Euler fonts for math
+    \newboolean{parts} % use part division for the text
+    \newboolean{a5paper} % use those tiny DIN A5 pages
+\DeclareOption{tocaligned}{\setboolean{tocaligned}{true}}
+\DeclareOption{eulerchapternumbers}{\setboolean{eulerchapternumbers}{true}}
+\DeclareOption{drafting}{\setboolean{drafting}{true}}
+\DeclareOption{linedheaders}{\setboolean{linedheaders}{true}}
+\DeclareOption{listsseparated}{\setboolean{listsseparated}{true}}
+%\DeclareOption{subfigure}{\PassOptionsToPackage{subfigure}{tocloft}}
+\DeclareOption{nochapters}{\setboolean{nochapters}{false}}
+\DeclareOption{beramono}{\setboolean{beramono}{false}} 
+\DeclareOption{eulermath}{\setboolean{eulermath}{false}} 
+\DeclareOption{parts}{\setboolean{parts}{true}} 
+\DeclareOption{a5paper}{\setboolean{a5paper}{true}}
+\ProcessOptions\relax
+
+% turn off some things if we do not use chapters
+\ifthenelse{\boolean{nochapters}}%
+    {%
+        \setboolean{linedheaders}{false}%
+        \setboolean{listsseparated}{false}%
+        \setboolean{eulerchapternumbers}{false}%
+        \setboolean{parts}{false}
+    }%
+    {\relax}%
+
+% ********************************************************************                
+% PDF Stuff
+% ********************************************************************
+\RequirePackage{ifpdf}
+\ifpdf\RequirePackage[pdftex,bookmarks=true,bookmarksnumbered=true,pageanchor=true,backref=page,hyperindex=true,breaklinks=true]{hyperref}\fi % for texorpdfstring command below
+
+% ********************************************************************                
+% Colors
+% ********************************************************************
+\RequirePackage[dvipsnames]{xcolor} 
+
+% ********************************************************************
+% Font Stuff
+% ********************************************************************   
+
+\RequirePackage[osf,sc]{mathpazo} % Palatino with real small caps and old style figures\\
+
+% just some font experiments (ignore)
+%\RequirePackage[opticals,osf]{MinionPro} %  opticals, fullfamily,
+%\RequirePackage{lmodern}
+%\RequirePackage[urw-garamond]{mathdesign}
+%\RequirePackage[light,condensed,math]{iwona}
+%\renewcommand{\sfdefault}{iwona}
+
+\ifthenelse{\boolean{beramono}}%
+    {\RequirePackage[scaled=0.85]{beramono}}%
+    {\renewcommand{\ttdefault}{\rmdefault}} % put your own suitable typewriter font here
+\ifthenelse{\boolean{eulermath}}%
+    {\RequirePackage[euler-digits]{eulervm}} % Euler math fonts
+    {\relax}
+\ifthenelse{\boolean{eulerchapternumbers}}% font for the chapter numbers
+    {\newfont{\chapterNumber}{eurb10 scaled 7000}}%
+    {\newfont{\chapterNumber}{pplr9d scaled 7000}}          
+    % Euler eurb10 / Palatino OSF pplr9d / Palatino SC pplrc9d
+    % Latin Modern cork-lmr10     
+\definecolor{halfgray}{gray}{0.6} % chapter numbers will be semi transparent .5 .55 .6 .0
+
+%\RequirePackage[expansion=false]{microtype} % character protruding and other micro-typography stuff
+\RequirePackage{microtype} % character protruding and other micro-typography stuff
+
+% ********************************************************************
+% Textblock size
+%*******************************************************
+\ifthenelse{\boolean{a5paper}}%
+    {% A5
+     	\RequirePackage[left=2.12cm,right=1.69cm,top=2.12cm,bottom=3.18cm]{geometry}
+    	%\setlength{\marginparwidth}{4em}%
+		%\setlength{\marginparsep}{1.25em}%
+	}{% A4	
+	% left=3.0cm,right=2.4cm,top=3cm,bottom=4.0cm
+ 		\RequirePackage[left=2.8cm,right=2.2cm,top=2.8cm,bottom=3.6cm]{geometry}
+ 		%\areaset[0mm]{400pt}{657pt} % 624 + 33 head % 5mm for binding %vorher 17mm
+		%\setlength{\marginparwidth}{7em}%
+		%\setlength{\marginparsep}{2em}%
+	}
+% Here some suggestions for the text widths and heights:
+% Palatino 	10pt: 288--312pt | 609--657pt
+% Palatino 	11pt: 312--336pt | 657--705
+% Minion 	10pt: 264--288pt | 561--609pt
+% Minion 	11pt: 288--312pt | 609--657pt
+
+% setzen der Rändern
+%\setlength{\topmargin}{-3mm} %Tex schlägt automatisch 1 inch= dazu= 2,5 cm
+
+
+% Randbemerkungen ausschalten
+%\setlength{\marginparwidth}{0pt}
+%\setlength{\marginparsep}{0pt}
+
+% ********************************************************************
+% Own Stuff
+% ********************************************************************
+% Graffiti as in GKP's book "Concrete Mathematics"
+%\setlength{\marginparwidth}{3em} \setlength{\marginparsep}{-5em}
+%\DeclareRobustCommand{\graffito}[1]{\marginpar{%
+%    \slshape\small%
+    %\parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
+    %\tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
+    %\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
+%    \raggedright\hspace{0pt}#1}}
+
+% Enumeration environment with small caps
+\newenvironment{aenumerate}
+    {\def\theenumi{\textsc{\alph{enumi}}}%
+     \enumerate}
+    {\endenumerate}
+
+% ********************************************************************
+% Fancy Stuff
+% ********************************************************************  
+\RequirePackage{booktabs} % for better rules in tables
+\RequirePackage{textcase} % for \MakeTextUppercase
+
+    
+% ********************************************************************
+% figures are placed only within section they were declared in
+% provides command \FloatBarrier
+% ********************************************************************
+\RequirePackage[section,below]{placeins}    
+    
+
+% ********************************************************************                
+% headlines
+% ********************************************************************  
+% \RequirePackage[automark]{scrpage2} % provides headers and footers (KOMA Script)
+%     \clearscrheadings
+    %\setheadsepline{0pt}
+    \ifthenelse{\boolean{nochapters}}%
+        {\relax}%
+        {\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{Chapter \thechapter. #1}}{}}}
+    \renewcommand{\sectionmark}[1]{\markright{\thesection\ \spacedlowsmallcaps{#1}}}
+    \renewcommand{\contentsname}{\spacedlowsmallcaps{Contents}}
+    
+
+% ********************************************************************
+% layout of the chapter-, section-, subsection-, subsubsection-,
+% paragraph and description-headings
+% ********************************************************************             
+\RequirePackage{titlesec}
+		% parts
+	\ifthenelse{\boolean{parts}}%
+	{%
+    \titleformat{\part}[display]
+        {\normalfont\centering\large}%
+        {\thispagestyle{empty}\partname~\thepart}{1em}%
+        {\color{Maroon}\spacedallcaps}
+    }{\relax}
+    % chapters
+    \ifthenelse{\boolean{linedheaders}}%
+    {% lines above and below, number right
+    \titleformat{\chapter}[display]%             
+        {\relax}{\raggedleft{\color{halfgray}\chapterNumber\thechapter} \\ }{0pt}%
+        {\titlerule\vspace*{.5\baselineskip}\begin{minipage}{14cm}\raggedright\spacedallcaps}[\end{minipage}\normalsize\vspace*{.5\baselineskip}\titlerule]%
+    }{% something like Bringhurst  
+    \titleformat{\chapter}[display]%
+        %geändert 02.02.2008
+        {\relax}{\mbox{}\hspace*{14.75cm}\textbf{\vspace*{-1.6\baselineskip}\color{halfgray}\chapterNumber\thechapter}}{0pt}%
+        %{\relax}{\mbox{}\marginpar{\vspace*{-1\baselineskip}\color{halfgray}\chapterNumber\thechapter}}{0pt}%
+        {\begin{minipage}{14cm}\LARGE\raggedright\scshape}[\end{minipage}\normalsize\vspace*{.5\baselineskip}\hrule height 0.5pt width \textwidth ]%\titlerule]% 
+    }
+    % sections \FloatBarrier
+    \titleformat{\section}
+        %geändert 02.02.2008
+        %{\relax}{\textsc{\MakeTextLowercase{\thesection}}}{1em}{\spacedlowsmallcaps}
+        %{\relax}{\LARGE{\textsc{\MakeTextLowercase{\thesection}}}}{1em}{\Large\spacedlowsmallcaps}
+        %{\relax}{\LARGE{\textsc{\MakeTextLowercase{\thesection}}}}{1em}{\Large\scshape}
+        {\relax}{\LARGE{\textsc{{\thesection}}}}{1em}{\Large\scshape}
+    % subsections
+    \titleformat{\subsection}
+    		%geändert 02.02.2008
+        %{\relax}{\textsc{\MakeTextLowercase{\thesubsection}}}{1em}{\normalsize}%\itshape}
+        %{\relax}{\Large{\MakeTextLowercase{\thesubsection}}}{1em}{\large}%\itshape}
+        {\relax}{\Large{{\thesubsection}}}{1em}{\large}%\itshape}
+    % subsubsections
+    \titleformat{\subsubsection}
+        %{\relax}{\Large{\MakeTextLowercase{\thesubsubsection}}}{1em}{\large\itshape}  
+        {\relax}{\Large{{\thesubsubsection}}}{1em}{\large\itshape}        
+    % paragraphs
+    \titleformat{\paragraph}[runin]
+        {\normalfont\normalsize}{\theparagraph}{0pt}{\bf}    
+    % descriptionlabels
+        \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\textbf{#1}}   % spacedlowsmallcaps textit textsc                  
+    % spacing
+    \ifthenelse{\boolean{nochapters}}%
+        {\relax}%
+        {\titlespacing*{\chapter}{0pt}{1\baselineskip}{1.2\baselineskip}}
+    \titlespacing*{\section}{0pt}{1.25\baselineskip}{1\baselineskip} 
+    \titlespacing*{\subsection}{0pt}{1.25\baselineskip}{1\baselineskip}
+    \titlespacing*{\paragraph}{0pt}{1\baselineskip}{1\baselineskip}
+
+
+
+% ********************************************************************                
+% layout of the TOC, LOF and LOT (LOL-workaround see next section)
+% ********************************************************************
+\RequirePackage[titles]{tocloft}
+%\RequirePackage[titles,subfigure]{tocloft}
+    % avoid page numbers being right-aligned in fixed-size box              
+    \newlength{\newnumberwidth}
+    \settowidth{\newnumberwidth}{999} % yields overfull hbox warnings for pages > 99
+    \cftsetpnumwidth{\newnumberwidth}
+    % have the bib neatly positioned after the rest
+    \newlength{\beforebibskip}  
+    \setlength{\beforebibskip}{0em}
+    % pagenumbers right after the titles
+    
+    % chapters
+    
+    % figures     
+%     	\renewcommand{\cftfigpresnum}{\scshape\MakeTextLowercase}%                  
+        %\renewcommand{\cftfigleader}{\hspace{1.5em}} 
+%         \cftsetindents{figure}{0em}{13ex}
+%         \renewcommand{\cftfigpresnum}{Fig.~}
+        %\renewcommand{\cftfigafterpnum}{\cftparfillskip}
+%         \newlength{\figurelabelwidth}
+%         \settowidth{\figurelabelwidth}{\cftfigpresnum~99}
+%         \addtolength{\figurelabelwidth}{2.5em}
+%         \cftsetindents{figure}{0em}{\figurelabelwidth}
+    % tables
+    	\renewcommand{\cfttabpresnum}{\scshape\MakeTextLowercase}%
+        %\renewcommand{\cfttableader}{\hspace{1.5em}} 
+        \cftsetindents{table}{0em}{13ex} 
+        \renewcommand{\cfttabpresnum}{Tab.~}
+        %\renewcommand{\cfttabafterpnum}{\cftparfillskip}    
+        \newlength{\tablelabelwidth}
+        \settowidth{\tablelabelwidth}{\cfttabpresnum~99}
+        \addtolength{\tablelabelwidth}{2.5em}
+        \cftsetindents{table}{0em}{\tablelabelwidth}
+        
+        
+    % dirty work-around to get the spacing after the toc/lot/lof-titles right    
+    \ifthenelse{\boolean{parts}}%        
+    {%
+    		\AtBeginDocument{\addtocontents{toc}{\protect\vspace{-\cftbeforepartskip}}}
+    }{%
+        \ifthenelse{\boolean{nochapters}}%
+    		{\relax}%
+    		{\AtBeginDocument{\addtocontents{toc}{\protect\vspace{-\cftbeforechapskip}}}}
+    }
+                                       
+    % another disectionrty work-around to get the spaced low small caps into the toc ;-(
+    \ifthenelse{\boolean{nochapters}}%
+    {\relax}%
+    {%
+        \newcommand{\myChapter}[1]{% for chapters      
+            \ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#1}%
+            \else\chapter{#1}\fi%
+        }%
+    }
+    
+    % yet another dirty work-around to get the spaced low small caps into the toc ;-(
+    \ifthenelse{\boolean{parts}}%
+    {%
+	    	\newcommand{\myPart}[1]{% for parts      
+	        	\ifpdf\part[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#1}% spacedallcaps
+	        	\else\part{#1}\fi%
+     		}%
+     }{\relax}
+        
+    \newcommand{\tocEntry}[1]{% for bib, etc.
+    	  %geändert 01.05.2007 B.Rapp
+	  %\ifpdf\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}%
+	  \ifpdf\texorpdfstring{#1}%
+        \else{#1}\fi%
+    }
+
+    % remove the vertical space between lof/lot entries of different chapters
+    \ifthenelse{\boolean{listsseparated}}{%
+        \AtBeginDocument{%
+            \addtocontents{lof}{\protect\vspace{-\cftbeforechapskip}}%
+            \addtocontents{lot}{\protect\vspace{-\cftbeforechapskip}}%
+        }%
+    }{%
+        \DeclareRobustCommand*{\deactivateaddvspace}{\let\addvspace\@gobble}% 
+        \AtBeginDocument{%      
+            \addtocontents{lof}{\deactivateaddvspace}% 
+            \addtocontents{lot}{\deactivateaddvspace}%      
+            %\addtocontents{lof}{\protect\renewcommand*{\protect\addvspace}[1]{}}% 
+            %\addtocontents{lot}{\protect\renewcommand*{\protect\addvspace}[1]{}}% 
+        }%
+    } 

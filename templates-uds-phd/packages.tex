@@ -1,0 +1,30 @@
+\usepackage[multiple]{footmisc}
+\usepackage[eulermath]{classicthesis_cw}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[english,american]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{tcolorbox}
+\usepackage{lettrine}
+\usepackage{nameref}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[pdftex,pageanchor=true,bookmarks=true,bookmarksnumbered=true,backref=page,hyperindex=true]{hyperref}
+\usepackage[tight]{minitoc}
+
+\RequirePackage[hyperpageref]{backref} 
+   \renewcommand*{\backref}[1]{}  
+   \renewcommand*{\backrefalt}[4]{
+      \ifcase #1 
+         %No cited.
+      \or
+         Cited on page #2.
+      \else
+         Cited on pages #2.
+      \fi}
