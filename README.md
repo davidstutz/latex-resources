@@ -4,7 +4,8 @@ This repository provides several examples and resources for LaTeX. All examples 
 
 ## License
 
-Several examples have been taken from different places all over the world wide web. This is usually indicated by the corresponding URL within the source code. 
+Several examples have been taken from different places all over the world wide web. This is usually indicated by the corresponding URL within the source code or
+any copyright statements in file headers.
 
 All other examples are licensed under the BSD 3-Clause License:
 
