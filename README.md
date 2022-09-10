@@ -1,6 +1,19 @@
 # LaTeX Resources
 
-This repository provides several examples and resources for LaTeX. All examples are tested using MikTeX 2.9 on Windows 7 and on Ubuntu 12.04/14.04 using `texlive-full`.
+This repository provides several examples and resources for LaTeX. All examples are tested using MikTeX >=2.9 on Windows 7 and on Ubuntu 12.04/14.04 using `texlive-full`.
+
+## Citing
+
+If you want to cite this repository, use (make sure to fill in the right date!)
+
+    @misc{Stutz2022,
+        author = {David Stutz},
+        title = {Collection of LaTeX resources and examples},
+        publisher = {GitHub},
+        journal = {GitHub repository},
+        howpublished = {\url{https://github.com/davidstutz/latex-resources}},
+        note = {Accessed on MM.DD.YYYY}
+    }
 
 ## License
 
@@ -9,7 +22,7 @@ any copyright statements in file headers.
 
 All other examples are licensed under the BSD 3-Clause License:
 
-Copyright (c) 2015-2018, David Stutz
+Copyright (c) 2015-2022, David Stutz
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
