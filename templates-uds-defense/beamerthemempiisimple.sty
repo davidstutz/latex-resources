@@ -1,0 +1,71 @@
+\mode<presentation>
+\usepackage{pgfcomp-version-0-65}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\input{font}
+\input{colors}
+
+\setlength{\leftmargini}{5mm}
+\setbeamercolor{title}{fg = MPIIdarkerergray}
+\setbeamercolor{author}{fg = MPIIdarkerergray}
+\setbeamercolor{date}{fg = MPIIdarkerergray}
+\setbeamercolor{frametitle}{fg = MPIIdarkerergray}
+\setbeamercolor{section in toc}{fg = MPIIdarkerergray}
+\setbeamercolor{subsection in toc}{fg = MPIIdarkerergray}
+\setbeamercolor{section in toc shaded}{fg = MPIIdarkerergray}
+\setbeamercolor{item}{fg = MPIIdarkgray}
+\setbeamercolor{subitem}{fg = MPIIdarkgray}
+\setbeamercolor{subsubitem}{fg = MPIIdarkgray}
+\setbeamercolor{description item}{fg = MPIIdarkerergray}
+\setbeamercolor{caption}{fg = MPIIdarkerergray}
+\setbeamercolor{caption name}{fg = MPIIdarkerergray}
+\setbeamercolor{normal text}{fg = MPIIdarkerergray}
+
+\usefonttheme{default}
+\setbeamerfont{title}{size = \huge}
+\setbeamerfont{author}{size = \Large}
+\setbeamerfont{date}{size = \Large}
+\setbeamerfont{frametitle}{size = \huge}
+\setbeamerfont{bibliography item}{size=\scriptsize}
+\setbeamerfont{bibliography entry author}{size=\scriptsize}
+\setbeamerfont{bibliography entry title}{size=\scriptsize}
+\setbeamerfont{bibliography entry location}{size=\scriptsize}
+\setbeamerfont{bibliography entry note}{size=\scriptsize}
+
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\useinnertheme{circles}
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{blocks}[default]
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{title page}{%
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+        \usebeamerfont{title}\inserttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+        \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{frametitle}{
+    \begin{textblock*}{\paperwidth}(0mm, 4mm)
+    	\centering\bfseries
+        {\usebeamerfont{frametitle}\insertframetitle}
+    \end{textblock*}
+    \vspace*{10mm}
+}
+
+\setbeamertemplate{footnote}{%
+	\begin{textblock*}{\paperwidth}(4mm,83.75mm)
+		\begin{minipage}{144mm}
+			\small
+			\insertfootnotetext
+		\end{minipage}
+		\hfill
+	\end{textblock*}
+}

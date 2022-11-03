@@ -1,0 +1,13 @@
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} 
+
+\usepackage{pgfplots}
+\usepackage[eulergreek]{sansmath}
+\pgfplotsset{
+	tick label style = {font=\sansmath\sffamily},
+	every axis label = {font=\sansmath\sffamily},
+	legend style = {font=\sansmath\sffamily},
+	label style = {font=\sansmath\sffamily}
+}
+\usepackage{tikz}
+\tikzset{every picture/.style={/utils/exec={\sffamily}}}
